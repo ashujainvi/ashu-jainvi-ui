@@ -25,7 +25,11 @@ const FILE_PATHS = {
 		destFileName: 'styles.css',
 	},
 	js: {
-		src: 'app/js/**/*.js',
+		src: [
+			'app/js/vendor/**/*.js',
+			'app/js/*.js',
+			//,'!' + 'includes/js/jquery.min.js', // to exclude any specific files
+		],
 		dest: `${DEST_DIRECTORY}/js`,
 		destFileName: 'script.js',
 	},
@@ -52,10 +56,7 @@ function scssTask() {
 
 // JS : concatenates and uglifies JS files to script.js
 function jsTask() {
-	return src([
-		FILE_PATHS.js.src,
-		//,'!' + 'includes/js/jquery.min.js', // to exclude any specific files
-	])
+	return src(FILE_PATHS.js.src)
 		.pipe(concat(FILE_PATHS.js.destFileName))
 		.pipe(uglify())
 		.pipe(dest(FILE_PATHS.js.dest));
