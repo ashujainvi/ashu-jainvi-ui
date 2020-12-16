@@ -4,7 +4,8 @@
 	"description": "A template for building static website, using gulp as task runner",
 	"main": "index.html",
 	"scripts": {
-		"start": "gulp"
+		"start": "gulp serve --development",
+		"build": "gulp build --production"
 	},
 	"keywords": [
 		"gulp",
@@ -19,10 +20,13 @@
 	"license": "ISC",
 	"devDependencies": {
 		"autoprefixer": "^9.8.6",
+		"browser-sync": "^2.26.13",
 		"cssnano": "^4.1.10",
+		"del": "^6.0.0",
 		"gulp": "^4.0.2",
 		"gulp-concat": "^2.6.1",
 		"gulp-imagemin": "^7.1.0",
+		"gulp-mode": "^1.0.2",
 		"gulp-postcss": "^9.0.0",
 		"gulp-replace": "^1.0.0",
 		"gulp-sass": "^4.1.0",

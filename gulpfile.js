@@ -10,6 +10,9 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const replace = require('gulp-replace');
 const imagemin = require('gulp-imagemin');
+const gulpMode = require('gulp-mode')(); // perform certain tasks only for --production mode.
+const browserSync = require('browser-sync').create();
+const del = require('del');
 
 // CONST & VARIABLES
 const DEST_DIRECTORY = 'dist';
@@ -25,11 +28,7 @@ const FILE_PATHS = {
 		destFileName: 'styles.css',
 	},
 	js: {
-		src: [
-			'app/js/vendor/**/*.js',
-			'app/js/*.js',
-			//,'!' + 'includes/js/jquery.min.js', // to exclude any specific files
-		],
+		src: ['app/js/vendor/**/*.js', 'app/js/*.js'],
 		dest: `${DEST_DIRECTORY}/js`,
 		destFileName: 'script.js',
 	},
@@ -44,42 +43,46 @@ const FILE_PATHS = {
 ////////////////
 
 // SCSS TASK: creates a minified styles.css file in DESTINATION FOLDER
-function scssTask() {
+function scssBuilTask() {
 	return src(FILE_PATHS.scss.src)
-		.pipe(sourcemaps.init()) // initialize sourcemaps first
-		.pipe(sass()) // compile SCSS to CSS
+		.pipe(gulpMode.development(sourcemaps.init())) // initialize sourcemaps first
+		.pipe(sass().on('error', sass.logError)) // compile SCSS to CSS
 		.pipe(concat(FILE_PATHS.scss.destFileName))
-		.pipe(postcss([autoprefixer(), cssnano()])) // PostCSS plugins
+		.pipe(gulpMode.production(postcss([autoprefixer(), cssnano()]))) // PostCSS plugins
 		.pipe(sourcemaps.write('.')) // write sourcemaps file in current directory
-		.pipe(dest(FILE_PATHS.scss.dest)); // put final CSS in dist folder
+		.pipe(dest(FILE_PATHS.scss.dest)) // put final CSS in dist folder
+		.pipe(browserSync.stream());
 }
 
-// JS : concatenates and uglifies JS files to script.js
+// JS: concatenates and uglifies JS files to script.js
 function jsTask() {
 	return src(FILE_PATHS.js.src)
 		.pipe(concat(FILE_PATHS.js.destFileName))
-		.pipe(uglify())
+		.pipe(gulpMode.production(uglify()))
 		.pipe(dest(FILE_PATHS.js.dest));
 }
 
+// Image: Compress image and move it to dist folder.
 function imageTask() {
 	return src(FILE_PATHS.images.src)
 		.pipe(
-			imagemin(
-				[
-					imagemin.gifsicle({ interlaced: true }),
-					imagemin.mozjpeg({ quality: 65, progressive: true }),
-					imagemin.optipng({ optimizationLevel: 6 }),
-					imagemin.svgo({
-						plugins: [
-							{ removeViewBox: true },
-							{ cleanupIDs: true },
-						],
-					}),
-				],
-				{
-					verbose: false,
-				}
+			gulpMode.production(
+				imagemin(
+					[
+						imagemin.gifsicle({ interlaced: true }),
+						imagemin.mozjpeg({ quality: 65, progressive: true }),
+						imagemin.optipng({ optimizationLevel: 6 }),
+						imagemin.svgo({
+							plugins: [
+								{ removeViewBox: true },
+								{ cleanupIDs: true },
+							],
+						}),
+					],
+					{
+						verbose: false,
+					}
+				)
 			)
 		)
 		.pipe(dest(FILE_PATHS.images.dest));
@@ -94,19 +97,35 @@ function cacheBustTask() {
 		.pipe(dest(FILE_PATHS.html.dest));
 }
 
+function cleanBuilds() {
+	return del(`${DEST_DIRECTORY}/**'`, { force: true });
+}
 // Watch task: watch SCSS, JS and HTML files for changes
 function watchTask() {
+	browserSync.init({
+		server: {
+			baseDir: `./${DEST_DIRECTORY}`,
+		},
+	});
 	watch(
-		[FILE_PATHS.scss.src, FILE_PATHS.scss.src, FILE_PATHS.html.src],
-		{ interval: 1000, usePolling: true }, // makes docker work
-		parallel(scssTask, jsTask, cacheBustTask)
+		[FILE_PATHS.scss.src],
+		{ interval: 1000, usePolling: true },
+		scssBuilTask
 	);
+
+	watch([...FILE_PATHS.js.src], jsTask);
+	watch([FILE_PATHS.html.src]).on('change', browserSync.reload);
 }
 
-// Runs the scss, js & image tasks simultaneously
-// then runs cacheBust, then watch task
-exports.default = series(
-	parallel(scssTask, jsTask, imageTask),
+exports.serve = series(
+	cleanBuilds,
+	parallel(scssBuilTask, jsTask, imageTask),
 	cacheBustTask,
 	watchTask
+);
+
+exports.build = series(
+	cleanBuilds,
+	parallel(scssBuilTask, jsTask, imageTask),
+	cacheBustTask
 );
