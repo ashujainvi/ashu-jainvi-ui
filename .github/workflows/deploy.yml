@@ -1,11 +1,11 @@
-name: Build Project
+name: Firebase Deploy Website
 
 on:
     push:
         branches: ['master']
 
 jobs:
-    test_commit:
+    deploy:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
@@ -14,3 +14,8 @@ jobs:
                   node-version: 12
             - run: npm ci
             - run: npm run build
+            # - uses: w9jds/firebase-action@master
+            #   with:
+            #       args: deploy --only hosting
+            #   env:
+            #       FIREBASE_TOKE: ${{ secrets.FIREBASE_TOKEN }}
