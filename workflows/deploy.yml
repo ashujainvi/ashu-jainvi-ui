@@ -1,7 +1,7 @@
 name: Build Project
 
 on:
-    commit:
+    push:
         branches: ['master']
 
 jobs:
