@@ -114,7 +114,7 @@ function watchTask() {
 	);
 
 	watch([...FILE_PATHS.js.src], jsTask);
-	watch([FILE_PATHS.html.src]).on('change', browserSync.reload);
+	watch([FILE_PATHS.html.src], series(cacheBustTask, browserSync.reload));
 }
 
 exports.serve = series(

@@ -1,9 +1,11 @@
+@import './mixins';
+
 :root {
 	/* COLORS */
 	--color-blue: #5563ff;
 	/* dark blue */
-	--color-dark-blue-900: #131226;
-	--color-dark-blue-800: #191639;
+	--color-dark-blue-900: #04071f;
+	--color-dark-blue-800: #111135;
 	--color-dark-blue-700: #1d1f2d;
 	--color-dark-blue-500: #242774;
 	--color-dark-blue-400: #352e93;
@@ -345,8 +347,8 @@ h4 {
 	align-items: center;
 }
 /* LOGO DESIGN */
-$logo-filter-strength: 10px;
-$logo-filter-strength--weak: 9px;
+$logo-filter-strength: 9px;
+$logo-filter-strength--weak: 8px;
 .navigation {
 	padding: 20px 25px;
 }
@@ -367,9 +369,9 @@ $logo-filter-strength--weak: 9px;
 		position: absolute;
 		top: -1px;
 		left: -2px;
-		height: 115%;
-		width: 115%;
-		opacity: 0.42;
+		height: 108%;
+		width: 108%;
+		opacity: 0.48;
 		border-radius: 16px;
 
 		/* Declaring our shadow color inherit from the parent (button) */
@@ -387,14 +389,15 @@ $logo-filter-strength--weak: 9px;
 		);
 		/* Blurring the element for shadow effect */
 		filter: blur($logo-filter-strength);
-		transition: filter 0.2s ease-out;
-		transition: transform 12s ease-out;
+		transition: filter 0.4s ease-out;
+		transition: transform 8s ease-out;
+		transition: border-radius 0.2s ease-in;
 	}
 
 	&:hover {
 		&::after {
-			width: 118%;
-			opacity: 0.62;
+			width: 109%;
+			opacity: 0.55;
 			left: -3px;
 			border-radius: 26px;
 			filter: blur($logo-filter-strength--weak);
@@ -405,28 +408,32 @@ $logo-filter-strength--weak: 9px;
 
 /* START HERO */
 .hero {
+	min-height: 888px;
 	height: 110vh;
 
-	&__heading {
-		position: relative !important;
-		color: var(--primary-orange);
+	&__body {
+		text-align: center;
+
+		.subheader {
+			letter-spacing: 2px;
+		}
 	}
 
 	&__content-container {
-		max-width: 1000px;
+		max-width: 950px;
 		margin: 50px auto 0;
 		flex-direction: column;
 		position: relative !important;
 	}
 
-	&__image-container {
+	&__climber {
 		position: relative !important;
-		margin-top: -130px;
+		margin-top: -160px;
 
 		img {
 			position: relative;
-			margin-left: 33%;
 			z-index: 2;
+			width: 550px;
 		}
 	}
 	&__background-circle {
@@ -450,11 +457,20 @@ $logo-filter-strength--weak: 9px;
 			#7d4ee6,
 			#8754ef
 		);
+	}
 
-		box-shadow: inset 0 0 50px #b967cba8, inset 20px 0 80px #9c6dc48c,
-			inset -20px 0 80px #9631e59e, inset 20px 0 300px #923592b0,
-			inset -20px 0 300px #8f54c1ad, 0 0 50px #642974ab,
-			-10px 0 80px #67509799, 10px 0 80px #4a2b6fba;
+	&__mountain-bg-3 {
+		width: 100%;
+		height: 560px;
+		margin-top: -270px;
+		background: url('../images/hero/mountain-foreground-3.png');
+		background-size: cover;
+		background-repeat: repeat-x;
+
+		@include media-breakpoint-tablet {
+			background-size: contain;
+			margin-top: -370px;
+		}
 	}
 }
 $section-spacing: 120px;
@@ -585,15 +601,25 @@ section {
 .flex-zone {
 	width: 100%;
 	display: flex;
-	flex-direction: row;
 	justify-content: space-between;
+	padding: 20px 0;
+	flex-direction: column-reverse;
 
+	@include media-breakpoint-tablet {
+		flex-direction: row;
+	}
 	.description {
-		max-width: 600px;
+		max-width: 500px;
+
+		p {
+			max-width: 85%;
+		}
 	}
 	.showcase {
 		z-index: 2;
 		position: relative;
+		margin-top: 40px;
+		max-width: 300px;
 
 		.sally-worker {
 			z-index: 2;
