@@ -1,0 +1,203 @@
+@import './mixins';
+
+:root {
+    /* VAR-COLORS */
+    --color-blue: #4e5cfc;
+    --color-dark-blue-900: #04071f;
+    --color-dark-blue-800: #10102b;
+    --color-dark-blue-700: #1d1f2d;
+    --color-dark-blue-500: #1f1f59;
+    --color-dark-blue-400: #352e93;
+    --primary-purple: #935ce1;
+    --primary-green: #2ff093;
+    --primary-teal: #38f9d7;
+    --primary-yellow: #fff200;
+    --primary-orange: #f08a6d;
+    --primary-red: #fd413c;
+    /* NEUTRAL COLORS  */
+    --color-black: #010101;
+    --color-gray-800: #1e1f22;
+    --color-gray-500: #828282;
+    --color-gray-400: #a4a4a4;
+    --color-gray-300: #bbbbbb;
+    --color-gray-200: #d3d3d3;
+    --color-gray-100: #efefef;
+    /* VAR-PRIMARY-COLORS */
+    --primary-site-color-900: var(--color-dark-blue-500);
+    --primary-site-color: var(--color-blue);
+    --secondary-site-color: var(--primary-purple);
+    /* VAR-BACKGROUND-COLORS */
+    --background-color-dark: var(--color-dark-blue-900);
+    --background-color: var(--color-dark-blue-800);
+    --background-color-lighter: var(--color-dark-blue-700);
+    /* VAR-SURFACE-COLORS */
+    --surface-color-primary: var(--color-dark-blue-500);
+    --surface-color-primary-dark: var(--background-color-dark);
+    /* VAR-TEXT-COLORS */
+    --text-color-800: var(--color-gray-800);
+    --text-color-500: var(--color-gray-500);
+    --text-color-400: var(--color-gray-400);
+    --text-color-300: var(--color-gray-300);
+    --text-color-200: var(--color-gray-200);
+    --text-color-100: var(--color-gray-100);
+    --text-color-primary-500: var(--primary-site-color);
+    /* VAR-TEXT-GRADIENTS */
+    --text-gradient-primary: -webkit-linear-gradient(
+        120deg,
+        var(--primary-site-color) 0%,
+        var(--secondary-site-color) 85%
+    );
+    --text-gradient-secondary: -webkit-linear-gradient(
+        120deg,
+        var(--primary-orange) 0%,
+        var(--primary-red) 55%
+    );
+    /* VAR-BUTTON-COLORS */
+    --button-color-primary: var(--secondary-site-color);
+    --button-color-secondary: var(--primary-site-color);
+    /* VAR-GRADIENTS */
+    // --gradient-linear-dark-gray: linear-gradient(
+    //     to left,
+    //     var(--background-color-dark) 0%,
+    //     var(--background-color-lighter) 100%
+    // );
+    /* VAR-BOX-SHADOW */
+    --box-shadow-black: 0 20px 30px -10px rgba(5, 5, 5, 0.75);
+    --box-shadow-light-gray: 0 10px 30px -10px rgba(7, 7, 7, 0.25);
+    --box-shadow-gray: 0 30px 40px 10px rgba(18, 18, 18, 0.75);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    &:focus {
+        outline: thin dashed #777777;
+    }
+}
+
+html,
+body {
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--background-color);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    color: var(--text-color-200);
+}
+
+input,
+textarea {
+    font-size: 100%;
+    font: inherit;
+    font-weight: initial;
+    border: none;
+    outline: none;
+}
+
+ol,
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+/*
+==============================
+SCROLLBAR
+==============================
+*/
+::-webkit-scrollbar {
+    width: 5px !important;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8) !important;
+    border-radius: 2px !important;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 2px !important;
+    box-shadow: inset 0 0 10px rgba(167, 71, 20, 0.9) !important;
+}
+
+/*
+==============================
+HEADINGS
+==============================
+*/
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 800;
+    color: var(--text-color-100);
+}
+h1 {
+    font-size: 32px;
+    margin: 10px 0;
+
+    @include media-breakpoint-tablet {
+        font-size: 62px;
+        letter-spacing: -1.2px;
+    }
+}
+h2 {
+    font-size: 28px;
+    margin: 8px 0;
+
+    @include media-breakpoint-tablet {
+        font-size: 44px;
+        letter-spacing: -0.5px;
+    }
+}
+h4 {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+/*
+==============================
+BUTTONS
+==============================
+*/
+button,
+.button {
+    outline: none;
+    display: block;
+    cursor: pointer;
+    border: none;
+    min-width: 110px;
+    border-radius: 6px;
+    padding: 18px 20px;
+    margin: 0 auto;
+    text-align: center;
+    -webkit-appearance: none;
+}
+
+.button-primary {
+    background: var(--button-color-primary);
+    color: var(--text-color-100);
+    font-size: 16px;
+
+    &:hover {
+        box-shadow: var(--box-shadow-black);
+    }
+}

@@ -1,36 +1,43 @@
 {
-	"name": "static-website-boilerplate",
-	"version": "1.0.0",
-	"description": "A template for building static website, using gulp as task runner",
-	"main": "index.html",
-	"scripts": {
-		"start": "gulp serve --development",
-		"build": "gulp build --production"
-	},
-	"keywords": [
-		"gulp",
-		"boilerplate",
-		"html",
-		"css",
-		"js",
-		"wesbite",
-		"web"
-	],
-	"author": "Ashutosh Jainvi",
-	"license": "ISC",
-	"devDependencies": {
-		"autoprefixer": "^9.8.6",
-		"browser-sync": "^2.26.13",
-		"cssnano": "^4.1.10",
-		"del": "^6.0.0",
-		"gulp": "^4.0.2",
-		"gulp-concat": "^2.6.1",
-		"gulp-imagemin": "^7.1.0",
-		"gulp-mode": "^1.0.2",
-		"gulp-postcss": "^9.0.0",
-		"gulp-replace": "^1.0.0",
-		"gulp-sass": "^4.1.0",
-		"gulp-sourcemaps": "^2.6.5",
-		"gulp-uglify": "^3.0.2"
-	}
+    "name": "static-website-boilerplate",
+    "version": "1.0.0",
+    "description": "A template for building static website, using gulp as task runner",
+    "main": "index.html",
+    "scripts": {
+        "start": "gulp serve --development",
+        "build": "gulp build --production"
+    },
+    "keywords": [
+        "gulp",
+        "html",
+        "css",
+        "js",
+        "wesbite",
+        "web",
+        "portfolio"
+    ],
+    "author": "Ashutosh Jainvi",
+    "license": "ISC",
+    "devDependencies": {
+        "autoprefixer": "^9.8.6",
+        "browser-sync": "^2.26.13",
+        "cssnano": "^4.1.10",
+        "del": "^6.0.0",
+        "gulp": "^4.0.2",
+        "gulp-concat": "^2.6.1",
+        "gulp-imagemin": "^7.1.0",
+        "gulp-mode": "^1.0.2",
+        "gulp-postcss": "^9.0.0",
+        "gulp-replace": "^1.0.0",
+        "gulp-sass": "^4.1.0",
+        "gulp-sourcemaps": "^2.6.5",
+        "gulp-uglify": "^3.0.2"
+    },
+    "prettier": {
+        "trailingComma": "es5",
+        "tabWidth": 4,
+        "semi": true,
+        "singleQuote": true,
+        "maxColumn": 120
+    }
 }

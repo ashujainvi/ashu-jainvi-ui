@@ -1,8 +1,6 @@
 var screenSize = window.innerWidth;
-
 var scene = document.getElementById('scene');
 var parallaxInstance = new Parallax(scene);
-
 // typed initiator
 // add typed js only if width > 768px
 // if (screenSize > 768) {
@@ -45,37 +43,37 @@ var mouseIsDown = false;
 var startX, scrollLeft;
 
 if (iconSlider) {
-	iconSlider.addEventListener('mousedown', function (event) {
-		mouseIsDown = true;
-		$('.feature_zone-icons').stop(true);
-		startX = event.pageX - iconSlider.offsetLeft;
-		scrollLeft = iconSlider.scrollLeft;
-	});
+    iconSlider.addEventListener('mousedown', function (event) {
+        mouseIsDown = true;
+        $('.feature_zone-icons').stop(true);
+        startX = event.pageX - iconSlider.offsetLeft;
+        scrollLeft = iconSlider.scrollLeft;
+    });
 
-	iconSlider.addEventListener('mouseleave', function () {
-		mouseIsDown = false;
-	});
+    iconSlider.addEventListener('mouseleave', function () {
+        mouseIsDown = false;
+    });
 
-	iconSlider.addEventListener('mouseup', function () {
-		mouseIsDown = false;
+    iconSlider.addEventListener('mouseup', function () {
+        mouseIsDown = false;
 
-		var currScrollX = iconSlider.scrollLeft;
-		var scrollDiff = (scrollLeft - currScrollX) * -1;
-		var newScrollX = currScrollX + scrollDiff * 0.4;
+        var currScrollX = iconSlider.scrollLeft;
+        var scrollDiff = (scrollLeft - currScrollX) * -1;
+        var newScrollX = currScrollX + scrollDiff * 0.4;
 
-		$('.feature_zone-icons')
-			.stop(true)
-			.animate({ scrollLeft: newScrollX }, 400, 'linear');
-	});
+        $('.feature_zone-icons')
+            .stop(true)
+            .animate({ scrollLeft: newScrollX }, 400, 'linear');
+    });
 
-	iconSlider.addEventListener('mousemove', function (event) {
-		if (!mouseIsDown) {
-			return;
-		}
-		var mousePosX = event.pageX - iconSlider.offsetLeft;
-		var slideValue = (mousePosX - startX) * 1.5;
-		iconSlider.scrollLeft = scrollLeft - slideValue;
-	});
+    iconSlider.addEventListener('mousemove', function (event) {
+        if (!mouseIsDown) {
+            return;
+        }
+        var mousePosX = event.pageX - iconSlider.offsetLeft;
+        var slideValue = (mousePosX - startX) * 1.5;
+        iconSlider.scrollLeft = scrollLeft - slideValue;
+    });
 }
 
 // uiKit animations using scrollSpy
@@ -90,10 +88,10 @@ if (iconSlider) {
 
 var sectionIntro = document.getElementsByClassName('section-intro');
 var sectionOptions = {
-	cls: 'animation-fade',
-	delay: 220,
-	repeat: true,
+    cls: 'animation-fade',
+    delay: 220,
+    repeat: true,
 };
 for (var i = 0; i < sectionIntro.length; i++) {
-	UIkit.scrollspy(sectionIntro[i], sectionOptions);
+    UIkit.scrollspy(sectionIntro[i], sectionOptions);
 }
