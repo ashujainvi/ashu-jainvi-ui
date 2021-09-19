@@ -101,7 +101,7 @@
         var(--primary-orange) 100%
     );
 }
-/* CONTAINER */
+/* MAIN WEB CONTAINER */
 .papa-wrapper {
     overflow-x: hidden;
 }
@@ -128,11 +128,8 @@
     align-items: center;
 }
 /* LOGO DESIGN */
-$logo-filter-strength: 9px;
-$logo-filter-strength--weak: 8px;
-.navigation {
-    padding: 20px 10px;
-}
+$logo-filter-strength: 8px;
+$logo-filter-strength--weak: 7px;
 .aj-logo {
     width: 55px;
     height: 55px;
@@ -157,10 +154,10 @@ $logo-filter-strength--weak: 8px;
         position: absolute;
         top: -1px;
         left: -2px;
-        height: 108%;
-        width: 108%;
-        opacity: 0.48;
-        border-radius: 16px;
+        height: 100%;
+        width: 99%;
+        opacity: 0.4;
+        border-radius: 15px;
 
         /* Declaring our shadow color inherit from the parent (button) */
         background: linear-gradient(
@@ -177,17 +174,15 @@ $logo-filter-strength--weak: 8px;
         );
         /* Blurring the element for shadow effect */
         filter: blur($logo-filter-strength);
-        transition: filter 0.4s ease-out;
+        transition: filter 0.5s ease-out;
         transition: transform 8s ease-out;
-        transition: border-radius 0.2s ease-in;
+        transition: border-radius 0.4s ease-in;
     }
 
     &:hover {
         &::after {
-            width: 109%;
-            opacity: 0.55;
-            left: -3px;
-            border-radius: 26px;
+            opacity: 0.5;
+            border-radius: 15px;
             filter: blur($logo-filter-strength--weak);
             transform: rotate(360deg);
         }
@@ -198,73 +193,61 @@ $logo-filter-strength--weak: 8px;
 .hero {
     min-height: 880px;
     height: 115vh;
-    padding-top: 20px;
+    padding: 20px;
 
-    .card {
-        background-image: url('../images/hero/wave-lines.png');
-        background-repeat: no-repeat;
-        background-size: 100%;
-        background-position-y: 200px;
-        background-blend-mode: exclusion;
+    h1 {
+        font-size: 46px;
     }
 
-    &__body {
-        text-align: center;
-        padding-top: 50px;
-    }
-
-    &__content-container {
-        margin: 40px auto 0;
+    &__content {
+        display: flex;
         flex-direction: column;
-        position: relative !important;
-    }
-
-    &__climber {
-        position: relative !important;
-        margin-top: 50px;
-        margin-left: 33%;
-
-        img {
-            position: relative;
-            z-index: 2;
-            width: 500px;
-            max-width: 200%;
-
-            @include media-breakpoint-tablet {
-                max-width: 100%;
-            }
-        }
-    }
-    &__background-circle {
-        position: absolute !important;
-        top: -30px !important;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        margin: auto;
-        width: 320px;
-        height: 320px;
-        max-width: 105%;
-        box-shadow: var(--box-shadow-gray);
-        background-image: linear-gradient(
-            to right top,
-            #4599f8,
-            #3c88f1,
-            #3977e9,
-            #3d65e0,
-            #4552d4,
-            #4e4bd2,
-            #5744cf,
-            #5f3ccc,
-            #6942d5,
-            #7348dd,
-            #7d4ee6,
-            #8754ef
-        );
+        align-items: center;
+        margin-top: 64px;
 
         @include media-breakpoint-tablet {
-            width: 450px;
-            height: 450px;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    &__text {
+        padding-top: 10px;
+        max-width: 350px;
+    }
+
+    &__illustration {
+        width: 100%;
+        height: 600px;
+        overflow: hidden;
+        position: relative;
+        background-image: url('/images/hero/abstract-pink-blue.png');
+        background-size: cover;
+
+        @include media-breakpoint-tablet {
+            margin-left: 24px;
+            width: 500px;
+        }
+
+        // &__india-map {
+        //     width: 96%;
+        //     height: 70%;
+        //     border-radius: 8px;
+        //     margin-top: -140px;
+        //     background-image: url('/images/hero/india-orange-map.png');
+        //     background-size: cover;
+        // }
+
+        &__guy {
+            width: 400px;
+            height: 500px;
+            margin-top: 130px;
+            margin-left: 21%;
+
+            img {
+                width: 100%;
+            }
         }
     }
 }
@@ -694,13 +677,6 @@ section {
 .flinkedin:hover {
     background: url(../images/footer-social-icons2.png) no-repeat 0 -67px;
 }
-.fface {
-    background: url(../images/footer-social-icons2.png) no-repeat -68px 0;
-}
-
-.fface:hover {
-    background: url(../images/footer-social-icons2.png) no-repeat -68px -67px;
-}
 
 .fgit {
     background: url(../images/footer-social-icons2.png) no-repeat -134px 0;
@@ -755,11 +731,9 @@ section {
 
 .fgit:hover .tooltiptext,
 .flinkedin:hover .tooltiptext,
-.fface:hover .tooltiptext,
 .fgit:hover .tooltiptext,
 .finsta:hover .tooltiptext,
-.fpin:hover .tooltiptext,
-.cn-button:hover .tooltiptext {
+.fpin:hover .tooltiptext {
     visibility: visible;
 }
 /*

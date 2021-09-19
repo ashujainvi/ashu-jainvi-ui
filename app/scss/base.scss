@@ -45,7 +45,7 @@
     --text-gradient-primary: -webkit-linear-gradient(
         120deg,
         var(--primary-site-color) 0%,
-        var(--secondary-site-color) 85%
+        var(--secondary-site-color) 75%
     );
     --text-gradient-secondary: -webkit-linear-gradient(
         120deg,
@@ -55,12 +55,6 @@
     /* VAR-BUTTON-COLORS */
     --button-color-primary: var(--secondary-site-color);
     --button-color-secondary: var(--primary-site-color);
-    /* VAR-GRADIENTS */
-    // --gradient-linear-dark-gray: linear-gradient(
-    //     to left,
-    //     var(--background-color-dark) 0%,
-    //     var(--background-color-lighter) 100%
-    // );
     /* VAR-BOX-SHADOW */
     --box-shadow-black: 0 20px 30px -10px rgba(5, 5, 5, 0.75);
     --box-shadow-light-gray: 0 10px 30px -10px rgba(7, 7, 7, 0.25);
@@ -73,7 +67,7 @@
     padding: 0;
 
     &:focus {
-        outline: thin dashed #777777;
+        outline: thin dotted var(--secondary-site-color);
     }
 }
 

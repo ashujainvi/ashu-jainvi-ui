@@ -1,5 +1,5 @@
 var screenSize = window.innerWidth;
-var scene = document.getElementById('scene');
+var scene = document.getElementById('mouse-move-scene-1');
 var parallaxInstance = new Parallax(scene);
 // typed initiator
 // add typed js only if width > 768px

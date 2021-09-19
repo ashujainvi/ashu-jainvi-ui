@@ -120,12 +120,16 @@ function watchTask() {
     });
     watch(
         [FILE_PATHS.scss.src],
-        { interval: 1000, usePolling: true },
+        { interval: 200, usePolling: true },
         scssBuildTask
     );
 
     watch([...FILE_PATHS.js.src], jsTask);
-    watch([FILE_PATHS.html.src], series(cacheBustTask, browserSync.reload));
+    watch(
+        [FILE_PATHS.html.src],
+        { interval: 200, usePolling: true },
+        series(cacheBustTask, browserSync.reload)
+    );
 }
 
 // DEVELOPMENT SERVE
