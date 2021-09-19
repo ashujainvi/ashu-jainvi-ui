@@ -1,19 +1,20 @@
 @import './mixins';
 
 :root {
-    /* VAR-COLORS */
+    /* COLORS */
     --color-blue: #4e5cfc;
     --color-dark-blue-900: #070812;
     --color-dark-blue-800: #0d0d1a;
-    --color-dark-blue-700: #1d1f2d;
-    --color-dark-blue-500: #1c1c4f;
-    --color-dark-blue-400: #352e93;
+    --color-dark-blue-700: #141835;
+    --color-dark-blue-500: #1a1a50;
+    --color-dark-blue-400: #292380;
     --primary-purple: #935ce1;
     --primary-green: #2ff093;
     --primary-teal: #38f9d7;
     --primary-yellow: #fff200;
     --primary-orange: #f08a6d;
     --primary-red: #fd413c;
+
     /* NEUTRAL COLORS  */
     --color-black: #010101;
     --color-gray-800: #1e1f22;
@@ -22,26 +23,31 @@
     --color-gray-300: #bbbbbb;
     --color-gray-200: #d3d3d3;
     --color-gray-100: #efefef;
-    /* VAR-PRIMARY-COLORS */
+
+    /* PRIMARY-COLORS */
     --primary-site-color-900: var(--color-dark-blue-500);
     --primary-site-color: var(--color-blue);
     --secondary-site-color: var(--primary-purple);
-    /* VAR-BACKGROUND-COLORS */
-    --background-color-dark: var(--color-dark-blue-900);
+
+    /* BACKGROUND-COLORS */
+    --background-color--dark: var(--color-dark-blue-900);
     --background-color: var(--color-dark-blue-800);
-    --background-color-lighter: var(--color-dark-blue-700);
-    /* VAR-SURFACE-COLORS */
+    --background-color--light: var(--color-dark-blue-700);
+
+    /* SURFACE-COLORS */
     --surface-color-primary: var(--color-dark-blue-500);
-    --surface-color-primary-dark: var(--background-color-dark);
-    /* VAR-TEXT-COLORS */
+    --surface-color-primary--dark: var(--color-dark-blue-700);
+
+    /* TEXT-COLORS */
     --text-color-800: var(--color-gray-800);
     --text-color-500: var(--color-gray-500);
-    --text-color-400: var(--color-gray-400);
     --text-color-300: var(--color-gray-300);
     --text-color-200: var(--color-gray-200);
     --text-color-100: var(--color-gray-100);
-    --text-color-primary-500: var(--primary-site-color);
-    /* VAR-TEXT-GRADIENTS */
+    --text-color-primary: var(--primary-site-color);
+    --text-color-secondary: var(--color-gray-400);
+
+    /* TEXT-GRADIENTS */
     --text-gradient-primary: -webkit-linear-gradient(
         120deg,
         var(--primary-site-color) 0%,
@@ -50,17 +56,79 @@
     --text-gradient-secondary: -webkit-linear-gradient(
         120deg,
         var(--primary-orange) 0%,
-        var(--primary-red) 55%
+        var(--primary-red) 75%
     );
-    /* VAR-BUTTON-COLORS */
-    --button-color-primary: var(--secondary-site-color);
-    --button-color-secondary: var(--primary-site-color);
-    /* VAR-BOX-SHADOW */
+
+    /* BUTTON-COLORS */
+    --button-color-primary: var(--primary-site-color);
+    --button-color-secondary: var(--secondary-site-color);
+
+    /* BOX-SHADOW */
     --box-shadow-black: 0 20px 30px -10px rgba(5, 5, 5, 0.75);
     --box-shadow-light-gray: 0 10px 30px -10px rgba(7, 7, 7, 0.25);
     --box-shadow-gray: 0 30px 40px 10px rgba(18, 18, 18, 0.75);
 }
 
+/* TEXT-CLASS */
+.text-gradient-primary {
+    background: var(--text-gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.text-gradient-secondary {
+    background: var(--text-gradient-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* COLORS-TEXT */
+.yellow {
+    color: var(--primary-yellow);
+}
+.blue {
+    color: var(--text-color-primary) !important;
+}
+.yellow,
+.blue {
+    letter-spacing: 1.1px;
+    cursor: pointer;
+}
+.color-green {
+    color: var(--primary-green) !important;
+}
+
+/* COLORS-BACKGROUND */
+.background-gradient-yellow {
+    background-image: linear-gradient(
+        120deg,
+        var(--primary-yellow) 0%,
+        var(--primary-orange) 100%
+    );
+}
+
+.background-gradient-blue {
+    background: linear-gradient(
+        120deg,
+        var(--surface-color-primary--dark) 0%,
+        var(--surface-color-primary) 60%
+    );
+}
+
+.background-gradient-green {
+    background-image: linear-gradient(
+        to right,
+        var(--primary-green) 0%,
+        var(--primary-teal) 100%
+    );
+}
+
+.background-gradient-red {
+    background-image: linear-gradient(
+        to right,
+        var(--primary-red) 0%,
+        var(--primary-orange) 100%
+    );
+}
 * {
     box-sizing: border-box;
     margin: 0;
