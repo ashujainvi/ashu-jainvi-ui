@@ -1,239 +1,210 @@
 @import './mixins';
 
-:root {
-    /* COLORS */
-    --color-blue: #4e5cfc;
-    --color-dark-blue-900: #070812;
-    --color-dark-blue-800: #0d0d1a;
-    --color-dark-blue-700: #141835;
-    --color-dark-blue-500: #1a1a50;
-    --color-dark-blue-400: #292380;
-    --primary-purple: #935ce1;
-    --primary-green: #2ff093;
-    --primary-teal: #38f9d7;
-    --primary-yellow: #fff200;
-    --primary-orange: #f08a6d;
-    --primary-red: #fd413c;
+/*
+==============================
+CSS ROOT VARIABLES
+==============================
+*/
+html {
+  /* COLORS */
+  --color-blue: #4e5cfc;
+  --color-dark-blue-900: #0d0f29;
+  --color-dark-blue-500: #1b1f52;
+  --color-pink: #fc74f8;
+  --color-purple: #a45ad8;
+  --color-green: #2ff093;
+  --color-teal: #38f9d7;
+  --color-yellow: #ffd324;
+  --color-orange: #fb5d45;
+  --color-orange: #bf321d;
+  --color-red: #cf042a;
 
-    /* NEUTRAL COLORS  */
-    --color-black: #010101;
-    --color-gray-800: #1e1f22;
-    --color-gray-500: #828282;
-    --color-gray-400: #a4a4a4;
-    --color-gray-300: #bbbbbb;
-    --color-gray-200: #d3d3d3;
-    --color-gray-100: #efefef;
+  /* NEUTRAL COLORS  */
+  --color-black: #010101;
+  --color-gray-800: #161616;
+  --color-gray-200: #d8d8d8;
+  --color-gray-100: #eae8e8;
 
-    /* PRIMARY-COLORS */
-    --primary-site-color-900: var(--color-dark-blue-500);
-    --primary-site-color: var(--color-blue);
-    --secondary-site-color: var(--primary-purple);
+  /* PRIMARY/SECONDARY COLORS */
+  --color-primary: var(--color-red);
+  --color-secondary: var(--color-yellow);
 
-    /* BACKGROUND-COLORS */
-    --background-color--dark: var(--color-dark-blue-900);
-    --background-color: var(--color-dark-blue-800);
-    --background-color--light: var(--color-dark-blue-700);
+  /* BACKGROUND-COLORS */
+  --background-color--dark: var(--color-dark-blue-900);
+  --background-color: var(--color-primary);
 
-    /* SURFACE-COLORS */
-    --surface-color-primary: var(--color-dark-blue-500);
-    --surface-color-primary--dark: var(--color-dark-blue-700);
-    --surface-color-primary--darker: var(--color-dark-blue-900);
+  /* SURFACE-COLORS */
+  --surface-color-primary: var(--color-dark-blue-500);
 
-    /* TEXT-COLORS */
-    --text-color-800: var(--color-gray-800);
-    --text-color-500: var(--color-gray-500);
-    --text-color-300: var(--color-gray-300);
-    --text-color-200: var(--color-gray-200);
-    --text-color-100: var(--color-gray-100);
-    --text-color-primary: var(--primary-site-color);
-    --text-color-secondary: var(--color-gray-400);
+  /* TEXT-COLORS */
+  --text-color-200: var(--color-gray-200);
+  --text-color-100: var(--color-gray-100);
 
-    /* TEXT-GRADIENTS */
-    --text-gradient-primary: -webkit-linear-gradient(
-        120deg,
-        var(--primary-site-color) 0%,
-        var(--secondary-site-color) 75%
-    );
-    --text-gradient-secondary: -webkit-linear-gradient(
-        120deg,
-        var(--primary-orange) 0%,
-        var(--primary-red) 75%
-    );
+  /* TEXT-GRADIENTS */
+  --text-gradient-primary: -webkit-linear-gradient(
+    120deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 75%
+  );
+  --text-gradient-secondary: -webkit-linear-gradient(
+    120deg,
+    var(--color-yellow) 0%,
+    var(--color-orange) 100%
+  );
 
-    /* BUTTON-COLORS */
-    --button-color-primary: var(--primary-site-color);
-    --button-color-secondary: var(--secondary-site-color);
+  --text-gradient-pink: -webkit-linear-gradient(
+    120deg,
+    var(--color-pink) 0%,
+    var(--color-purple) 75%
+  );
 
-    /* BOX-SHADOW */
-    --box-shadow-black: 0 20px 30px -10px rgba(5, 5, 5, 0.75);
-    --box-shadow-light-gray: 0 10px 30px -10px rgba(7, 7, 7, 0.25);
-    --box-shadow-gray: 0 30px 40px 10px rgba(18, 18, 18, 0.75);
-}
-
-/* TEXT-CLASS */
-.text-gradient-primary {
-    background: var(--text-gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-.text-gradient-secondary {
-    background: var(--text-gradient-secondary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* COLORS-TEXT */
-.yellow {
-    color: var(--primary-yellow);
-}
-.blue {
-    color: var(--text-color-primary) !important;
-}
-.yellow,
-.blue {
-    letter-spacing: 1.1px;
-    cursor: pointer;
-}
-.color-green {
-    color: var(--primary-green) !important;
+  /* BOX-SHADOW */
+  --box-shadow-black: 6px 20px 30px -8px rgb(7, 7, 7, 0.75);
+  --box-shadow-light-gray: 6px 20px 30px -8px rgb(7, 7, 7, 0.35);
+  --box-shadow-gray: 6px 20px 30px -8px rgb(7, 7, 7, 0.75);
 }
 
 /* COLORS-BACKGROUND */
 .background-gradient-yellow {
-    background-image: linear-gradient(
-        120deg,
-        var(--primary-yellow) 0%,
-        var(--primary-orange) 100%
-    );
+  background-image: linear-gradient(
+    120deg,
+    var(--color-yellow) 0%,
+    var(--color-orange) 100%
+  );
 }
 
 .background-gradient-blue {
-    background: linear-gradient(
-        120deg,
-        var(--surface-color-primary--dark) 0%,
-        var(--surface-color-primary) 60%
-    );
+  background: linear-gradient(
+    120deg,
+    var(--color-blue) 0%,
+    var(--color-dark-blue-500) 80%
+  );
 }
 
 .background-gradient-green {
-    background-image: linear-gradient(
-        to right,
-        var(--primary-green) 0%,
-        var(--primary-teal) 100%
-    );
+  background-image: linear-gradient(
+    to right,
+    var(--color-green) 0%,
+    var(--color-teal) 100%
+  );
 }
 
 .background-gradient-red {
-    background-image: linear-gradient(
-        to right,
-        var(--primary-red) 0%,
-        var(--primary-orange) 100%
-    );
+  background: linear-gradient(
+    120deg,
+    var(--color-red) 35%,
+    var(--color-orange) 110%
+  );
 }
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 
-    &:focus {
-        outline: thin dotted var(--secondary-site-color);
-    }
+.background-gradient-gray {
+  background: linear-gradient(120deg, var(--color-black) 20%, #222222 120%);
+}
+
+/*
+==============================
+BASE ELEMENTS
+==============================
+*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  &:focus {
+    outline: thin dotted var(--color-secondary);
+  }
 }
 
 html,
 body {
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+  border: 0;
+  font-size: 16px;
+  vertical-align: baseline;
 }
 body {
-    font-family: 'Poppins', sans-serif;
-    background: var(--background-color);
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    color: var(--text-color-200);
+  font-family: 'Poppins', sans-serif;
+  // background: linear-gradient(
+  //   to bottom,
+  //   var(--background-color) 3%,
+  //   var(--background-color--dark) 98.9%
+  // );
+
+  // TODO: Use background-color variable as that is used in app.js
+  background: var(--color-black);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  color: var(--text-color-200);
 }
 
 input,
 textarea {
-    font-size: 100%;
-    font: inherit;
-    font-weight: initial;
-    border: none;
-    outline: none;
+  font-size: 1rem;
+  font: inherit;
+  font-weight: initial;
+  border: none;
+  outline: none;
 }
 
 ol,
 ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 a {
-    text-decoration: none;
-    outline: none;
+  text-decoration: none;
+  outline: none;
 }
 
 a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 img {
-    max-width: 100%;
+  max-width: 100%;
+  vertical-align: middle;
 }
 
+$section-spacing: 80px;
+$section-gutter: 20px;
+// $section-max-width: 1024px;
+
+/* COMMON SECTION STYLING */
+section {
+  padding: $section-spacing $section-gutter;
+}
 /*
 ==============================
 SCROLLBAR
 ==============================
 */
+// ::-webkit-scrollbar {
+//   width: 5px !important;
+//   background: rgba(15, 8, 69, 0.4);
+//   filter: blur(6px);
+// }
+// ::-webkit-scrollbar-track {
+//   //   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5) !important;
+//   background: rgba(10, 5, 75, 0.4);
+//   opacity: 0;
+//   filter: blur(6px);
+// }
+// ::-webkit-scrollbar-thumb {
+//   filter: blur(1px);
+//   border-radius: 2px !important;
+//   background: linear-gradient(
+//     to bottom,
+//     var(--color-red) 50%,
+//     var(--color-orange) 95%
+//   );
+// }
+
 ::-webkit-scrollbar {
-    width: 5px !important;
-}
-::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8) !important;
-    border-radius: 2px !important;
-}
-::-webkit-scrollbar-thumb {
-    border-radius: 2px !important;
-    box-shadow: inset 0 0 10px rgba(167, 71, 20, 0.9) !important;
-}
-
-/*
-==============================
-HEADINGS
-==============================
-*/
-h1,
-h2,
-h3,
-h4 {
-    font-weight: 800;
-    color: var(--text-color-100);
-}
-h1 {
-    font-size: 32px;
-    margin: 10px 0;
-
-    @include media-breakpoint-tablet {
-        font-size: 62px;
-        letter-spacing: -1.2px;
-    }
-}
-h2 {
-    font-size: 28px;
-    margin: 8px 0;
-
-    @include media-breakpoint-tablet {
-        font-size: 44px;
-        letter-spacing: -0.5px;
-    }
-}
-h4 {
-    font-size: 18px;
-    margin: 5px 0;
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: Make scrollbar invisible */
 }
 
 /*
@@ -243,24 +214,26 @@ BUTTONS
 */
 button,
 .button {
-    outline: none;
-    display: block;
-    cursor: pointer;
-    border: none;
-    min-width: 110px;
-    border-radius: 6px;
-    padding: 18px 20px;
-    margin: 0 auto;
-    text-align: center;
-    -webkit-appearance: none;
-}
+  outline: none;
+  display: block;
+  cursor: pointer;
+  border: none;
+  min-width: 110px;
+  border-radius: 6px;
+  padding: 18px 20px;
+  margin: 0 auto;
+  text-align: center;
+  -webkit-appearance: none;
 
-.button-primary {
-    background: var(--button-color-primary);
+  // Button variants
+  // .button-primary
+  &-primary {
+    background: var(--color-primary);
     color: var(--text-color-100);
-    font-size: 16px;
+    @include font-rem(16px);
 
     &:hover {
-        box-shadow: var(--box-shadow-black);
+      box-shadow: var(--box-shadow-black);
     }
+  }
 }

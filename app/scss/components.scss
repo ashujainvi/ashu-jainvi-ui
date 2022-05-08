@@ -1,0 +1,78 @@
+@import './mixins';
+
+.card {
+  margin: 10px 0;
+  border-radius: 18px;
+  min-width: 150px;
+  color: var(--text-color-200);
+  // background: var(--surface-color-primary);
+  box-shadow: var(--box-shadow-black);
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.add-default-padding {
+    padding: 20px 25px;
+
+    // card media query
+    @include media-breakpoint-tablet-up {
+      padding: 20px 35px;
+    }
+  }
+
+  &.blur {
+    backdrop-filter: blur(6px);
+    background: rgba(9, 9, 9, 0.35);
+    border: 3px solid black;
+  }
+}
+
+.pop-up {
+  opacity: 0;
+  transition: 0.33s opacity ease-in;
+  transition: 1s transform ease-in;
+  will-change: transform, opacity;
+
+  /*
+   Pop-up origins
+  */
+  &.left-bottom {
+    transform: translate(-5px, 10px);
+  }
+
+  // `.open` class added dynamically in JS.
+  &.open {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+.close-icon {
+  position: absolute;
+  top: 5px;
+  right: -5px;
+  content: 'x';
+}
+
+.image--small {
+  max-width: 50px;
+  min-width: 50px;
+  height: 50px;
+  margin: 20px 0;
+  overflow: hidden;
+  border-radius: 4px;
+  user-select: none;
+}
+
+.wave {
+  aspect-ratio: 960/540;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &.stacked {
+    background-image: url('../images/layered-waves.svg');
+  }
+}

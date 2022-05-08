@@ -1,0 +1,86 @@
+@import './mixins';
+
+/*
+==============================
+HEADINGS
+==============================
+*/
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Bangers';
+  font-weight: 800;
+  color: var(--text-color-100);
+}
+h1 {
+  @include font-rem(56px, 72px);
+
+  @include media-breakpoint-tablet-up {
+    @include font-rem(72px, 96px);
+  }
+}
+h2,
+.title2 {
+  @include font-rem(32px, 48px);
+
+  @include media-tablet-portrait-up {
+    @include font-rem(48px, 72px);
+  }
+}
+h3,
+.title3 {
+  @include font-rem(16px);
+}
+h4,
+.title4 {
+  @include font-rem(14px);
+}
+h5,
+.title5,
+h6,
+.title6 {
+  @include font-rem(14px);
+  font-weight: 500;
+}
+
+.subtitle1 {
+  @include font-rem(16px);
+  font-weight: 800;
+  letter-spacing: 1.4px;
+}
+
+/* TEXT COLORED HIGHLIGHTS */
+.text-highlight {
+  letter-spacing: 1.16px;
+
+  &-yellow {
+    color: var(--color-yellow);
+  }
+
+  &-blue {
+    color: var(--color-blue);
+  }
+
+  &-green {
+    color: var(--color-green) !important;
+  }
+}
+
+/* TEXT GRADIENTS */
+.text-gradient {
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent;
+
+  &-primary {
+    background: var(--text-gradient-primary);
+  }
+
+  &-secondary {
+    background: var(--text-gradient-secondary);
+  }
+
+  &-pink {
+    background: var(--text-gradient-pink);
+  }
+}

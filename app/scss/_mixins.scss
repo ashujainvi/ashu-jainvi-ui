@@ -1,15 +1,69 @@
-$media-breakpoint-tablet: 768px;
-$media-breakpoint-desktop: 1080px;
+// Font size
+/* ==========================
+@mixin font-rem
+=============================
+Convert px units to rems with fallback to older browsers.
+Sample:
+  h1 { @include font-rem(16px, 24px) };
+Compiles to no CSS:
+  h1 { 
+    font-size: 16px;
+    font-size: 1.142857143rem;
+    line-height: 24px;
+    line-height: 1.714285714rem;
+  }
+  
+Obs:
+  - The first argument is for the font-size in px.
+  - The second argument is for line-height in px and is optional.
+  - Is a good idea to calculate the line-height with 1.5x the font-size.
+  - Set the $rem-base-font to the same value of your body or html tag.
+========================== */
 
-// Mobile-first Media Queries
-@mixin media-breakpoint-tablet {
-    @media only screen and (min-width: $media-breakpoint-tablet) {
-        @content;
-    }
+$rem-base-font: 16px !default;
+
+@mixin font-rem($font-size, $line-height: 0) {
+  font-size: $font-size;
+  font-size: ($font-size / $rem-base-font) * 1rem;
+  @if ($line-height > 0) {
+    line-height: $line-height;
+    line-height: ($line-height / $rem-base-font) * 1rem;
+  }
 }
 
-@mixin media-breakpoint-desktop {
-    @media only screen and (min-width: $media-breakpoint-desktop) {
-        @content;
-    }
+// Mobile-first Media Queries
+$media-breakpoint-tablet: 768px;
+$media-breakpoint-desktop: 1080px;
+// Responsive code for tablet viewport
+// TODO: Remove this old media breakpoint.
+@mixin media-breakpoint-tablet-up {
+  @media only screen and (min-width: $media-breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin media-phone-only {
+  @media (max-width: 599px) {
+    @content;
+  }
+}
+@mixin media-tablet-portrait-up {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+@mixin media-tablet-landscape-up {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+@mixin media-desktop-up {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+@mixin media-big-desktop-up {
+  @media (min-width: 1800px) {
+    @content;
+  }
 }

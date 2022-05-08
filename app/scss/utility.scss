@@ -1,0 +1,71 @@
+@import './mixins';
+
+/* DISPLAY CLASSES */
+.hidden {
+  visibility: hidden;
+}
+
+.hide {
+  &-mobile-up {
+    @include media-breakpoint-tablet-up {
+      display: none !important;
+    }
+  }
+
+  &-tablet-down {
+    @include media-phone-only {
+      display: none;
+    }
+  }
+}
+
+.no-shadow {
+  box-shadow: none !important;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+/* Flex Classes */
+.flex {
+  display: flex;
+
+  /* Usage: class="flex justify-center" */
+  &.justify-center {
+    justify-content: center;
+  }
+
+  &.align-center {
+    align-items: center;
+  }
+}
+
+.past-chapter {
+  opacity: 0;
+  transform: scale(1.1) translate3d(-200px, 0, 0);
+  transition-duration: 0.26s !important;
+}
+
+.present-chapter {
+  opacity: 1;
+  transform: scale(1) translate3d(0, 0, 0);
+}
+
+.future-chapter {
+  opacity: 0;
+  transform: scale(1.15) translate3d(200px, 0, 0);
+  transition-duration: 0.26s !important;
+}
+
+// Delay helper classes to stagger animation
+.transition {
+  // Add sub-classes for desired delay.
+  &.delay-0 {
+    transition-delay: 0.5s;
+  }
+
+  &.delay-1 {
+    transition-delay: 1s;
+  }
+}

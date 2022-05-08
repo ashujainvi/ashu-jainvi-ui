@@ -47,7 +47,7 @@
   left: 0;
   bottom: 0;
   opacity: 0.22;
-  background-image: url("../images/projects-hero-background.png");
+  background-image: url('../images/projects-hero-background.png');
   width: 100%;
   height: 400px;
   background-size: 792px 380px;
@@ -72,7 +72,7 @@
   margin-top: 8px;
 }
 .projects-feature-zone-container:before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: -26px;
@@ -80,13 +80,13 @@
   height: 130px;
   background-image: linear-gradient(
     to right,
-    var(--primary-green) 0%,
+    var(--color-green) 0%,
     #38f9d7 100%
   );
   transform: skew(0, -2.1deg);
 }
 .projects-feature-zone-container:after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   bottom: -35px;
@@ -94,7 +94,7 @@
   height: 130px;
   background-image: linear-gradient(
     to right,
-    var(--primary-green) 0%,
+    var(--color-green) 0%,
     #38f9d7 100%
   );
   transform: skew(0, -2.1deg);
@@ -111,7 +111,6 @@
 }
 .feature-zone-left h2 {
   max-width: 500px;
-  color: var(--text-color-800);
 }
 
 .feature-zone-left p {
@@ -139,20 +138,20 @@
   left: -35px;
 }
 
-.feature_zone-icons {
-  max-width: 100%;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-  flex-wrap: wrap;
-  height: auto;
-}
+// these classes overrides existing index.html classes. Need to change these for projects
+// .feature_zone-icons {
+//   max-width: 100%;
+//   margin: 0;
+//   display: flex;
+//   justify-content: center;
+//   overflow: hidden;
+//   flex-wrap: wrap;
+//   height: auto;
+// }
 
-.feature_zone-icon {
-  opacity: 0;
-  margin: 8px;
-}
+// .feature_zone-icon {
+//   margin: 8px;
+// }
 /* feaure zone ends */
 
 .iphone-image {
@@ -164,31 +163,31 @@
   background-position: center center;
 }
 .iphone-image-sns {
-  background-image: url("../images/thumbs/featured/car-wash.png");
+  background-image: url('../images/thumbs/featured/car-wash.png');
   background-position: center -10px;
 }
 
 .iphone-image-ashutoshjainvi {
   background-size: 270px;
-  background-image: url("../images/thumbs/front-end/front-end-1.png");
+  background-image: url('../images/thumbs/front-end/front-end-1.png');
 }
 
 .iphone-image-tt {
   background-size: 375px;
-  background-image: url("../images/thumbs/front-end/tt-logo.png");
+  background-image: url('../images/thumbs/front-end/tt-logo.png');
 }
 
 .image-testing {
   background-size: 375px;
-  background-image: url("../images/thumbs/front-end/education.png");
+  background-image: url('../images/thumbs/front-end/education.png');
 }
 
 .image-scrolls {
-  background-image: url("../images/thumbs/front-end/scrolls-book.png");
+  background-image: url('../images/thumbs/front-end/scrolls-book.png');
 }
 
 .image-ping-pong {
-  background-image: url("../images/thumbs/front-end/ping-pong.png");
+  background-image: url('../images/thumbs/front-end/ping-pong.png');
 }
 
 /* ========================== */
@@ -296,7 +295,7 @@
   }
 
   30% {
-    fill: var(--primary-green);
+    fill: var(--color-green);
     opacity: 1;
   }
 }
