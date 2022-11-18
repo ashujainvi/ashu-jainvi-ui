@@ -139,7 +139,7 @@ $logo-filter-strength--weak: 7px;
         &__guy {
             width: 530px;
             height: 500px;
-            margin-top: 140px;
+            margin-top: 223px;
 
             img {
                 width: 100%;
@@ -147,6 +147,7 @@ $logo-filter-strength--weak: 7px;
 
             @include media-breakpoint-tablet {
                 width: 650px;
+                margin-top: 140px;
             }
         }
     }
