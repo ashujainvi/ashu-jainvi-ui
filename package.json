@@ -1,7 +1,7 @@
 {
-    "name": "static-website-boilerplate",
-    "version": "1.0.0",
-    "description": "A template for building static website, using gulp as task runner",
+    "name": "ashutosh-jainvi-ui",
+    "version": "3.0.0",
+    "description": "Digital portfolio of Ashutosh Jainvi",
     "main": "index.html",
     "scripts": {
         "start": "gulp serve --development",
