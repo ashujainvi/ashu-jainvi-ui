@@ -1,7 +1,7 @@
 const { src, series, parallel, dest, watch } = require('gulp');
 // Importing all the Gulp related packages
 const sourcemaps = require('gulp-sourcemaps');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 const postcss = require('gulp-postcss');
