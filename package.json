@@ -29,9 +29,10 @@
         "gulp-mode": "^1.0.2",
         "gulp-postcss": "^9.0.0",
         "gulp-replace": "^1.0.0",
-        "gulp-sass": "^4.1.0",
+        "gulp-sass": "^5.1.0",
         "gulp-sourcemaps": "^2.6.5",
-        "gulp-uglify": "^3.0.2"
+        "gulp-uglify": "^3.0.2",
+        "sass": "^1.56.1"
     },
     "prettier": {
         "trailingComma": "es5",

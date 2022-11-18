@@ -3,17 +3,17 @@
 :root {
     /* COLORS */
     --color-blue: #4e5cfc;
-    --color-dark-blue-900: #070812;
-    --color-dark-blue-800: #0d0d1a;
+    --color-dark-blue-900: #0b0c17;
+    --color-dark-blue-800: #0b0b12;
     --color-dark-blue-700: #141835;
-    --color-dark-blue-500: #1a1a50;
+    --color-dark-blue-500: #1c1c3d;
     --color-dark-blue-400: #292380;
     --primary-purple: #935ce1;
     --primary-green: #2ff093;
     --primary-teal: #38f9d7;
     --primary-yellow: #fff200;
-    --primary-orange: #f08a6d;
-    --primary-red: #fd413c;
+    --primary-orange: #bf321d;
+    --primary-red: #cf042a;
 
     /* NEUTRAL COLORS  */
     --color-black: #010101;
@@ -125,10 +125,10 @@
 
 .background-gradient-red {
     background-image: linear-gradient(
-        to right,
-        var(--primary-red) 0%,
-        var(--primary-orange) 100%
-    );
+        120deg,
+        var(--primary-red) 35%,
+        var(--primary-orange) 110%
+    ) !important;
 }
 * {
     box-sizing: border-box;
