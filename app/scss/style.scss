@@ -21,7 +21,7 @@ section {
 }
 
 .section-header {
-    margin: 100px auto;
+    margin: 85px auto;
     text-align: center;
     padding: 20px 0 0;
 
@@ -78,7 +78,7 @@ section {
             flex-direction: column;
             justify-content: end;
             width: $card-wrapper-width;
-            min-height: 320px;
+            min-height: 240px;
             background-image: linear-gradient(
                     180deg,
                     #030403a9 0%,
@@ -90,39 +90,57 @@ section {
         }
 
         .job-details {
+            position: relative;
             width: ($card-wrapper-width) * 0.95;
-            padding-top: 50px;
+            padding: 50px 25px 35px;
             margin: -40px 0 0;
-            min-height: 310px;
+            height: auto;
+
+            @include media-breakpoint-tablet {
+                padding: 50px 50px 40px;
+            }
 
             &.dialog {
                 background-image: url('../images/career/designer-brands-bg.png');
                 background-size: 50px;
             }
-
             &__info {
                 display: flex;
                 flex-direction: column;
                 width: 100%;
-                margin: 30px 0;
+                max-height: 0;
+                margin-top: 0;
+                overflow: hidden;
+                transition: margin-bottom 0.3s ease-in,
+                    max-height 0.34s ease-in-out;
+
+                // class added in JS
+                &.opened {
+                    max-height: 800px;
+                    margin-bottom: 20px;
+                }
+
                 .job-stats {
                     display: flex;
                     flex-direction: row;
                     align-items: stretch;
                     border-radius: 18px;
-                    padding: 40px;
+                    padding: 22px;
+
+                    @include media-breakpoint-tablet {
+                        padding: 40px;
+                    }
 
                     &__skills {
                         display: grid;
-                        grid-template-rows: 3;
-                        grid-template-columns: 1;
+                        grid-template-rows: auto;
+                        grid-template-columns: 1fr;
                         grid-template-areas:
                             'header'
-                            'content'
-                            'footer';
+                            'content';
                         row-gap: 20px;
 
-                        @include media-breakpoint-tablet {
+                        @include media-breakpoint-desktop {
                             padding-right: 40px;
                             border-right: 1px dotted var(--primary-green);
                         }
@@ -135,17 +153,23 @@ section {
                             grid-area: content;
                             display: grid;
                             grid-template-columns: 1fr 1fr 1fr;
+                            // TODO: Auto columns
+                            // grid-auto-columns: 1fr;
                             grid-template-rows: auto;
                             column-gap: 16px;
                             row-gap: 14px;
 
                             @include media-breakpoint-tablet {
+                                grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+                            }
+
+                            @include media-breakpoint-desktop {
                                 grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
                             }
                             &__icon {
-                                max-width: 50px;
-                                min-width: 50px;
-                                height: 50px;
+                                max-width: 40px;
+                                min-width: 40px;
+                                height: 40px;
                                 user-select: none;
                                 .image {
                                     width: 100%;
@@ -156,16 +180,40 @@ section {
                     }
 
                     &__resume {
+                        display: none;
                         width: 100%;
                         padding: 80px;
                         min-height: 100%;
                         margin-left: 22px;
                         border: 1px solid var(--background-color--dark);
+                        text-align: center;
+
+                        @include media-breakpoint-desktop {
+                            display: block;
+                        }
 
                         &:hover {
                             border: 1px solid var(--primary-green);
                         }
                     }
+                }
+            }
+
+            &__toggle {
+                position: absolute;
+                bottom: -30px;
+                left: 44%;
+                border-radius: 100%;
+                width: 46px;
+                height: 46px;
+                padding: 10px;
+                background: var(--surface-color-primary);
+                border: 2px solid var(--primary-yellow);
+                img {
+                    width: 24px;
+                    transform: rotate(90deg);
+                    transform-origin: center;
+                    transition: transform 0.12s ease-in;
                 }
             }
         }

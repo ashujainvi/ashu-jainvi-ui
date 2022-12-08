@@ -15,7 +15,6 @@ export const initHero = () => {
 
     // Mouse Events for hero perspective effect
     heroContainer.addEventListener('mousemove', (event) => {
-        console.log('mousemove', event);
         debounce(
             zEffectBlock(event, heroEffectElement),
             HERO_MOUSEMOVE_DEBOUNCE

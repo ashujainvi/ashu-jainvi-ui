@@ -2,8 +2,8 @@
 
 /* HERO */
 .hero {
-    height: 102vh;
-    margin-bottom: 60px;
+    height: 108vh;
+    margin-bottom: 100px;
     padding: 10px 15px;
 
     @include media-breakpoint-tablet {
@@ -70,7 +70,7 @@
         &__guy {
             width: 240px;
             transform: translate3d(0, 0, 140px);
-            margin: 140px auto;
+            margin: 100px auto;
 
             img {
                 width: 100%;
@@ -105,9 +105,9 @@
 
         &__controller {
             position: absolute;
-            width: 90px;
+            width: 85px;
             top: $grid-item-top-offset;
-            left: 40px;
+            left: 20px;
             transform: translate3d(0, 0, 100px);
             background: url('../images/hero/brush-effect.png');
             background-size: contain;
@@ -129,9 +129,9 @@
 
         &__keyboard {
             position: absolute;
-            width: 90px;
+            width: 85px;
             top: $grid-item-top-offset;
-            right: 40px;
+            right: 20px;
             transform: translate3d(0, 0, 100px);
             background: url('../images/hero/brush-effect.png');
             background-size: contain;
@@ -139,6 +139,7 @@
 
             @include media-breakpoint-tablet {
                 top: 300px;
+                right: 40px;
             }
 
             img {

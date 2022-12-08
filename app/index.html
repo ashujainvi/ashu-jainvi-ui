@@ -148,17 +148,11 @@
                                 <p class="subtitle1">Sr. Cloud Apps Engineer</p>
                             </div>
                         </div>
-                        <div class="job-details dialog">
-                            <p class="job-details__description">
-                                <b>Hi there, my name is Ashu.</b> I am a web
-                                developer that has been working @
-                                <span class="text-gradient-green"
-                                    >Designer Brands</span
-                                >, formely known as
-                                <span class="text-gradient-secondary">DSW</span
-                                >, as a full-stack developer.
-                            </p>
-                            <div class="job-details__info">
+                        <div class="job-details dialog" id="job-details-box">
+                            <div
+                                class="job-details__info"
+                                id="job-details-info-box"
+                            >
                                 <div class="job-stats neumo--large">
                                     <div class="job-stats__skills">
                                         <h4 class="header">Skills</h4>
@@ -247,7 +241,7 @@
                                     </div>
                                     <a
                                         class="job-stats__resume resume-link"
-                                        href="static/ashutosh-jainvi-engineer-resume-fall-2021.pdf"
+                                        href="static/ashutosh-jainvi-resume.pdf"
                                     >
                                         <h4>Resume</h4>
                                         <img
@@ -257,6 +251,28 @@
                                     </a>
                                 </div>
                             </div>
+                            <p class="job-details__description">
+                                <b>Hi there, my name is Ashu.</b> I am a web
+                                developer that has been working @
+                                <span class="text-gradient-green"
+                                    >Designer Brands</span
+                                >, formely known as
+                                <span class="text-gradient-secondary">DSW</span
+                                >, as a full-stack developer.
+                            </p>
+                            <button
+                                class="cta-icon job-details__toggle"
+                                id="job-details-toggle-btn"
+                                aria-expanded="false"
+                                aria-controls="job-details-info-box"
+                            >
+                                <div class="floating">
+                                    <img
+                                        src="images/utils/right-arrow.png"
+                                        id="job-details-arrow-img"
+                                    />
+                                </div>
+                            </button>
                         </div>
                     </div>
                     <div class="carousel-container">

@@ -9,6 +9,7 @@ const __main = () => {
     // Initialize Events
     initHero();
     // initIconSlider();
+    initJobToggle();
 
     // TODO: Add timeline
     // insertDivs('timeline-dial', 20, ['timeline__dial__hand'], true, {
@@ -58,6 +59,31 @@ const initIconSlider = () => {
             iconSlider.scrollLeft = scrollLeft - slideValue;
         });
     }
+};
+
+const initJobToggle = () => {
+    const jobDetailsInfoBox = document.getElementById('job-details-info-box');
+    const jobDetailsToggleBtn = document.getElementById(
+        'job-details-toggle-btn'
+    );
+    const jobDetailsArrowImg = document.getElementById('job-details-arrow-img');
+
+    let isBoxOpen = false;
+
+    jobDetailsToggleBtn.addEventListener('click', (event) => {
+        // Box is open, need to close it
+        if (isBoxOpen) {
+            jobDetailsInfoBox.classList.remove('opened');
+            jobDetailsArrowImg.style.transform = 'rotate(90deg)';
+            jobDetailsToggleBtn.setAttribute('aria-expanded', false);
+            isBoxOpen = false;
+        } else {
+            jobDetailsInfoBox.classList.add('opened');
+            jobDetailsArrowImg.style.transform = 'rotate(270deg)';
+            jobDetailsToggleBtn.setAttribute('aria-expanded', true);
+            isBoxOpen = true;
+        }
+    });
 };
 
 // MAIN ENTRY

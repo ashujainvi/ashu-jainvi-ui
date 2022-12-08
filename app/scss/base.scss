@@ -124,7 +124,7 @@
     padding: 0;
 
     &:focus {
-        outline: thin dotted var(--primary-site-color);
+        outline: thin dashed var(--color-black);
     }
 }
 
@@ -193,18 +193,18 @@ SCROLLBAR
 BUTTONS
 ==============================
 */
-button,
-.button {
+button {
     outline: none;
+    border: none;
     display: block;
     cursor: pointer;
-    border: none;
-    min-width: 110px;
+    -webkit-appearance: none;
+}
+.button {
     border-radius: 6px;
     padding: 18px 20px;
     margin: 0 auto;
     text-align: center;
-    -webkit-appearance: none;
 }
 
 .button-primary {
