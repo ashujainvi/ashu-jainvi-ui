@@ -104,7 +104,7 @@ function imageTask() {
                     [
                         imagemin.gifsicle({ interlaced: true }),
                         imagemin.mozjpeg({ quality: 65, progressive: true }),
-                        imagemin.optipng({ optimizationLevel: 6 }),
+                        imagemin.optipng({ optimizationLevel: 4 }),
                         imagemin.svgo({
                             plugins: [
                                 { removeViewBox: true },
@@ -113,7 +113,7 @@ function imageTask() {
                         }),
                     ],
                     {
-                        verbose: false,
+                        verbose: true,
                     }
                 )
             )
