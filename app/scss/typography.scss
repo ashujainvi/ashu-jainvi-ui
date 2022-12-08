@@ -1,0 +1,103 @@
+@import './mixins';
+
+@font-face {
+    font-family: 'KemcoPixel';
+    src: url('../static/fonts/Kemco-Pixel.ttf');
+}
+
+/*
+==============================
+HEADINGS
+==============================
+*/
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 800;
+    color: var(--text-color-100);
+}
+h1,
+.title1 {
+    font-size: 32px;
+    margin: 10px 0;
+    font-family: 'KemcoPixel', 'Poppins', 'san-serif';
+
+    @include media-breakpoint-tablet {
+        font-size: 60px;
+        letter-spacing: -0.8px;
+    }
+}
+h2,
+.title2 {
+    font-size: 28px;
+    margin: 8px 0;
+    font-family: 'KemcoPixel', 'Poppins', 'san-serif';
+
+    @include media-breakpoint-tablet {
+        font-size: 42px;
+        letter-spacing: 1.2px;
+    }
+}
+h3,
+.title3 {
+    font-size: 20px;
+    margin: 8px 0;
+    font-family: 'KemcoPixel', 'Poppins', 'san-serif';
+
+    @include media-breakpoint-tablet {
+        font-size: 28px;
+        letter-spacing: -0.1px;
+    }
+}
+h4,
+.title4 {
+    font-size: 18px;
+    font-family: 'KemcoPixel', 'Poppins', 'san-serif';
+    margin: 5px 0;
+}
+
+.subtitle1 {
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 1.8px;
+
+    @include media-breakpoint-tablet {
+        font-size: 16px;
+    }
+}
+
+/* TEXT CLASSES */
+.text-gradient-primary {
+    background: var(--text-gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.text-gradient-secondary {
+    background: var(--text-gradient-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-green {
+    background: -webkit-linear-gradient(
+        120deg,
+        var(--primary-green) 0%,
+        var(--primary-teal) 70%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* COLOR TEXT */
+.yellow {
+    color: var(--primary-yellow);
+}
+.blue {
+    color: var(--text-color-primary) !important;
+}
+.yellow,
+.blue {
+    letter-spacing: 1.1px;
+    cursor: pointer;
+}

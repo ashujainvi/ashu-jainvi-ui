@@ -1,0 +1,25 @@
+.preserve-3d {
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+/* DISPLAY */
+.hidden {
+    visibility: hidden;
+}
+.display-none {
+    display: none;
+}
+.no-shadow {
+    box-shadow: none !important;
+}
+/* SHAPES */
+.circle {
+    border-radius: 100%;
+}
+/* FLEX CLASSES */
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

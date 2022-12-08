@@ -1,6 +1,6 @@
 # ashutosh-jainvi-ui-v3
 
-Personal portfolio to showcase personal interests, designs, hobbies and professional experience in IT world.
+Personal portfolio to showcase personal interests, designs, hobbies and professional experiences & projects.
 
 This is a simple multi-page application developed by a web design enthusiast focusing on best practices and clean code.
 
@@ -10,13 +10,14 @@ This is a simple multi-page application developed by a web design enthusiast foc
 
 ## Tools Used
 
-This project does not use any JS/UI framework. It is build on HTML5, SCSS (processed to CSS using Gulp) & JavaScript with few heavy-lifters like [UIKit](https://getuikit.com/docs/parallax) for scroll animations & parallax. That's it.
+This project does not use any JS framework or library. It is built on HTML5, SCSS (processed to CSS using Gulp) & Vanilla JavaScript with ES6 modules.
 
 This project uses Gulp 4 to streamline basic web dev tasks like:
 
 -   Serving optimized images for production.
 -   [Cache busting](https://www.keycdn.com/support/what-is-cache-busting) for CSS file.
 -   Minimizing code for small package size when serving in a browser.
+-   Bundling JS using [Roll-up](https://blog.openreplay.com/the-ultimate-guide-to-getting-started-with-the-rollup-js-javascript-bundler).
 
 ## Develop
 
@@ -29,8 +30,6 @@ npm start
 ## Build
 
 To build the app, run command `npm run build`.
-
-> NOTE: CI (test & build) pipeline coming soon.
 
 ## Deployment
 

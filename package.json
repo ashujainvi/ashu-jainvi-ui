@@ -5,7 +5,8 @@
     "main": "index.html",
     "scripts": {
         "start": "gulp serve --development",
-        "build": "gulp build --production"
+        "build": "gulp build --production",
+        "host": "firebase deploy --only hosting"
     },
     "keywords": [
         "gulp",
@@ -19,11 +20,15 @@
     "author": "Ashutosh Jainvi",
     "license": "ISC",
     "devDependencies": {
+        "@babel/core": "^7.20.2",
+        "@babel/preset-env": "^7.20.2",
+        "@babel/register": "^7.18.9",
         "autoprefixer": "^9.8.6",
         "browser-sync": "^2.26.13",
         "cssnano": "^4.1.10",
         "del": "^6.0.0",
         "gulp": "^4.0.2",
+        "gulp-better-rollup": "^4.0.1",
         "gulp-concat": "^2.6.1",
         "gulp-imagemin": "^7.1.0",
         "gulp-mode": "^1.0.2",
@@ -31,8 +36,17 @@
         "gulp-replace": "^1.0.0",
         "gulp-sass": "^5.1.0",
         "gulp-sourcemaps": "^2.6.5",
-        "gulp-uglify": "^3.0.2",
+        "rollup": "^1.32.1",
+        "rollup-plugin-babel": "^4.4.0",
+        "rollup-plugin-commonjs": "^10.1.0",
+        "rollup-plugin-eslint": "^7.0.0",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-uglify": "^6.0.4",
         "sass": "^1.56.1"
+    },
+    "engines": {
+        "npm": ">=8.0.0 <9.0.0",
+        "node": ">=16.0.0 <18.11.0"
     },
     "prettier": {
         "trailingComma": "es5",

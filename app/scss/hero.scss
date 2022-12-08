@@ -1,0 +1,151 @@
+@import './mixins';
+
+/* HERO */
+.hero {
+    height: 102vh;
+    margin-bottom: 60px;
+    padding: 10px 15px;
+
+    @include media-breakpoint-tablet {
+        padding: 20px;
+
+        h1 {
+            font-size: 48px;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 24px;
+        min-height: 600px;
+        perspective: 1500px;
+
+        @include media-breakpoint-tablet {
+            flex-direction: row;
+            justify-content: center;
+            margin-top: 64px;
+        }
+    }
+
+    &__illustration {
+        width: 100%;
+        position: relative;
+        transition: all 0.2s ease-out;
+
+        @include media-breakpoint-tablet {
+            width: 550px;
+            background-size: contain;
+        }
+
+        .hero-text-bg {
+            position: absolute;
+            left: -26px;
+            right: -26px;
+            top: 0;
+            height: 260px;
+            background-image: url('../images/hero/brush-effect.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: -1;
+
+            @include media-breakpoint-tablet {
+                left: 0;
+                right: 0;
+            }
+        }
+        .hero-text {
+            margin: 45px 0 0 10px;
+            width: 100%;
+            padding: 20px 10px;
+            text-align: center;
+            transform: translate3d(0, 0, 38px);
+
+            h1 {
+                color: var(--text-color-800) !important;
+            }
+        }
+
+        &__guy {
+            width: 240px;
+            transform: translate3d(0, 0, 140px);
+            margin: 140px auto;
+
+            img {
+                width: 100%;
+            }
+
+            @include media-breakpoint-tablet {
+                width: 380px;
+                margin: 20px 10px;
+            }
+        }
+
+        $grid-top-position: 330px;
+        $grid-item-top-offset: 360px;
+        &__grid {
+            position: absolute;
+            top: $grid-top-position;
+            width: 100%;
+            min-height: 100px;
+            background: url('../images/hero/grid.png');
+            background-repeat: repeat-x;
+            background-size: contain;
+            transform: translate3d(0, 0, 20px);
+
+            @include media-breakpoint-tablet {
+                right: 20px;
+                top: 220px;
+                width: 20%;
+                min-height: 400px;
+                background-repeat: repeat-y;
+            }
+        }
+
+        &__controller {
+            position: absolute;
+            width: 90px;
+            top: $grid-item-top-offset;
+            left: 40px;
+            transform: translate3d(0, 0, 100px);
+            background: url('../images/hero/brush-effect.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+
+            @include media-breakpoint-tablet {
+                top: 465px;
+                left: auto;
+                right: 40px;
+            }
+
+            img {
+                display: block;
+                margin: -5px auto 0;
+                width: 92%;
+                max-width: 74px;
+            }
+        }
+
+        &__keyboard {
+            position: absolute;
+            width: 90px;
+            top: $grid-item-top-offset;
+            right: 40px;
+            transform: translate3d(0, 0, 100px);
+            background: url('../images/hero/brush-effect.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+
+            @include media-breakpoint-tablet {
+                top: 300px;
+            }
+
+            img {
+                width: 98%;
+                display: block;
+                margin: -5px auto 0;
+            }
+        }
+    }
+}
