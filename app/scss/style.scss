@@ -53,10 +53,6 @@ section {
 
         $card-wrapper-width: 90%;
 
-        @include media-breakpoint-tablet {
-            $card-wrapper-width: 80%;
-        }
-
         &__years {
             display: flex;
             width: 100%;
@@ -83,7 +79,6 @@ section {
             justify-content: end;
             width: $card-wrapper-width;
             min-height: 320px;
-            // padding-bottom: 50px;
             background-image: linear-gradient(
                     180deg,
                     #030403a9 0%,
