@@ -39,7 +39,7 @@ section {
     min-height: 550px;
 
     .section-header {
-        width: 400px;
+        max-width: 400px;
         margin-bottom: 80px;
     }
 
@@ -84,7 +84,7 @@ section {
                     #030403a9 0%,
                     #0b170fd1 100%
                 ),
-                url('../images/dsw-office.jpeg');
+                url('../images/career/dsw-office.jpeg');
             background-size: cover;
             z-index: 10;
         }
