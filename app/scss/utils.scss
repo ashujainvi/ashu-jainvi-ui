@@ -17,12 +17,11 @@
 .circle {
     border-radius: 100%;
 }
-/* FLEX CLASSES */
-.flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+/* MARGINS */
 .mt-20 {
     margin-top: 20px;
+}
+
+.u-blend-overlay {
+    mix-blend-mode: overlay;
 }

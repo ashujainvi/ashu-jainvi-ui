@@ -1,31 +1,81 @@
 @import './mixins';
 
-/* HERO */
+/* HERO SECTION*/
 .hero {
-    height: 108vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 980px;
+    height: 110vh;
     margin-bottom: 100px;
-    padding: 10px 15px;
+    padding: 1.233vw 35px;
 
     @include media-breakpoint-tablet {
         padding: 20px;
-
-        h1 {
-            font-size: 48px;
-        }
     }
 
     &__content {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 24px;
+        justify-content: flex-start;
+        margin: 16px auto;
         min-height: 600px;
         perspective: 1500px;
+        max-width: 1224px;
+        z-index: 10;
 
         @include media-breakpoint-tablet {
-            flex-direction: row;
             justify-content: center;
-            margin-top: 64px;
+            align-items: flex-end;
+            padding: 40px 30px;
+        }
+    }
+
+    .hero-text {
+        position: relative;
+        width: 100%;
+        max-width: 800px;
+        padding: 20px 10px;
+        text-align: left;
+        transform: translate3d(0, 0, 38px);
+
+        @include media-breakpoint-tablet {
+            text-align: right;
+        }
+
+        &__image {
+            position: absolute;
+            transform: scale(1.4);
+            top: 75px;
+            left: 320px;
+            // right: -(18% - 12) * 1px;
+
+            @include media-breakpoint-tablet {
+                transform: scale(1.9);
+                top: 100px;
+                right: 476px;
+                left: unset;
+            }
+        }
+        h1 {
+            font-size: 100px;
+            -webkit-text-stroke-width: 3px;
+            -webkit-text-stroke-color: #1c1c1c;
+            letter-spacing: -10px;
+            color: var(--color-cafe) !important;
+
+            @include media-breakpoint-tablet {
+                font-size: 148px;
+            }
+        }
+
+        p {
+            font-size: 22px;
+            letter-spacing: 4.2px;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: var(--color-cafe);
         }
     }
 
@@ -33,52 +83,36 @@
         width: 100%;
         position: relative;
         transition: all 0.2s ease-out;
+        z-index: -2;
+        background-color: #ecdcbe;
+        border: 2px solid var(--color-gray--900);
+        border-radius: 14px;
+        padding: 25px;
 
         @include media-breakpoint-tablet {
-            width: 550px;
+            max-width: 400px;
             background-size: contain;
-        }
-
-        .hero-text-bg {
             position: absolute;
-            left: -26px;
-            right: -26px;
-            top: 0;
-            height: 260px;
-            background-image: url('../images/hero/brush-effect.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            z-index: -1;
-
-            @include media-breakpoint-tablet {
-                left: 0;
-                right: 0;
-            }
+            top: 6.334vw;
+            left: -210px;
         }
-        .hero-text {
-            margin: 45px 0 0 10px;
-            width: 100%;
-            padding: 20px 10px;
-            text-align: center;
-            transform: translate3d(0, 0, 38px);
 
-            h1 {
-                color: var(--text-color-800) !important;
-            }
+        @include media-breakpoint-desktop {
+            left: 60px;
         }
 
         &__guy {
-            width: 240px;
-            transform: translate3d(0, 0, 140px);
-            margin: 100px auto;
-
+            width: 89%;
+            min-width: 280px;
+            max-width: 400px;
+            transform: translate3d(0, 0, 80px);
+            margin: 10px auto;
             img {
                 width: 100%;
             }
 
             @include media-breakpoint-tablet {
-                width: 380px;
-                margin: 20px 10px;
+                // width: 350px;
             }
         }
 
@@ -92,7 +126,7 @@
             background: url('../images/hero/grid.png');
             background-repeat: repeat-x;
             background-size: contain;
-            transform: translate3d(0, 0, 20px);
+            transform: translate3d(0, 0, 10px);
 
             @include media-breakpoint-tablet {
                 right: 20px;
@@ -103,50 +137,69 @@
             }
         }
 
-        &__controller {
-            position: absolute;
-            width: 85px;
-            top: $grid-item-top-offset;
-            left: 20px;
-            transform: translate3d(0, 0, 100px);
-            background: url('../images/hero/brush-effect.png');
-            background-size: contain;
-            background-repeat: no-repeat;
+        $item-translate-z: 140px;
 
-            @include media-breakpoint-tablet {
-                top: 465px;
-                left: auto;
-                right: 40px;
-            }
+        // &__controller {
+        //     position: absolute;
+        //     width: 85px;
+        //     top: $grid-item-top-offset;
+        //     left: 20px;
+        //     transform: translate3d(0, 0, $item-translate-z);
+        //     background: url('../images/hero/brush-effect.png');
+        //     background-size: contain;
+        //     background-repeat: no-repeat;
 
-            img {
-                display: block;
-                margin: -5px auto 0;
-                width: 92%;
-                max-width: 74px;
-            }
-        }
+        //     @include media-breakpoint-tablet {
+        //         top: 465px;
+        //         left: auto;
+        //         right: 40px;
+        //     }
 
-        &__keyboard {
-            position: absolute;
-            width: 85px;
-            top: $grid-item-top-offset;
-            right: 20px;
-            transform: translate3d(0, 0, 100px);
-            background: url('../images/hero/brush-effect.png');
-            background-size: contain;
-            background-repeat: no-repeat;
+        //     img {
+        //         display: block;
+        //         margin: -5px auto 0;
+        //         width: 92%;
+        //         max-width: 74px;
+        //     }
+        // }
 
-            @include media-breakpoint-tablet {
-                top: 300px;
-                right: 40px;
-            }
+        // &__keyboard {
+        //     position: absolute;
+        //     width: 85px;
+        //     top: $grid-item-top-offset;
+        //     right: 20px;
+        //     transform: translate3d(0, 0, $item-translate-z);
+        //     background: url('../images/hero/brush-effect.png');
+        //     background-size: contain;
+        //     background-repeat: no-repeat;
 
-            img {
-                width: 98%;
-                display: block;
-                margin: -5px auto 0;
-            }
+        //     @include media-breakpoint-tablet {
+        //         top: 300px;
+        //         right: 40px;
+        //     }
+
+        //     img {
+        //         width: 98%;
+        //         display: block;
+        //         margin: -5px auto 0;
+        //     }
+        // }
+    }
+
+    &__cta {
+        min-width: 280px;
+        border-radius: 40px;
+        border: 3px solid var(--color-gray--900);
+        color: var(--color-gray--900) !important;
+        text-transform: uppercase;
+        font-size: 20px;
+        font-weight: bold;
+        margin: 20px;
+        position: absolute;
+        bottom: 20px;
+
+        @include media-breakpoint-tablet {
+            position: relative;
         }
     }
 }

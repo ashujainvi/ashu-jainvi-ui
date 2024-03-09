@@ -47,31 +47,30 @@
         <div class="papa-wrapper">
             <!-- HERO STARTS -->
             <section class="hero" id="hero">
-                <div class="navigation">
-                    <div class="aj-logo">
-                        <img
-                            src="images/branding/ashu-hindi-logo.png"
-                            alt="ashu jainvi website alphabet logo"
-                        />
+                <div class="hero__content" id="hero-content">
+                    <div class="hero-text">
+                        <div class="c-logo hero-text__image">
+                            <img
+                                src="images/branding/ashu-hindi-logo.png"
+                                alt="ashu jainvi website hindi alphabet logo"
+                            />
+                        </div>
+                        <p>A digital diary of</p>
+                        <h1>Ashu Jainvi</h1>
                     </div>
-                </div>
-
-                <div class="hero__content">
                     <div
                         class="hero__illustration preserve-3d"
                         id="hero-illustration"
                     >
-                        <div class="hero-text">
-                            <h1>Ashu Jainvi</h1>
-                        </div>
-                        <div class="hero-text-bg"></div>
+                        <!-- <div class="hero-text-bg"></div> -->
+
                         <div class="hero__illustration__guy">
                             <img
-                                src="images/hero/sapiens-only.png"
+                                src="images/hero/ashu-desktop.png"
                                 alt="ashu jainvi man illustration"
                             />
                         </div>
-                        <div class="hero__illustration__grid"></div>
+                        <!-- <div class="hero__illustration__grid"></div>
                         <div class="hero__illustration__keyboard">
                             <img
                                 src="images/hero/keyboard.png"
@@ -83,10 +82,12 @@
                                 src="images/hero/game-controller.png"
                                 alt="video game controller illustration"
                             />
-                        </div>
+                        </div> -->
                     </div>
+                    <button class="button button-primary hero__cta">
+                        Explore
+                    </button>
                 </div>
-
                 <!-- FLOATING LAMP -->
                 <div id="lampadario" style="z-index: 9999">
                     <input
@@ -125,157 +126,171 @@
                     ></path>
                 </svg>
                 <div class="container">
-                    <div class="section-header">
+                    <div class="section__header">
                         <h2>CAREER</h2>
                     </div>
-                    <div class="career">
-                        <!-- TODO: Add timeline -->
-                        <!-- <div class="career__years">
-                            <div class="card year">
-                                <h4>'17</h4>
-                            </div>
-                            <div class="card year"><h4>'18</h4></div>
-                            <div class="card year"><h4>'19</h4></div>
-                            <div class="card year active neumo--small">
-                                <h4>'20</h4>
-                            </div>
-                        </div> -->
-                        <div class="card career__intro">
-                            <div>
-                                <h3 class="text-gradient-green">
-                                    Designer Brands
-                                </h3>
-                                <p class="subtitle1">Sr. Cloud Apps Engineer</p>
-                            </div>
-                        </div>
-                        <div class="job-details dialog" id="job-details-box">
-                            <div
-                                class="job-details__info"
-                                id="job-details-info-box"
-                            >
-                                <div class="job-stats neumo--large">
-                                    <div class="job-stats__skills">
-                                        <h4 class="header">Skills</h4>
-                                        <div class="job-skills">
-                                            <div class="job-skills__icon">
-                                                <img
-                                                    src="images/icon-js.jpg"
-                                                    class="image"
-                                                    alt="javascript icon"
-                                                    draggable="false"
-                                                />
-                                            </div>
-                                            <div class="job-skills__icon">
-                                                <img
-                                                    src="images/icon-angular.png"
-                                                    class="image"
-                                                    alt="angular js icon"
-                                                    draggable="false"
-                                                />
-                                            </div>
-                                            <div class="job-skills__icon">
-                                                <img
-                                                    src="images/icon-ts.png"
-                                                    class="image"
-                                                    alt="typescript icon"
-                                                    draggable="false"
-                                                />
-                                            </div>
-                                            <div class="job-skills__icon">
-                                                <img
-                                                    src="images/icon-react.png"
-                                                    class="image"
-                                                    alt="react icon"
-                                                    draggable="false"
-                                                />
-                                            </div>
-                                            <div class="job-skills__icon">
-                                                <img
-                                                    src="images/icon-html.png"
-                                                    class="image"
-                                                    alt="html icon"
-                                                    draggable="false"
-                                                />
-                                            </div>
-                                            <div class="job-skills__icon">
-                                                <img
-                                                    src="images/icon-sass.jpg"
-                                                    class="image"
-                                                    alt="sass icon"
-                                                    draggable="false"
-                                                />
-                                            </div>
-                                            <div class="job-skills__icon">
-                                                <img
-                                                    src="images/icon-node.png"
-                                                    class="image"
-                                                    alt="node icon"
-                                                    draggable="false"
-                                                />
-                                            </div>
-                                            <div class="job-skills__icon">
-                                                <img
-                                                    src="images/icon-npm.jpg"
-                                                    class="image"
-                                                    alt="npm icon"
-                                                    draggable="false"
-                                                />
-                                            </div>
-                                            <div class="job-skills__icon">
-                                                <img
-                                                    src="images/icon-gulp.jpg"
-                                                    class="image"
-                                                    alt="gulp icon"
-                                                    draggable="false"
-                                                />
-                                            </div>
-                                            <div class="job-skills__icon">
-                                                <img
-                                                    src="images/icon-webpack.jpg"
-                                                    class="image"
-                                                    alt="webpack icon"
-                                                    draggable="false"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a
-                                        class="job-stats__resume resume-link"
-                                        href="static/ashutosh-jainvi-resume.pdf"
-                                    >
-                                        <h4>Resume</h4>
-                                        <img
-                                            src="images/pdf.svg"
-                                            alt="pdf icon"
-                                        />
-                                    </a>
+                    <div class="careers-container">
+                        <div class="career c-pokemon-card" id="career-one">
+                            <div class="c-pokemon-card__container">
+                                <div
+                                    class="career__intro c-pokemon-card__header"
+                                >
+                                    <p class="subtitle1">Apple</p>
                                 </div>
-                            </div>
-                            <p class="job-details__description">
-                                <b>Hi there, my name is Ashu.</b> I am a web
-                                developer that has been working @
-                                <span class="text-gradient-green"
-                                    >Designer Brands</span
-                                >, formely known as
-                                <span class="text-gradient-secondary">DSW</span
-                                >, as a full-stack developer.
-                            </p>
-                            <button
-                                class="cta-icon job-details__toggle"
-                                id="job-details-toggle-btn"
-                                aria-expanded="false"
-                                aria-controls="job-details-info-box"
-                            >
-                                <div class="floating">
+                                <div
+                                    class="career__content c-pokemon-card__body"
+                                >
                                     <img
-                                        src="images/utils/right-arrow.png"
-                                        id="job-details-arrow-img"
+                                        src="images/career/old-mac.png"
+                                        class="cloud-engineer-img u-blend-overlay"
                                     />
                                 </div>
-                            </button>
+                                <div
+                                    class="job-details c-pokemon-card__footer"
+                                    id="job-details-box"
+                                >
+                                    <p class="subtitle1 job-details__header">
+                                        Angular Dev
+                                    </p>
+                                    <div
+                                        class="job-details__info"
+                                        id="job-details-info-box"
+                                    >
+                                        <div class="job-stats neumo--large">
+                                            <!-- <div class="job-stats__skills">
+                                                <h4 class="header">Skills</h4>
+                                                <div class="job-skills">
+                                                    <div
+                                                        class="job-skills__icon"
+                                                    >
+                                                        <img
+                                                            src="images/icon-js.jpg"
+                                                            class="image"
+                                                            alt="javascript icon"
+                                                            draggable="false"
+                                                        />
+                                                    </div>
+                                                    <div
+                                                        class="job-skills__icon"
+                                                    >
+                                                        <img
+                                                            src="images/icon-angular.png"
+                                                            class="image"
+                                                            alt="angular js icon"
+                                                            draggable="false"
+                                                        />
+                                                    </div>
+                                                    <div
+                                                        class="job-skills__icon"
+                                                    >
+                                                        <img
+                                                            src="images/icon-ts.png"
+                                                            class="image"
+                                                            alt="typescript icon"
+                                                            draggable="false"
+                                                        />
+                                                    </div>
+                                                    <div
+                                                        class="job-skills__icon"
+                                                    >
+                                                        <img
+                                                            src="images/icon-react.png"
+                                                            class="image"
+                                                            alt="react icon"
+                                                            draggable="false"
+                                                        />
+                                                    </div>
+                                                    <div
+                                                        class="job-skills__icon"
+                                                    >
+                                                        <img
+                                                            src="images/icon-html.png"
+                                                            class="image"
+                                                            alt="html icon"
+                                                            draggable="false"
+                                                        />
+                                                    </div>
+                                                    <div
+                                                        class="job-skills__icon"
+                                                    >
+                                                        <img
+                                                            src="images/icon-sass.jpg"
+                                                            class="image"
+                                                            alt="sass icon"
+                                                            draggable="false"
+                                                        />
+                                                    </div>
+                                                    <div
+                                                        class="job-skills__icon"
+                                                    >
+                                                        <img
+                                                            src="images/icon-node.png"
+                                                            class="image"
+                                                            alt="node icon"
+                                                            draggable="false"
+                                                        />
+                                                    </div>
+                                                    <div
+                                                        class="job-skills__icon"
+                                                    >
+                                                        <img
+                                                            src="images/icon-npm.jpg"
+                                                            class="image"
+                                                            alt="npm icon"
+                                                            draggable="false"
+                                                        />
+                                                    </div>
+                                                    <div
+                                                        class="job-skills__icon"
+                                                    >
+                                                        <img
+                                                            src="images/icon-gulp.jpg"
+                                                            class="image"
+                                                            alt="gulp icon"
+                                                            draggable="false"
+                                                        />
+                                                    </div>
+                                                    <div
+                                                        class="job-skills__icon"
+                                                    >
+                                                        <img
+                                                            src="images/icon-webpack.jpg"
+                                                            class="image"
+                                                            alt="webpack icon"
+                                                            draggable="false"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                            <!-- <a
+                                            class="job-stats__resume resume-link"
+                                            href="static/ashutosh-jainvi-resume.pdf"
+                                        >
+                                            <h4>Resume</h4>
+                                            <img
+                                                src="images/pdf.svg"
+                                                alt="pdf icon"
+                                            />
+                                        </a> -->
+                                        </div>
+                                    </div>
+                                    <!-- <p class="job-details__description">
+                                        <b>Hi there, my name is Ashu.</b> I am a
+                                        web developer that has been working @
+                                        <span class="text-gradient-green"
+                                            >Designer Brands</span
+                                        >, formely known as
+                                        <span class="text-gradient-secondary"
+                                            >DSW</span
+                                        >, as a full-stack developer.
+                                    </p> -->
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="carousel-container">
+
+                    <!-- SKILLS CAROUSEL STARTS -->
+                    <!-- <div class="carousel-container">
                         <div id="carousel" class="carousel">
                             <div class="carousel-element">
                                 <img
@@ -380,7 +395,9 @@
                                 />R
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+                    <!-- SKILLS CAROUSEL ENDS -->
+
                     <!-- DESIGNER RESUME LINK -->
                     <!-- <a
                             class="resume-link"
@@ -395,7 +412,7 @@
                         <div class="timeline__dial" id="timeline-dial"></div>
                         <div class="timeline__container">
                             <div
-                                class="timeline__container__timestamp card active"
+                                class="timeline__container__timestamp card"
                             >
                                 <span class="title3">'20</span>
                             </div>
@@ -408,6 +425,7 @@
                         </div>
                     </div> -->
                 </div>
+                <!-- WAVE SVG BOTTOM  -->
                 <svg
                     class="svg-wave svg-wave--bottom"
                     preserveAspectRatio="none"
@@ -416,7 +434,7 @@
                     viewBox="0 0 1920 600"
                 >
                     <path
-                        class="svg-wave-path"
+                        class="svg-wave-path svg-wave-path--bottom"
                         fill-rule="evenodd"
                         d="M311.478317,194.247158 C428.197687,129.319873 513.536745,119.841824 588.607057,203.140878 C663.67737,286.439932 716.325807,70.8998219 807.036745,63.9549791 C897.747682,57.0101364 939.595339,139.660796 1029.40003,119.423884 C1119.20471,99.1869713 1242.5094,-32.995495 1414.5094,7.75174914 C1586.5094,48.4989932 1574.70081,208.570198 1678.86878,178.697219 C1783.03674,148.824239 1804.33003,79.9080675 1882.233,98.8502198 C1946.88388,114.570118 1982.71859,219.910259 2059.96965,185.795542 C2312.89807,74.100223 2264.92932,644.93616 2264.92932,644.93616 L28.6962867,646 C28.6962867,646 -75.2531884,175.625756 112.53378,228.851709 C204.462404,254.90777 234.76939,236.917901 311.478317,194.247158 Z"
                         transform="scale(1,-1) translate(-200,-600)"
@@ -427,58 +445,52 @@
             <!-- ABOUT ME SECTION STARTS -->
             <section id="about" class="about-me">
                 <div class="container">
-                    <div class="section-header">
-                        <h2>Personal Life</h2>
-                        <p>
+                    <div class="section__header">
+                        <h2>1994</h2>
+                        <!-- <p>
                             Make your goals seem less monumental and vague by
                             thinking of the steps required to achieve them and
                             working on one at a time.
-                        </p>
+                        </p> -->
                     </div>
                     <div class="personal-cards">
-                        <div class="card">
+                        <div class="card card-new-born">
                             <img
-                                class="image--small"
-                                src="images/info.svg"
-                                alt="About date of birth"
+                                src="images/1994/new-born.svg"
+                                alt="Ashu new born baby"
                             />
-                            <h4>Born</h4>
-                            <p class="blue">January 20th, 1994</p>
+                            <div class="card__copy">
+                                <h4>Ashu was Born on <br/><span class="blue">January 20th</span>
+                            </div>
                         </div>
                         <div class="card">
                             <img
-                                class="image--small"
-                                src="images/info.svg"
-                                alt="About Nationality"
+                                src="images/1994/teenage-football.svg"
+                                alt="Ashu teenage footbal"
                             />
-                            <h4>Nationality</h4>
-                            <p class="blue">Indian</p>
+                            <div class="card__copy">
+                                <h4>Fell in love with</h4>
+                            <h4 class="blue title4">"Football"</h4>
+                            </div>
+                            
                         </div>
                         <div class="card">
                             <img
-                                class="image--small"
-                                src="images/info.svg"
-                                alt="About passion"
+                                src="images/1994/photoshop-work.svg"
+                                alt="Ashu adobe photoshop love"
                             />
-                            <h4>Passion</h4>
-                            <p class="blue">Soccer</p>
-                        </div>
-                        <div class="card">
-                            <img
-                                class="image--small"
-                                src="images/info.svg"
-                                alt="About hobbies"
-                            />
-                            <h4>Hobby</h4>
-                            <p class="blue">Video Games</p>
+                            <div class="card__copy">
+                                <h4>Started exploring</h4>
+                            <h4 class="blue title4">photoshop</h4>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
             <!-- ABOUT ME SECTION ENDS -->
             <!-- CONTACT SECTION STARTS -->
-            <section class="contact" id="connect">
-                <div class="section-header">
+            <!-- <section class="contact" id="connect">
+                <div class="section__header">
                     <h2 class="text-gradient-secondary">Connect</h2>
                     <p>Getting in touch is easy</p>
                 </div>
@@ -522,12 +534,12 @@ Message</textarea
                         />
                     </form>
                 </div>
-            </section>
+            </section> -->
             <!-- CONTACT SECTION ENDS -->
             <!-- CONTENT ENDS -->
             <!-- FOOTER STARTS-->
             <footer class="footer">
-                <div class="footer-left">
+                <!-- <div class="footer-left">
                     <ul>
                         <li>
                             <a
@@ -561,9 +573,9 @@ Message</textarea
                             </a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
                 <div class="footer-right">
-                    <p>&copy 2022 <a href="#">Ashutosh Jainvi</a></p>
+                    <p>❤️ <a href="#">Ashu Jainvi</a></p>
                 </div>
             </footer>
             <!-- FOOTER ENDS-->

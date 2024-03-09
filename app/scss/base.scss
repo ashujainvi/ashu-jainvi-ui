@@ -1,54 +1,58 @@
 @import './mixins';
 
 :root {
-    /* COLORS */
-    --color-blue: #4e5cfc;
-    --color-dark-blue-900: #060606;
-    --color-dark-blue-800: #0b0b11;
-    --color-dark-blue-700: #0f0f15;
-    --color-dark-blue-500: #131317;
-    --color-dark-blue-400: #1e1d2b;
-    --primary-purple: #935ce1;
-    --primary-green: #2ef092;
-    --primary-teal: #25debc;
+    // -------------
+    // COLOR PALETTE
+    // -------------
+    /* BLUE */
+    --color-blue--100: #d7e1ff;
+    --color-blue--200: #c4d2ff;
+    --color-blue--300: #9eb3ff;
+    --color-blue--400: #6b82ff;
+    --color-blue--500: #4e5cfc; // -- main color
+    --color-blue--600: #3842bb;
+    --color-blue--700: #191f62;
+    --color-blue--800: #020316;
+    --color-blue--900: #000003;
+    /* PURPLE */
+    --color-orchid: #baa3e9;
+    --color-purple--500: #8f54fe;
+    --color-eggplant: #3c1169;
+    /* BROWN SHADES*/
+    --color-cafe: #f1d3a9;
+    --color-choco: #97713b;
+    /* GREEN SHADES */
+    --primary-green: #34a56c;
+    --primary-teal: #18bfa0;
     --primary-yellow: #fff200;
-    --primary-orange: #bf321d;
-    --primary-red: #cf042a;
+    /*RED SHADES*/
+    --color-orange: #f30302;
+    --color-red: #cf042a;
+    --color-pink: #ff65be;
 
     /* NEUTRAL COLORS  */
-    --color-black: #010101;
-    --color-gray-800: #1e1f22;
-    --color-gray-500: #828282;
-    --color-gray-400: #a4a4a4;
-    --color-gray-300: #bbbbbb;
-    --color-gray-200: #d3d3d3;
-    --color-gray-100: #efefef;
+    --color-gray-200: #c5c5c5;
+    --color-gray--700: #1c1c1d;
+    --color-gray--800: #121213;
+    --color-gray--900: #090909;
 
-    /* PRIMARY-COLORS */
-    --primary-site-color-900: var(--color-dark-blue-500);
-    --primary-site-color: var(--primary-red);
-    --secondary-site-color: var(--primary-purple);
+    /* BRANDING AND SITE COLORS */
+    --primary-site-color: var(--color-red);
+    --secondary-site-color: var(--color-purple);
 
-    /* BACKGROUND-COLORS */
-    --background-color--dark: var(--color-dark-blue-900);
-    --background-color: var(--color-dark-blue-800);
-    --background-color--light: var(--color-dark-blue-700);
+    // Background Colors
+    --background-color--dark: var(--color-gray--900);
+    --background-color: var(--color-gray--800);
 
-    /* SURFACE-COLORS */
-    --surface-color-primary: var(--color-dark-blue-500);
-    --surface-color-primary--dark: var(--color-dark-blue-700);
-    --surface-color-primary--darker: var(--color-dark-blue-900);
+    // Surface Colors
+    --surface-color-primary: var(--color-blue--900);
 
-    /* TEXT-COLORS */
-    --text-color-800: var(--color-gray-800);
-    --text-color-500: var(--color-gray-500);
-    --text-color-300: var(--color-gray-300);
+    // Text Colors
+    --text-color-800: var(--color-gray--800);
     --text-color-200: var(--color-gray-200);
-    --text-color-100: var(--color-gray-100);
     --text-color-primary: var(--primary-site-color);
-    --text-color-secondary: var(--color-gray-400);
 
-    /* TEXT-GRADIENTS */
+    // Gradients
     --text-gradient-primary: -webkit-linear-gradient(
         120deg,
         var(--primary-site-color) 0%,
@@ -56,8 +60,8 @@
     );
     --text-gradient-secondary: -webkit-linear-gradient(
         120deg,
-        var(--primary-orange) 0%,
-        var(--primary-red) 75%
+        var(--color-orange) 0%,
+        var(--color-red) 75%
     );
 
     /* BUTTON-COLORS */
@@ -65,18 +69,26 @@
     --button-color-secondary: var(--secondary-site-color);
 
     /* BOX-SHADOW */
-    --box-shadow-primary-d1: -2px 12px 8px -8px rgba(0, 0, 0, 0.95);
-    --box-shadow-primary-d2: -4px 25px 20px -8px rgba(0, 0, 0, 0.88);
-    --box-shadow-light-gray: 0 10px 30px -10px rgba(7, 7, 7, 0.25);
-    --box-shadow-gray: 0 30px 40px 10px rgba(18, 18, 18, 0.75);
+    --box-shadow-primary-d1: -2px 12px 8px -8px rgba(3, 3, 3, 0.85);
+    --box-shadow-primary-d2: -4px 28px 22px -8px rgba(0, 0, 0, 0.75);
+    --box-shadow-light-gray: -12px 10px 22px -6px rgba(32, 32, 32, 0.309);
+    --box-shadow-gray: -12px 20px 40px 10px rgba(23, 23, 23, 0.325);
     /* BOX-SHADOW COLORED*/
     --box-shadow-green: -2px 2px 0px 0px rgba(46, 240, 146, 0.65);
+
+    --box-shadow-btn-primary: -5px 12px 2px -100px rgba(3, 3, 3, 0.95);
 
     /* LINEAR GRADIENTS */
     --linear-gradient-primary-translucent: linear-gradient(
         180deg,
         #87844447 0%,
         #bf321dc7 100%
+    );
+
+    --linear-gradient-purple-cafe: linear-gradient(
+        180deg,
+        var(--color-eggplant) 50%,
+        var(--color-cafe) 80%
     );
 
     // --linear-gradient-secondary-translucent: linear-gradient(
@@ -91,15 +103,7 @@
     background-image: linear-gradient(
         120deg,
         var(--primary-yellow) 0%,
-        var(--primary-orange) 100%
-    );
-}
-
-.background-gradient-blue {
-    background: linear-gradient(
-        120deg,
-        var(--surface-color-primary--dark) 0%,
-        var(--surface-color-primary) 60%
+        var(--color-orange) 100%
     );
 }
 
@@ -114,8 +118,8 @@
 .background-gradient-red {
     background-image: linear-gradient(
         120deg,
-        var(--primary-red) 35%,
-        var(--primary-orange) 110%
+        var(--color-red) 35%,
+        var(--color-orange) 110%
     ) !important;
 }
 * {
@@ -124,14 +128,18 @@
     padding: 0;
 
     &:focus {
-        outline: thin dashed var(--color-black);
+        outline: thin dashed var(--color-gray--900);
     }
+}
+
+html {
+    font-size: 62.5%; /* (62.5/100) * 16px = 10px */
 }
 
 html,
 body {
     border: 0;
-    font-size: 100%;
+    font-size: 1.8rem;
     font: inherit;
     vertical-align: baseline;
 }
@@ -181,11 +189,11 @@ SCROLLBAR
     width: 8px !important;
 }
 ::-webkit-scrollbar-track {
-    background: var(--color-black);
+    background: var(--color-gray--900);
 }
 ::-webkit-scrollbar-thumb {
     border-radius: 12px !important;
-    background: var(--primary-red);
+    background: var(--color-red);
 }
 
 /*
@@ -209,10 +217,12 @@ button {
 
 .button-primary {
     background: var(--button-color-primary);
-    color: var(--text-color-100);
-    font-size: 16px;
+    color: var(--text-color-200);
+    font-size: 18px;
 
     &:hover {
-        box-shadow: var(--box-shadow-primary-d1);
+        box-shadow: var(--box-shadow-btn-primary);
+        background: var(--color-cafe);
+        color: var(--color-gray--900) !important;
     }
 }

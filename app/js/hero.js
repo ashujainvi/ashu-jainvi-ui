@@ -7,10 +7,11 @@ import { zEffectBlock } from './z-effect.js';
 
 // CONSTANTS
 const HERO_CONTAINER_ID = 'hero-illustration';
-const HERO_MOUSEMOVE_DEBOUNCE = 350;
+const HERO_MOUSE_EVENT_EL = 'hero-content';
+const HERO_MOUSEMOVE_DEBOUNCE = 450;
 
 export const initHero = () => {
-    const heroContainer = document.getElementById(HERO_CONTAINER_ID);
+    const heroContainer = document.getElementById(HERO_MOUSE_EVENT_EL);
     const heroEffectElement = document.getElementById(HERO_CONTAINER_ID);
 
     // Mouse Events for hero perspective effect

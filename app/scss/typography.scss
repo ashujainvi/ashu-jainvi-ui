@@ -14,36 +14,34 @@ h1,
 h2,
 h3,
 h4 {
+    font-family: 'KemcoPixel', 'Poppins', 'san-serif';
     font-weight: 800;
-    color: var(--text-color-100);
+    color: var(--text-color-200);
 }
 h1,
 .title1 {
-    font-size: 32px;
+    font-size: 5rem;
     margin: 10px 0;
-    font-family: 'KemcoPixel', 'Poppins', 'san-serif';
 
     @include media-breakpoint-tablet {
-        font-size: 60px;
+        font-size: 9rem;
         letter-spacing: -0.8px;
     }
 }
 h2,
 .title2 {
-    font-size: 28px;
+    font-size: 4rem;
     margin: 8px 0;
-    font-family: 'KemcoPixel', 'Poppins', 'san-serif';
 
     @include media-breakpoint-tablet {
-        font-size: 42px;
-        letter-spacing: 1.2px;
+        font-size: 7rem;
+        letter-spacing: 1.1px;
     }
 }
 h3,
 .title3 {
     font-size: 20px;
     margin: 8px 0;
-    font-family: 'KemcoPixel', 'Poppins', 'san-serif';
 
     @include media-breakpoint-tablet {
         font-size: 28px;
@@ -53,14 +51,13 @@ h3,
 h4,
 .title4 {
     font-size: 18px;
-    font-family: 'KemcoPixel', 'Poppins', 'san-serif';
     margin: 5px 0;
 }
 
 .subtitle1 {
     text-transform: uppercase;
     font-size: 16px;
-    letter-spacing: 1.8px;
+    letter-spacing: 1.4px;
 
     @include media-breakpoint-tablet {
         font-size: 16px;

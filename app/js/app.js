@@ -8,8 +8,11 @@ import { initHero } from './hero.js';
 const __main = () => {
     // Initialize Events
     initHero();
+    // yeild to main thread
+    setTimeout(() => {
+        initJobToggle();
+    }, 200);
     // initIconSlider();
-    initJobToggle();
 
     // TODO: Add timeline
     // insertDivs('timeline-dial', 20, ['timeline__dial__hand'], true, {
@@ -22,23 +25,24 @@ const __main = () => {
 // ICONS SLIDER
 // TODO: Feature zone icons have been removed. Remove this function
 const initIconSlider = () => {
-    var iconSlider = document.getElementById('feature-zone-icons');
-    var mouseIsDown = false;
-    var startX, scrollLeft;
+    const SLIDE_CONTAINER_ID = 'feature-zone-icons';
+    const SLIDE_CONTAINER = document.getElementById(SLIDE_CONTAINER_ID);
+    let mouseIsDown = false;
+    let startX, scrollLeft;
 
     if (iconSlider) {
-        iconSlider.addEventListener('mousedown', function (event) {
+        SLIDE_CONTAINER.addEventListener('mousedown', function (event) {
             mouseIsDown = true;
             $('.feature_zone-icons').stop(true);
             startX = event.pageX - iconSlider.offsetLeft;
             scrollLeft = iconSlider.scrollLeft;
         });
 
-        iconSlider.addEventListener('mouseleave', function () {
+        SLIDE_CONTAINER.addEventListener('mouseleave', function () {
             mouseIsDown = false;
         });
 
-        iconSlider.addEventListener('mouseup', function () {
+        SLIDE_CONTAINER.addEventListener('mouseup', function () {
             mouseIsDown = false;
 
             var currScrollX = iconSlider.scrollLeft;
@@ -50,7 +54,7 @@ const initIconSlider = () => {
                 .animate({ scrollLeft: newScrollX }, 400, 'linear');
         });
 
-        iconSlider.addEventListener('mousemove', function (event) {
+        SLIDE_CONTAINER.addEventListener('mousemove', function (event) {
             if (!mouseIsDown) {
                 return;
             }
@@ -66,6 +70,12 @@ const initJobToggle = () => {
     const jobDetailsToggleBtn = document.getElementById(
         'job-details-toggle-btn'
     );
+
+    // No element found, don't run anything :(
+    if (!jobDetailsToggleBtn) {
+        return;
+    }
+
     const jobDetailsArrowImg = document.getElementById('job-details-arrow-img');
 
     let isBoxOpen = false;
