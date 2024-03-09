@@ -1,4 +1,4 @@
-# ashutosh-jainvi-ui-v3
+# ashu-jainvi-ui
 
 Personal portfolio to showcase personal interests, designs, hobbies and professional experiences & projects.
 
