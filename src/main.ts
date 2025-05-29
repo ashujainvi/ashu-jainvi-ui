@@ -1,1 +1,1 @@
-import './components/MyHome.js';
+import './components/my-home.ts';

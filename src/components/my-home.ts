@@ -1,4 +1,4 @@
-class Home extends HTMLElement {
+class MyHome extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <section>
@@ -9,4 +9,4 @@ class Home extends HTMLElement {
   }
 }
 
-customElements.define('home', Home);
+customElements.define('my-home', MyHome);
