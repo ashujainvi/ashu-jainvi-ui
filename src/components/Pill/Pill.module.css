@@ -1,0 +1,27 @@
+.pill {
+  display: inline-block;
+  padding: 0.4rem 2.25em;
+  text-align: center;
+  border: 2px solid var(--color-primary);
+  background-color: var(--color-bg-primary);
+  max-width: max-content;
+  z-index: 1;
+}
+
+.pill.primary {
+  border-color: var(--color-primary);
+}
+
+.pill.secondary {
+  border-color: var(--color-secondary);
+}
+
+.circle {
+  padding: 0.5rem;
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+}
+
+.capsule {
+  border-radius: 9999px;
+}

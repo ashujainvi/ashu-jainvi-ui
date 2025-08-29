@@ -1,0 +1,137 @@
+:root {
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --font-family-primary: 'Abril Fatface', serif;
+  --font-family-secondary: 'Montserrat', sans-serif;
+
+  /* ======= COLORS ======== */
+
+  --color-red-1: #e31329;
+  --color-red-2: #CF042A;
+  --color-yellow: #eba617;
+  --color-gray-1: #101010;
+  --color-gray-2: #1a1a1a;
+  --color-gray-3: #343434;
+  --color-gray-4: #c7c7c7;
+
+
+  --color-primary: var(--color-red-1);
+  --color-secondary: var(--color-yellow);
+  --color-tertiary: var(--color-gray-4);
+  --color-bg-primary: var(--color-gray-1);
+  --color-bg-secondary: var(--color-gray-2);
+  --color-text-primary: var(--color-tertiary);
+  --color-border-primary: var(--color-gray-3);
+
+
+  /* ======= WIDTHS ======== */
+  --width-xxl: 1400px;
+  --width-xl: 1200px;
+  --width-lg: 960px;
+  --width-md: 720px;
+  --width-sm: 540px;
+  --width-xs: 360px;
+  --width-xxs: 320px;
+
+  /* ====== ROUNDNESS ======= */
+  --round-xxl: 48px;
+  --round-xl: 32px;
+  --round-lg: 24px;
+  --round-md: 16px;
+  --round-sm: 8px;
+  --round-xs: 4px;
+
+  /* ====== SPACING ======= */
+  --spacing-xl: 64px;
+  --spacing-lg: 48px;
+  --spacing-md: 32px;
+  --spacing-sm: 24px;
+  --spacing-xs: 16px;
+  --spacing-xxs: 8px;
+}
+
+a {
+  font-weight: 500;
+  text-decoration: none;
+}
+
+html {
+  font-size: 16px;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  font-family: var(--font-family-secondary)
+}
+body {
+  background-color: var(--color-bg-primary);
+  margin: 0;
+  border: 0;
+  display: flex;
+  overflow-x: hidden;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.title1, .title2, .title3, .title4 {
+  font-family: var(--font-family-primary);
+  margin-top: 0;
+  margin-bottom: 0rem;
+}
+
+.title1, h1 {
+  font-size: 5rem;
+}
+.title2, h2 {
+  font-size: 3.5rem;
+}
+.title3, h3 {
+  font-size: 2.5rem;
+}
+
+.title4, h4 {
+  font-size: 2rem;
+}
+
+.caption {
+  font-size: 1.125rem;
+  line-height: 1.25;
+  max-width: 40ch;
+  margin-top: 1.125rem;
+  margin-bottom: 1.125rem;
+}
+
+.color-primary {
+  color: var(--color-primary);
+}
+.color-secondary {
+  color: var(--color-secondary);
+}
+
+.color-black {
+  color: var(--color-bg-primary);
+}
+
+.fontFamilyPrimary {
+  font-family: var(--font-family-primary);
+}
+.textSmall {
+  font-size: 2.95rem;
+}
+.textAlignLeft {
+  text-align: left;
+}
+
+.textAlignCenter {
+  text-align: center;
+}
+
+.marginBottomSmall {
+  margin-bottom: var(--spacing-sm);
+}
+
+.marginBottomMedium {
+  margin-bottom: var(--spacing-md);
+}

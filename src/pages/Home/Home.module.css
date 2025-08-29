@@ -1,0 +1,118 @@
+.Home {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.heroContainer {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100vh; 
+  /* maxheight of the wave */
+  max-height: 1186px;
+  align-items: center;
+  padding-top: 120px;
+  flex-direction: column;
+  max-width: var(--width-xl);
+  border-right: 50vw solid var(--color-red-2);
+  border-left: 50vw solid var(--color-red-2);
+}
+
+.heroSkyContainer {
+  position: relative;
+  margin-top: 30px;
+}
+
+.heroSun {
+  position: absolute;
+  right: -160px;
+  top: 30px;
+  max-width: 100px;
+}
+
+.heroMeet {
+  position: relative;
+  max-width: 100px;
+  margin-left: -170px;
+  margin-top: 100px;
+}
+.heroCloud {
+  position: absolute;
+  right: -220px;
+  top: 60px;
+  max-width: 120px;
+}
+
+.heroWaveTop {
+  position: absolute;
+  top: 0;
+  width: clamp(var(--width-lg), 100vw, var(--width-xl));
+  height: auto;
+}
+
+
+.heroGroundContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  margin-top: -10px;
+
+}
+.heroSoccerAshu {
+  width: 160px;
+}
+
+.heroBrushEffect {
+  max-width: 340px;
+  position: absolute;
+  bottom: -20px;
+  z-index: 0;
+}
+
+.craftSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 580px;
+  width: 100%;
+  background-color: var(--color-red-2);
+  padding: 2rem;
+}
+
+.craftContainer {
+  position: relative;
+  margin-top: calc(5vw - 40px);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: var(--width-lg);
+}
+
+.discoverSection {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.discoverContainer {
+  width: 100%;
+  max-width: var(--width-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.discoverCards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
