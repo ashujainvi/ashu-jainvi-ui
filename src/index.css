@@ -4,6 +4,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 
   --font-family-primary: 'Abril Fatface', serif;
   --font-family-secondary: 'Montserrat', sans-serif;
@@ -13,6 +14,7 @@
   --color-red-1: #e31329;
   --color-red-2: #CF042A;
   --color-yellow: #eba617;
+  --color-pink: #F4224E;
   --color-gray-1: #101010;
   --color-gray-2: #1a1a1a;
   --color-gray-3: #343434;
@@ -52,8 +54,14 @@
   --spacing-sm: 24px;
   --spacing-xs: 16px;
   --spacing-xxs: 8px;
-}
 
+/* ====== GRADIENTS ======= */
+--linear-gradient-primary: linear-gradient(180deg, var(--color-pink) 0%, var(--color-red-1) 100%);
+
+}
+* {
+  box-sizing: border-box;
+}
 a {
   font-weight: 500;
   text-decoration: none;

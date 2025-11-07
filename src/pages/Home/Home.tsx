@@ -4,10 +4,9 @@ import heroSoccerAshu from '../../assets/hero-soccer-ashu.svg';
 import cloudImage from '../../assets/cloud.svg';
 import sunImage from '../../assets/sun.png';
 import brushEffectImage from '../../assets/brush-effect.png';
-import meetImage from '../../assets/meet.svg';
 import Pill from '../../components/Pill/Pill';
-import Card from '../../components/Card/Card';
 import FeatureCard from '../../components/FeatureCard/FeatureCard';
+import MeetSvg from '../../components/MeetSvg/MeetSvg';
 
 const Home = () => (
   <div className={styles.Home}>
@@ -19,7 +18,10 @@ const Home = () => (
       />
       <div className={styles.heroSkyContainer}>
         <img src={sunImage} className={styles.heroSun} alt="sun" />
-        <img src={meetImage} className={styles.heroMeet} alt="meet" />
+        <div className={styles.heroMeet}>
+          <MeetSvg />
+        </div>
+
         <img src={cloudImage} className={styles.heroCloud} alt="cloud" />
       </div>
 
@@ -67,7 +69,7 @@ const Home = () => (
           <FeatureCard
             title={'Photography'}
             caption={
-              'From sports to portraits. I capture moments with emotions and stories.'
+              'From sports to portraits, I capture moments with a story.'
             }
             linkText="View Portfolio"
           />
@@ -78,7 +80,7 @@ const Home = () => (
             }
           />
           <FeatureCard
-            title={'Website Design'}
+            title={'Web Design'}
             caption={
               'From branding to poster designs. I like to design eclectic stuff.'
             }

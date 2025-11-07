@@ -1,15 +1,40 @@
 .Card {
-  min-width: 100px;
+  position: relative;
   min-height: 500px;
   border-radius: var(--round-md);
-  background-color: var(--color-bg-secondary);
-  border: var(--round-md) solid var(--color-border-primary);
-  padding: 1.25rem 1.675rem;
-  max-width: 196px;
-  transition: all 0.4s ease-in-out;
+  background: var(--color-border-primary);
+  width: 266px;
+  transition: background 0.4s ease-in-out;
   cursor: pointer;
+  will-change: background;
 }
 
-.Card:hover {
-  border-color: var(--color-primary);
+.Card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--linear-gradient-primary); /* red-300 to red-800 */
+  opacity: 0;
+  border-radius: inherit;
+  transform: rotate(-8deg);
+  transition: all 0.2s ease-in;
+  pointer-events: none; /* so it doesn't block clicks */
+  will-change: opacity, transform;
+}
+
+.cardContent {
+  position: absolute;
+  height: 95%;
+  width: 90%;
+  background-color: var(--color-bg-secondary);
+  top: 2.5%;
+  left: 5%;
+  padding: 1.25rem 1.675rem;
+  border-radius: var(--round-xs);
+  z-index: 1;
+}
+
+.Card:hover::after {
+  opacity: 1;
+  transform: rotate(0deg);
 }

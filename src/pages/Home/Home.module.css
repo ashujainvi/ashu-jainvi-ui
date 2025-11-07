@@ -21,6 +21,7 @@
   max-width: var(--width-xl);
   border-right: 50vw solid var(--color-red-2);
   border-left: 50vw solid var(--color-red-2);
+  box-sizing: content-box;
 }
 
 .heroSkyContainer {
@@ -36,10 +37,10 @@
 }
 
 .heroMeet {
-  position: relative;
+  position: absolute;
   max-width: 100px;
-  margin-left: -170px;
-  margin-top: 100px;
+  top: 10px;
+  left: -170px;
 }
 .heroCloud {
   position: absolute;
@@ -61,7 +62,7 @@
   flex-direction: column;
   position: relative;
   align-items: center;
-  margin-top: -10px;
+  margin-top: 90px;
 
 }
 .heroSoccerAshu {
