@@ -13,6 +13,7 @@
 
   --color-red-1: #e31329;
   --color-red-2: #CF042A;
+--color-orange: #EB0D0D;
   --color-yellow: #eba617;
   --color-pink: #F4224E;
   --color-gray-1: #101010;
@@ -56,18 +57,15 @@
   --spacing-xxs: 8px;
 
 /* ====== GRADIENTS ======= */
---linear-gradient-primary: linear-gradient(180deg, var(--color-pink) 0%, var(--color-red-1) 100%);
+--linear-gradient-primary: linear-gradient(180deg, var(--color-red-1) 25%, var(--color-orange) 140%);
 
 }
 * {
   box-sizing: border-box;
 }
-a {
-  font-weight: 500;
-  text-decoration: none;
-}
 
 html {
+  /* TODO: change font size based on screen size */
   font-size: 16px;
   color: var(--color-text-primary);
   background-color: var(--color-bg-primary);
@@ -82,7 +80,10 @@ body {
   width: 100vw;
   min-height: 100vh;
 }
-
+a {
+  font-weight: 500;
+  text-decoration: none;
+}
 .title1, .title2, .title3, .title4 {
   font-family: var(--font-family-primary);
   margin-top: 0;
@@ -125,6 +126,8 @@ body {
 .fontFamilyPrimary {
   font-family: var(--font-family-primary);
 }
+
+/* TODO: this is completely dumb. Need to find a way to use rem units here  */
 .textSmall {
   font-size: 2.95rem;
 }

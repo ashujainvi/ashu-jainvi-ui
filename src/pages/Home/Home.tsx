@@ -1,5 +1,5 @@
 import styles from './Home.module.css';
-import heroWaveTop from '../../assets/hero-wave-top.svg';
+import heroBorder from '../../assets/hero-mask.svg';
 import heroSoccerAshu from '../../assets/hero-soccer-ashu.svg';
 import cloudImage from '../../assets/cloud.svg';
 import sunImage from '../../assets/sun.png';
@@ -10,38 +10,39 @@ import MeetSvg from '../../components/MeetSvg/MeetSvg';
 
 const Home = () => (
   <div className={styles.Home}>
-    <section className={styles.heroContainer}>
-      <img
-        src={heroWaveTop}
-        className={`${styles.heroWaveTop}`}
-        alt="Hero wave Border"
-      />
-      <div className={styles.heroSkyContainer}>
-        <img src={sunImage} className={styles.heroSun} alt="sun" />
-        <div className={styles.heroMeet}>
-          <MeetSvg />
+    <section className={styles.heroSection}>
+      <div className={styles.heroContainer}>
+        <img
+          src={heroBorder}
+          alt="Hero Wave Border"
+          className={styles.heroBorder}
+        />
+        <div className={styles.heroScene}>
+          <div className={styles.heroSkyContainer}>
+            <div className={styles.heroMeet}>
+              <MeetSvg />
+            </div>
+            <img src={sunImage} className={styles.heroSun} alt="sun" />
+            <img src={cloudImage} className={styles.heroCloud} alt="cloud" />
+          </div>
+
+          <div className={styles.heroGroundContainer}>
+            <img
+              src={heroSoccerAshu}
+              className={styles.heroSoccerAshu}
+              alt="Hero soccer player - Ashu"
+            />
+            <Pill variant="primary">
+              <h1 className="title3 color-primary">Ashu Jainvi</h1>
+            </Pill>
+            <img
+              src={brushEffectImage}
+              className={styles.heroBrushEffect}
+              alt="Hero brush effect"
+            />
+          </div>
         </div>
-
-        <img src={cloudImage} className={styles.heroCloud} alt="cloud" />
       </div>
-
-      <div className={styles.heroGroundContainer}>
-        <img
-          src={heroSoccerAshu}
-          className={styles.heroSoccerAshu}
-          alt="Hero soccer player - Ashu"
-        />
-        <Pill variant="primary">
-          <h1 className="title3 color-primary">Ashu Jainvi</h1>
-        </Pill>
-        <img
-          src={brushEffectImage}
-          className={styles.heroBrushEffect}
-          alt="Hero brush effect"
-        />
-      </div>
-
-      {/* <Pill text="" variant="primary" shape="circle" /> */}
     </section>
     <section className={styles.craftSection}>
       <div className={styles.craftContainer}>
