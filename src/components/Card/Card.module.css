@@ -1,40 +1,72 @@
 .Card {
   position: relative;
-  min-height: 500px;
+  min-height: 360px;
   border-radius: var(--round-md);
   background: var(--color-border-primary);
   width: 266px;
   transition: background 0.4s ease-in-out;
   cursor: pointer;
   will-change: background;
+  -webkit-mask-image: var(--border-url);
+  mask-image: var(--border-url);
+  mask-size: cover;
+  /* border-image: url('/border.png') 30 round; */
 }
 
 .Card::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--linear-gradient-primary); /* red-300 to red-800 */
+  background: var(--linear-gradient-primary);
   opacity: 0;
   border-radius: inherit;
   transform: rotate(-8deg);
   transition: all 0.2s ease-in;
-  pointer-events: none; /* so it doesn't block clicks */
+  pointer-events: none;
   will-change: opacity, transform;
 }
 
-.cardContent {
-  position: absolute;
-  height: 95%;
-  width: 90%;
-  background-color: var(--color-bg-secondary);
-  top: 2.5%;
-  left: 5%;
-  padding: 1.25rem 1.675rem;
-  border-radius: var(--round-xs);
-  z-index: 1;
-}
+/* .ellipse {
+  clip-path: ellipse(35% 45% at 50% 50%);
+} */
 
 .Card:hover::after {
   opacity: 1;
   transform: rotate(0deg);
+}
+
+.cardContent {
+  position: absolute;
+  height: 80%;
+  width: 100%;
+  background-color: var(--color-bg-secondary);
+  padding: 1.25rem 1.675rem;
+  border-radius: var(--round-xs);
+  z-index: 1;
+
+  --paper-dark: var(--color-bg-primary);
+  --transparent: rgba(255, 255, 255, 0);
+}
+
+.cardContent::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+      var(--transparent),
+      50%,
+      var(--paper-dark),
+      51%,
+      var(--transparent)
+    ),
+    linear-gradient(
+      to right,
+      var(--transparent),
+      50%,
+      var(--paper-dark),
+      51%,
+      var(--transparent)
+    );
+  pointer-events: none; /* so it doesn't block clicks */
 }

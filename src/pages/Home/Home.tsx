@@ -55,8 +55,7 @@ const Home = () => (
         </h2>
         <Pill variant="primary">
           <p className="caption color-tertiary textAlignLeft">
-            I build expressive digital worlds through photography, graphics and
-            code.
+            I build expressive digital worlds through imagination and execution.
           </p>
         </Pill>
       </div>

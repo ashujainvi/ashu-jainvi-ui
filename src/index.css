@@ -7,20 +7,18 @@
   box-sizing: border-box;
 
   --font-family-primary: 'Abril Fatface', serif;
+  /* TODO: change font to Inconsolate condensed */
   --font-family-secondary: 'Montserrat', sans-serif;
 
   /* ======= COLORS ======== */
 
   --color-red-1: #e31329;
-  --color-red-2: #CF042A;
---color-orange: #EB0D0D;
-  --color-yellow: #eba617;
-  --color-pink: #F4224E;
+  --color-red-2: #a10515;
+  --color-yellow: #f5c58c;
   --color-gray-1: #101010;
-  --color-gray-2: #1a1a1a;
+  --color-gray-2: #161616;
   --color-gray-3: #343434;
-  --color-gray-4: #c7c7c7;
-
+  --color-gray-4: #dddddd;
 
   --color-primary: var(--color-red-1);
   --color-secondary: var(--color-yellow);
@@ -29,7 +27,6 @@
   --color-bg-secondary: var(--color-gray-2);
   --color-text-primary: var(--color-tertiary);
   --color-border-primary: var(--color-gray-3);
-
 
   /* ======= WIDTHS ======== */
   --width-xxl: 1400px;
@@ -56,9 +53,12 @@
   --spacing-xs: 16px;
   --spacing-xxs: 8px;
 
-/* ====== GRADIENTS ======= */
---linear-gradient-primary: linear-gradient(180deg, var(--color-red-1) 25%, var(--color-orange) 140%);
-
+  /* ====== GRADIENTS ======= */
+  --linear-gradient-primary: linear-gradient(
+    180deg,
+    var(--color-red-1) 25%,
+    var(--color-red-2) 140%
+  );
 }
 * {
   box-sizing: border-box;
@@ -69,7 +69,7 @@ html {
   font-size: 16px;
   color: var(--color-text-primary);
   background-color: var(--color-bg-primary);
-  font-family: var(--font-family-secondary)
+  font-family: var(--font-family-secondary);
 }
 body {
   background-color: var(--color-bg-primary);
@@ -84,23 +84,30 @@ a {
   font-weight: 500;
   text-decoration: none;
 }
-.title1, .title2, .title3, .title4 {
+.title1,
+.title2,
+.title3,
+.title4 {
   font-family: var(--font-family-primary);
   margin-top: 0;
   margin-bottom: 0rem;
 }
 
-.title1, h1 {
+.title1,
+h1 {
   font-size: 5rem;
 }
-.title2, h2 {
+.title2,
+h2 {
   font-size: 3.5rem;
 }
-.title3, h3 {
+.title3,
+h3 {
   font-size: 2.5rem;
 }
 
-.title4, h4 {
+.title4,
+h4 {
   font-size: 2rem;
 }
 
@@ -127,7 +134,7 @@ a {
   font-family: var(--font-family-primary);
 }
 
-/* TODO: this is completely dumb. Need to find a way to use rem units here  */
+/* TODO: Need to find a way to use rem units here  */
 .textSmall {
   font-size: 2.95rem;
 }
