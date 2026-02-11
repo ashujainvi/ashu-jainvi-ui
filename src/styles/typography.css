@@ -1,0 +1,35 @@
+.title1,
+.title2,
+.title3,
+.title4 {
+  font-family: var(--font-family-primary);
+  margin-top: 0;
+  margin-bottom: 0rem;
+}
+
+.title1,
+h1 {
+  font-size: 5rem;
+}
+.title2,
+h2 {
+  font-size: 3.5rem;
+  line-height: 4.5rem;
+}
+.title3,
+h3 {
+  font-size: 2.5rem;
+}
+
+.title4,
+h4 {
+  font-size: 2rem;
+}
+
+.caption {
+  font-size: 1.125rem;
+  line-height: 1.25;
+  max-width: 50ch;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

@@ -1,3 +1,13 @@
+@import "tailwindcss";
+
+
+@theme {
+  --font-display: 'Abril Fatface', serif;
+  --font-mono: 'Inconsolata', monospace;
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --radius-5xl: 3.5rem;
+}
 :root {
   font-weight: 400;
   font-synthesis: none;
@@ -7,8 +17,7 @@
   box-sizing: border-box;
 
   --font-family-primary: 'Abril Fatface', serif;
-  /* TODO: change font to Inconsolate condensed */
-  --font-family-secondary: 'Montserrat', sans-serif;
+  --font-family-secondary: 'Inconsolata', monospace;
 
   /* ======= COLORS ======== */
 
@@ -37,22 +46,6 @@
   --width-xs: 360px;
   --width-xxs: 320px;
 
-  /* ====== ROUNDNESS ======= */
-  --round-xxl: 48px;
-  --round-xl: 32px;
-  --round-lg: 24px;
-  --round-md: 16px;
-  --round-sm: 8px;
-  --round-xs: 4px;
-
-  /* ====== SPACING ======= */
-  --spacing-xl: 64px;
-  --spacing-lg: 48px;
-  --spacing-md: 32px;
-  --spacing-sm: 24px;
-  --spacing-xs: 16px;
-  --spacing-xxs: 8px;
-
   /* ====== GRADIENTS ======= */
   --linear-gradient-primary: linear-gradient(
     180deg,
@@ -75,7 +68,6 @@ body {
   background-color: var(--color-bg-primary);
   margin: 0;
   border: 0;
-  display: flex;
   overflow-x: hidden;
   width: 100vw;
   min-height: 100vh;
@@ -83,73 +75,4 @@ body {
 a {
   font-weight: 500;
   text-decoration: none;
-}
-.title1,
-.title2,
-.title3,
-.title4 {
-  font-family: var(--font-family-primary);
-  margin-top: 0;
-  margin-bottom: 0rem;
-}
-
-.title1,
-h1 {
-  font-size: 5rem;
-}
-.title2,
-h2 {
-  font-size: 3.5rem;
-}
-.title3,
-h3 {
-  font-size: 2.5rem;
-}
-
-.title4,
-h4 {
-  font-size: 2rem;
-}
-
-.caption {
-  font-size: 1.125rem;
-  line-height: 1.25;
-  max-width: 40ch;
-  margin-top: 1.125rem;
-  margin-bottom: 1.125rem;
-}
-
-.color-primary {
-  color: var(--color-primary);
-}
-.color-secondary {
-  color: var(--color-secondary);
-}
-
-.color-black {
-  color: var(--color-bg-primary);
-}
-
-.fontFamilyPrimary {
-  font-family: var(--font-family-primary);
-}
-
-/* TODO: Need to find a way to use rem units here  */
-.textSmall {
-  font-size: 2.95rem;
-}
-.textAlignLeft {
-  text-align: left;
-}
-
-.textAlignCenter {
-  text-align: center;
-}
-
-.marginBottomSmall {
-  margin-bottom: var(--spacing-sm);
-}
-
-.marginBottomMedium {
-  margin-bottom: var(--spacing-md);
 }

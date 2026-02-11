@@ -1,4 +1,4 @@
-.Home {
+.home {
   position: relative;
   width: 100vw;
   min-height: 100vh;
@@ -8,13 +8,27 @@
   overflow-x: hidden;
 }
 
+.backgroundWrapper {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-repeat: repeat-x;
+  background-position: center top;
+  background-size: 900px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.3;
+}
+
 .heroSection {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   padding: calc(4vw - 1rem);
-  background-color: var(--color-red-2);
+  z-index: 1;
 }
 
 .heroContainer {
@@ -22,79 +36,31 @@
   display: flex;
   width: min(var(--width-lg), 100%);
   min-width: var(--width-sm);
-  background-color: var(--color-bg-primary);
-  /* aspect ratio based on intrinsic aspect ration of wave svg  */
-  aspect-ratio: 2051 / 1853;
   align-items: center;
   flex-direction: column;
-  box-shadow: inset 0 0 3px 3px var(--color-red-2);
-}
-
-.heroBorder {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: auto;
 }
 
 .heroScene {
-  margin-top: min(calc(4vw + 30px), 80px);
   width: min(var(--width-sm), 69%);
-  /* min-width: var(--width-sm); */
-}
-.heroSkyContainer {
-  position: relative;
-  margin-top: 30px;
-  display: flex;
 }
 
-.heroMeet {
-  position: absolute;
-  max-width: 160px;
-  top: 10px;
-  /* left: -70px; */
-}
-.heroSun {
-  position: absolute;
-  top: 30px;
-  right: 20px;
-  max-width: 100px;
-}
-.heroCloud {
-  position: absolute;
-  right: -20px;
-  top: 60px;
-  max-width: 120px;
-}
-
-.heroGroundContainer {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  align-items: center;
-  /* margin-top: 90px; */
-  margin-top: min(calc(7.4vw), 120px);
-}
-.heroSoccerAshu {
-  width: 160px;
-}
-
-.heroBrushEffect {
-  max-width: 340px;
-  position: absolute;
-  bottom: -20px;
-  z-index: 0;
+.meetCaption {
+  background-image: url('../../assets/stroke.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  padding: 1rem;
 }
 
 .craftSection {
+  position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: var(--color-red-2);
-  padding: 2rem;
   padding: calc(4vw - 1rem);
+  z-index: 1;
 }
 
 .craftContainer {
@@ -103,15 +69,25 @@
   flex-direction: column;
   width: 100%;
   max-width: var(--width-lg);
-  padding-bottom: 2rem;
+  background-color: var(--color-red-2);
+  background: linear-gradient(
+    180deg,
+    rgba(161, 5, 21, 1) 25%,
+    rgba(161, 5, 21, 0.9) 65%,
+    rgba(73, 9, 16, 0.66) 80%,
+    rgba(16, 16, 16, 0) 88%
+  );
+  padding-bottom: 8rem;
 }
 
 .discoverSection {
+  position: relative;
   width: 100%;
   padding: 2rem;
   display: flex;
   align-items: center;
   flex-direction: column;
+  z-index: 1;
 }
 
 .discoverContainer {
