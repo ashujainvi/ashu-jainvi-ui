@@ -14,7 +14,7 @@ const Home = () => (
       style={{ backgroundImage: `url(${glitchPng})` }}></div>
     <section className={styles.heroSection}>
       <div className={styles.heroContainer}>
-        <div className={`${styles.heroScene} mt-20 text-center`}>
+        <div className={`${styles.heroScene} text-center`}>
           <span className={`caption text-secondary ${styles.stroke}`}>
             Meet
           </span>
