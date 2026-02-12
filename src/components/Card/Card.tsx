@@ -1,21 +1,22 @@
 import styles from './Card.module.css';
 import type { ReactNode } from 'react';
 
-declare module 'react' {
-  interface CSSProperties {
-    '--border-url'?: string;
-  }
-}
-
 interface CardProps {
   children: ReactNode;
   shape?: 'ellipse' | 'rectangle';
 }
 
 const Card = ({ children, shape = 'rectangle' }: CardProps) => {
+  const cardClasses = shape === 'ellipse' 
+    ? `${styles.cardEllipse}` 
+    : 'rounded-2xl';
+  const contentClasses = shape === 'ellipse' 
+    ? `${styles.cardContentEllipse}` 
+    : 'rounded-md';
+  
   return (
-    <div className={`${styles.card}`}>
-      <div className={styles.cardContent}>{children}</div>
+    <div className={`${styles.card} ${cardClasses}`}>
+      <div className={`${styles.cardContent} ${contentClasses}`}>{children}</div>
     </div>
   );
 };

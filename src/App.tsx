@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import './App.css';
+import Nav from './components/Nav/Nav';
 import Home from './pages/Home/Home';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
   }, []);
   return (
     <>
+      <Nav />
       <Home />
     </>
   );

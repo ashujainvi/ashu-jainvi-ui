@@ -8,6 +8,10 @@
   z-index: 1;
 }
 
+.pill.noBorder {
+  border: none;
+}
+
 .pill.primary {
   border-color: var(--color-primary);
 }
