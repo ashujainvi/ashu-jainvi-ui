@@ -31,10 +31,10 @@ This project uses `generate-react-cli` to quickly scaffold new components and pa
 To create a new component in the `src/components` directory:
 
 ```bash
-npm run gc
+npm run gc <component-name>
 ```
 
-This will prompt you to enter the component name and generate the following files:
+This will generate the following files in `component` folder:
 - `ComponentName.tsx` - Main component file
 - `ComponentName.module.css` - CSS module for styling
 - `ComponentName.stories.tsx` - Storybook stories file
@@ -44,10 +44,10 @@ This will prompt you to enter the component name and generate the following file
 To create a new page in the `src/pages` directory:
 
 ```bash
-npm run gp
+npm run gp <page-name>
 ```
 
-This will prompt you to enter the page name and generate the following files:
+This will generate the following files in `pages` folder:
 - `PageName.tsx` - Main page component
 - `PageName.lazy.tsx` - Lazy-loaded version for code splitting
 - `PageName.module.css` - CSS module for styling
