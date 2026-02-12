@@ -10,16 +10,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
+  width: 4.5rem;
+  height: 4.5rem;
   border-radius: 50%;
   background-size: contain;
   background-position: center;
+  pointer-events: cursor;
 }
 
 .LogoImage {
-  height: 32px;
-  width: 32px;
+  height: 3rem;
+  width: 3rem;
   object-fit: contain;
   z-index: 1;
 }
@@ -27,9 +28,13 @@
 .MenuIcon {
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
   border-radius: 100%;
   background-size: cover;
   background-position: center;
+  pointer-events: cursor;
 }
 
 .MenuButton {
