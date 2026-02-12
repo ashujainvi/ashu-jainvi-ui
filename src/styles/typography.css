@@ -10,6 +10,7 @@
 
 .display {
   font-size: 7rem;
+  letter-spacing: -0.02em;
 }
 
 .title1,
@@ -44,5 +45,5 @@ h4 {
   margin-top: 1rem;
   text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: 0.15rem;
+  letter-spacing: 0.12em;
 }

@@ -2,8 +2,9 @@
 
 
 @theme {
-  --font-display: 'Abril Fatface', serif;
-  --font-mono: 'Inconsolata', monospace;
+  --font-display: var(--font-family-primary);
+  --font-title: var(--font-family-primary);
+  --font-mono: var(--font-family-secondary);
   --color-primary: var(--color-primary);
   --color-secondary: var(--color-secondary);
   --radius-5xl: 3.5rem;
@@ -34,7 +35,7 @@
   --color-tertiary: var(--color-gray-4);
   --color-bg-primary: var(--color-gray-1);
   --color-bg-secondary: var(--color-gray-2);
-  --color-text-primary: var(--color-tertiary);
+  --color-text-primary: var(--color-gray-4);
   --color-border-primary: var(--color-gray-3);
 
   /* ======= WIDTHS ======== */
@@ -58,7 +59,6 @@
 }
 
 html {
-  /* TODO: change font size based on screen size */
   font-size: 16px;
   color: var(--color-text-primary);
   background-color: var(--color-bg-primary);

@@ -7,7 +7,7 @@ import Home from './pages/Home/Home';
 
 function App() {
   useEffect(() => {
-    // Dynamically import the CSS file
+    // Dynamically import the unimportant CSS file
     import('./styles/typography.css').catch((err) =>
       console.error('Failed to load typography:', err)
     );
