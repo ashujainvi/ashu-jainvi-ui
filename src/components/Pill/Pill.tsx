@@ -9,7 +9,7 @@ interface PillProps {
 
 const Pill = ({
   variant = 'primary',
-  showBorder = false,
+  showBorder = true,
   children
 }: PillProps) => (
   <div className={`rounded-full ${styles.pill} ${styles[variant]} ${!showBorder ? styles.noBorder : ''}`}>

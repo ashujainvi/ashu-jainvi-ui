@@ -45,7 +45,7 @@
 }
 
 .heroScene {
-  width: min(var(--width-sm), 69%);
+  width: min(var(--width-md), 80%);
 }
 
 .stroke {
@@ -53,7 +53,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  padding: 0.25rem 1rem;
+  padding: 0.35rem 2rem;
 }
 
 .craftSection {
@@ -65,23 +65,6 @@
   width: 100%;
   padding: calc(4vw - 1rem);
   z-index: 1;
-}
-
-.craftContainer {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: var(--width-lg);
-  background-color: var(--color-red-2);
-  background: linear-gradient(
-    180deg,
-    rgba(161, 5, 21, 1) 25%,
-    rgba(161, 5, 21, 0.9) 65%,
-    rgba(73, 9, 16, 0.66) 80%,
-    rgba(16, 16, 16, 0) 88%
-  );
-  padding-bottom: 8rem;
 }
 
 .discoverSection {
