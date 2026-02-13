@@ -8,3 +8,45 @@
   padding: calc(4vw - 1rem);
   z-index: 1;
 }
+
+.footerContent {
+  position: relative;
+  padding-bottom: 4rem !important;
+}
+
+.ctaSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 6rem;
+  margin-bottom: 4rem;
+}
+
+.ctaButton {
+  padding: 1rem 3rem;
+  font-size: 1.25rem;
+  font-family: var(--font-family-secondary);
+  color: var(--color-text-primary);
+  background-color: var(--color-gray-1);
+  border: 2px solid var(--color-gray-1);
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ctaButton:hover {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border-color: var(--color-gray-1);
+  transform: scale(1.05);
+}
+
+.footnoteWrapper {
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}

@@ -36,7 +36,7 @@ const Home = () => (
         </div>
         <Pill variant="primary" showBorder={false}>
           <p className="caption text-secondary">
-            Who builds expressive digital worlds through photography, graphics,
+            Who builds clean yet playful digital worlds through photography, graphics,
             and web design.
           </p>
         </Pill>
