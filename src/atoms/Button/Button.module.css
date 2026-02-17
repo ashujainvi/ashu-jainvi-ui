@@ -1,0 +1,88 @@
+@reference "../../index.css";
+
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  min-height: 48px; /* AAA touch target size */
+  
+  /* AAA: Focus indicator */
+  &:focus-visible {
+    outline: 3px solid var(--color-secondary);
+    outline-offset: 3px;
+  }
+
+  /* Disabled state */
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+/* Primary Button */
+.primary {
+  color: var(--color-secondary);
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-primary);
+
+  /* AAA: Hover state with clear visual feedback */
+  &:hover:not(:disabled) {
+    color: var(--color-secondary-light);
+    background-color: var(--color-red-dark-alpha);
+    transform: scale(1.02);
+  }
+
+  &:active:not(:disabled) {
+    color: var(--color-secondary-light);
+    background-color: var(--color-red-dark-alpha);
+    transform: scale(0.98);
+  }
+}
+
+/* Secondary Button */
+.secondary {
+  color: var(--color-secondary); /* Red text */
+  background-color: var(--color-primary-dark); /* Red background */
+  border-color: var(--color-primary-darker); /* Red border */
+
+  /* AAA: Hover state with background fill */
+  &:hover:not(:disabled) {
+    color: var(--color-secondary-light);
+    background-color: var(--color-red-dark-alpha);
+    border-color: var(--color-red-darker);
+    transform: scale(1.02);
+  }
+
+  &:active:not(:disabled) {
+    color: var(--color-secondary-light);
+    background-color: var(--color-red-dark-alpha);
+    border-color: var(--color-red-darker);
+    transform: scale(0.98);
+  }
+}
+
+/* Responsive sizing */
+@media (min-width: 768px) {
+  .button {
+    padding: 1.125rem 2.5rem;
+    font-size: 1.0625rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .button {
+    padding: 1.25rem 3rem;
+    font-size: 1.125rem;
+  }
+}

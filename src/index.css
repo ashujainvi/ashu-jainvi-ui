@@ -6,9 +6,13 @@
   --font-title: var(--font-family-primary);
   --font-mono: var(--font-family-secondary);
   --color-primary: var(--color-primary);
+  --color-primary-dark: var(--color-red-dark);
+  --color-primary-darker: var(--color-red-darker);
   --color-secondary: var(--color-secondary);
+  --color-secondary-light: var(--color-yellow-light);
   --radius-5xl: 3.5rem;
 }
+
 :root {
   font-weight: 400;
   font-synthesis: none;
@@ -22,20 +26,33 @@
 
   /* ======= COLORS ======== */
 
-  --color-red-1: #e31329;
-  --color-red-2: #a10515;
+  --color-red-lighter: #fac4ca;
+  --color-red-light: #f04f60;
+  --color-red-light-alpha: rgba(240, 79, 96, 0.5);
+  --color-red: #e31329;
+  --color-red-dark: #a10515;
+  --color-red-dark-alpha: #a1051554;
+  --color-red-darker: #3B050B;
+  --color-yellow-light: #FFE4C4;
   --color-yellow: #f5c58c;
-  --color-gray-1: #101010;
-  --color-gray-2: #161616;
-  --color-gray-3: #343434;
-  --color-gray-4: #dddddd;
+  --color-gray-darkest: #101010;
+  --color-gray-darker: #161616;
+  --color-gray-dark: #343434;
+  --color-gray: #4a4a4a;
+  --color-gray-light: #dddddd;
+  --color-gray-lighter: #f8f8f8;
 
-  --color-primary: var(--color-red-1);
+  --color-primary: var(--color-red);
+  --color-primary-dark: var(--color-red-dark);
+  --color-primary-darker: var(--color-red-darker);
   --color-secondary: var(--color-yellow);
-  --color-bg-primary: var(--color-gray-1);
-  --color-bg-secondary: var(--color-gray-2);
-  --color-text-primary: var(--color-gray-4);
-  --color-border-primary: var(--color-gray-3);
+  --color-secondary-light: var(--color-yellow-light);
+  --color-bg-primary: var(--color-gray-darkest);
+  --color-bg-secondary: var(--color-gray-darker);
+  --color-border-primary: var(--color-gray-dark);
+  --color-border-secondary: var(--color-gray);
+  --color-text-primary: var(--color-gray-lighter);
+  --color-text-secondary: var(--color-gray-light);
 
   /* ======= WIDTHS ======== */
   --width-xxl: 1400px;
@@ -47,30 +64,22 @@
   --width-xxs: 320px;
 
   /* ====== GRADIENTS ======= */
-  --linear-gradient-primary: linear-gradient(
-    180deg,
-    var(--color-red-1) 25%,
-    var(--color-red-2) 140%
-  );
-}
-* {
-  box-sizing: border-box;
 }
 
 html {
   font-size: 16px;
+  line-height: 1.3;
   color: var(--color-text-primary);
   background-color: var(--color-bg-primary);
   font-family: var(--font-family-secondary);
 }
+
 body {
   background-color: var(--color-bg-primary);
-  margin: 0;
-  border: 0;
   overflow-x: hidden;
-  width: 100vw;
   min-height: 100vh;
 }
+
 a {
   font-weight: 500;
   text-decoration: none;

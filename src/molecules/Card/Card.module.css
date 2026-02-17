@@ -2,13 +2,13 @@
   position: relative;
   min-height: 360px;
   background: var(--color-border-primary);
-  width: 226px;
+  width: 282px;
   cursor: pointer;
 }
 
 .cardEllipse {
   border-radius: 50%;
-  width: 270px;
+  width: 276px;
   min-height: 370px;
 }
 

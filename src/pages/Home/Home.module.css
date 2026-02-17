@@ -30,8 +30,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 100vh;
-  padding: calc(4vw - 1rem);
+  min-height: 96vh;
   z-index: 1;
 }
 
@@ -63,7 +62,6 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: calc(4vw - 1rem);
   z-index: 1;
 }
 
@@ -75,20 +73,36 @@
   align-items: center;
   flex-direction: column;
   z-index: 1;
+  margin-top: -3rem;
+  /* margin-bottom: -4rem; */
 }
 
 .discoverContainer {
+  position: relative;
   width: 100%;
   max-width: var(--width-lg);
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 1;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  background-color: var(--color-bg-primary);
+  background-image: 
+    url('../../assets/square-bg.png'),
+    radial-gradient(ellipse 30% 28% at 50% 55%, var(--color-primary-dark), var(--color-primary-darker) 35%, var(--color-bg-primary) 80%);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-blend-mode: lighten;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
 }
 
-.discoverCards {
+/* .discoverCards {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-}
+} */
