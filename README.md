@@ -1,36 +1,55 @@
-# ashu-jainvi-ui
+# Ashu Jainvi Portfolio UI
 
-Personal portfolio to showcase personal interests, designs, hobbies and professional experiences & projects.
+A React + TypeScript + Vite portfolio project with Tailwind CSS.
 
-This is a simple multi-page application developed by a web design enthusiast focusing on best practices and clean code.
+## Getting Started
 
-![Build Status](https://github.com/ashujainvi/ashutoshjainvi-ui-3/workflows/Firebase%20Deploy/badge.svg)
+### Installation
 
----
-
-## Tools Used
-
-This project does not use any JS framework or library. It is built on HTML5, SCSS (processed to CSS using Gulp) & Vanilla JavaScript with ES6 modules.
-
-This project uses Gulp 4 to streamline basic web dev tasks like:
-
--   Serving optimized images for production.
--   [Cache busting](https://www.keycdn.com/support/what-is-cache-busting) for CSS file.
--   Minimizing code for small package size when serving in a browser.
--   Bundling JS using [Roll-up](https://blog.openreplay.com/the-ultimate-guide-to-getting-started-with-the-rollup-js-javascript-bundler).
-
-## Develop
-
-Start a local server using Gulp:
-
-```
-npm start
+```bash
+npm install
 ```
 
-## Build
+### Development
 
-To build the app, run command `npm run build`.
+```bash
+npm run dev
+```
 
-## Deployment
+### Build
 
-This project uses Github Actions for CI/CD. On every push to `master` branch, code is built and deployed to Firebase hosting.
+```bash
+npm run build
+```
+
+## Component Generation
+
+This project uses `generate-react-cli` to quickly scaffold new components and pages with consistent structure.
+
+### Generate a Component
+
+To create a new component in the `src/components` directory:
+
+```bash
+npm run gc <component-name>
+```
+
+This will generate the following files in `component` folder:
+- `ComponentName.tsx` - Main component file
+- `ComponentName.module.css` - CSS module for styling
+- `ComponentName.stories.tsx` - Storybook stories file
+
+### Generate a Page
+
+To create a new page in the `src/pages` directory:
+
+```bash
+npm run gp <page-name>
+```
+
+This will generate the following files in `pages` folder:
+- `PageName.tsx` - Main page component
+- `PageName.lazy.tsx` - Lazy-loaded version for code splitting
+- `PageName.module.css` - CSS module for styling
+
+Both commands will create a dedicated folder for the component/page with all necessary files following the project's structure conventions.

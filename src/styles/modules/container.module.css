@@ -1,0 +1,25 @@
+/* reference to @theme to allow custom properties and Tailwind utilities in this CSS module  */
+@reference "../../index.css";
+
+.container {
+  --gradient-angle: 180deg;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: var(--width-lg);
+  background: linear-gradient(
+    var(--gradient-angle),
+    var(--color-primary) 25%,
+    var(--color-primary-dark) 65%,
+    rgba(73, 9, 16, 0.66) 80%,
+    rgba(16, 16, 16, 0) 86%
+  );
+  /* allow extra padding for smooth gradient transition */
+  padding-bottom: 10rem !important;
+  @apply rounded-4xl md:rounded-5xl p-12 items-center;
+}
+
+.container.reverseGradient {
+  --gradient-angle: 0deg;
+}

@@ -1,0 +1,81 @@
+@reference "../index.css";
+
+@layer components {
+
+  /* ======= TAILWIND TEXT SCALE ======= */
+  /* 
+  text-9xl: 8rem (128px)
+  text-8xl: 6rem (96px)
+  text-7xl: 4.5rem (72px)
+  text-6xl: 3.75rem (60px)
+  text-5xl: 3rem (48px)
+  text-4xl: 2.25rem (36px)
+  text-3xl: 1.875rem (30px)
+  text-2xl: 1.5rem (24px)
+  text-xl: 1.25rem (20px)
+  text-lg: 1.125rem (18px)
+  text-base: 1rem (16px) 
+  */
+
+  /* ======= BASE HEADING STYLES ======= */
+  .display,
+  .title1,
+  .title2,
+  .title3,
+  .title4 {
+    font-family: var(--font-family-primary);
+  }
+
+  .display {
+    /* 9xl */
+    font-size: 8rem; 
+    letter-spacing: -0.02em;
+    @apply text-7xl md:text-8xl lg:text-9xl text-primary text-center;
+  }
+
+  .title1 {
+    /* 7xl */
+    font-size: 4.5rem;
+    @apply text-5xl md:text-6xl lg:text-7xl text-primary-darker;
+  }
+
+  .title2 {
+    /* 5xl */
+    font-size: 3rem;
+    @apply text-5xl lg:text-6xl text-primary-darker text-center;
+  }
+
+  .title3 {
+    /* 3xl */
+    font-size: 1.875rem;
+    @apply text-3xl lg:text-4xl text-primary;
+  }
+
+  .title4 {
+    /* xl */
+    font-size: 1.25rem;
+    @apply text-xl lg:text-2xl text-primary;
+  }
+
+  /* ======= TEXT STYLES ======= */
+
+  .caption {
+    /* lg */
+    font-size: 1.125rem;
+    max-width: 50ch;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    @apply text-lg md:text-xl text-secondary-light;
+  }
+
+  .text-overline {
+    font-size: 1.25rem;
+    line-height: 1.25;
+    max-width: 45ch;
+    margin-top: 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    @apply text-lg md:text-xl text-secondary-light text-center;
+  }
+}

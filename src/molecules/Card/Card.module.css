@@ -1,0 +1,28 @@
+.card {
+  position: relative;
+  min-height: 360px;
+  background: var(--color-border-primary);
+  width: 282px;
+  cursor: pointer;
+}
+
+.cardEllipse {
+  border-radius: 50%;
+  width: 276px;
+  min-height: 370px;
+}
+
+.cardContent {
+  position: absolute;
+  left: 4%;
+  top: 3.75%;
+  height: 92%;
+  width: 92%;
+  background-color: var(--color-bg-secondary);
+  padding: 1.25rem 1.275rem;
+  z-index: 1;
+}
+
+.cardContentEllipse {
+  border-radius: 50%;
+}
