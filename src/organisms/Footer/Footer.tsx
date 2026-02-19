@@ -12,7 +12,7 @@ const Footer: FC = () => (
         <h2 className="title2 mb-8">
           Let's Collaborate
         </h2>
-        <Button as="a" href="/contact" variant="secondary" className="mt-8">
+        <Button as="link" to="/contact" variant="secondary" className="mt-8">
           Get in touch
         </Button>
       </div>

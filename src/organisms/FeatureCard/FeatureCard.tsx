@@ -1,5 +1,6 @@
 import Card from '../../molecules/Card/Card';
 import Button from '../../atoms/Button/Button';
+import styles from './FeatureCard.module.css';
 
 interface FeatureCardProps {
   title: string;
@@ -7,22 +8,25 @@ interface FeatureCardProps {
   linkText?: string;
   linkHref?: string;
   imageUrl?: string;
-  shape?: 'ellipse' | 'rectangle';
 }
 
-const FeatureCard = ({ title, caption, linkText, linkHref, imageUrl, shape = 'rectangle' }: FeatureCardProps) => (
-  <Card shape={shape}>
-    <div className='flex flex-col items-center gap-4'>
+const FeatureCard = ({ title, caption, linkText, linkHref, imageUrl }: FeatureCardProps) => (
+  <Card>
+    <div className='flex flex-col items-start'>
       {imageUrl && (
-        <img src={imageUrl} alt={title} className="mt-2 w-22 h-20 object-contain p-1" />
+        <img src={imageUrl} alt={title} className={`w-12 h-12 object-contain mb-32 ${styles.icon}`} />
       )}
-      <h4 className="title4">{title}</h4>
-      <p className="text-center">{caption}</p>
+      <div className="flex flex-col gap-3 mb-8">
+        <h4 className="title5">{title}</h4>
+        <p className="text-left text-neutral-400">{caption}</p>
+      </div>
 
       {linkText && linkHref && (
-        <Button as="a" href={linkHref} variant="primary">
-          {linkText}
-        </Button>
+        <div>
+          <Button as="link" to={linkHref} variant="primary">
+            {linkText}
+          </Button>
+        </div>
       )}
     </div>
   </Card>

@@ -47,32 +47,39 @@ const Home = () => (
         <span className={`text-overline ${styles.stroke}`}>
           Discover
         </span>
-        <h3 className="title2 text-primary">My craft</h3>
-        <div className="flex flex-col md:flex-row md:flex-wrap justify-center items-center mt-10 gap-6">
-          <FeatureCard
-            title={'Photography'}
-            caption={
-              'From sports to portraits, I capture moments with a story.'
-            }
-            linkText="View Portfolio"
-            linkHref="/photos"
-            imageUrl={cameraOutlinePng}
-          />
-          <FeatureCard
-            title={'Graphics'}
-            shape='ellipse'
-            caption={
-              'From branding to poster designs. I like to design eclectic stuff.'
-            }
-            imageUrl={penToolOutlinePng}
-          />
-          <FeatureCard
-            title={'Web Design'}
-            caption={
-              'From branding to poster designs. I like to design eclectic stuff.'
-            }
-            imageUrl={browserWindowOutlinePng}
-          />
+        <h3 className="title2 text-secondary-light">My craft</h3>
+        <div className="@container w-full mt-22">
+          <div className="grid @md:grid-cols-1 @lg:grid-cols-2 @4xl:grid-cols-3 gap-4 justify-items-center">
+            <div className="w-full flex justify-center">
+              <FeatureCard
+                title={'Photography'}
+                caption={
+                  'Artistic portraits photos taken over the years'
+                }
+                linkText="View Portfolio"
+                linkHref="/photos"
+                imageUrl={cameraOutlinePng}
+              />
+            </div>
+            <div className="w-full flex justify-center">
+              <FeatureCard
+                title={'Graphics'}
+                caption={
+                  'Curated branding for your needs'
+                }
+                imageUrl={penToolOutlinePng}
+              />
+            </div>
+            <div className="w-full flex justify-center">
+              <FeatureCard
+                title={'Web Design'}
+                caption={
+                  'Curated web design for your needs'
+                }
+                imageUrl={browserWindowOutlinePng}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

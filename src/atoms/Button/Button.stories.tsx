@@ -62,7 +62,7 @@
 //   args: {
 //     children: 'Link Button',
 //     variant: 'primary',
-//     as: 'a',
-//     href: '#',
+//     as: 'link',
+//     to: '/',
 //   },
 // };

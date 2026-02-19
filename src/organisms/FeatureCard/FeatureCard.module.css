@@ -1,1 +1,5 @@
 .FeatureCard {}
+
+.icon {
+  filter: brightness(0) saturate(100%) invert(28%) sepia(94%) saturate(4773%) hue-rotate(349deg) brightness(94%) contrast(93%);
+}

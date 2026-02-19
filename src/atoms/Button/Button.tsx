@@ -1,28 +1,29 @@
 import type { ReactNode, ButtonHTMLAttributes } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Button.module.css';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   variant?: 'primary' | 'secondary';
-  as?: 'button' | 'a';
-  href?: string;
+  as?: 'button' | 'link';
+  to?: string;
 }
 
 const Button = ({ 
   children, 
   variant = 'primary', 
   as = 'button',
-  href,
+  to,
   className = '',
   ...props 
 }: ButtonProps) => {
   const buttonClasses = `${styles.button} ${styles[variant]} ${className}`.trim();
 
-  if (as === 'a' && href) {
+  if (as === 'link' && to) {
     return (
-      <a href={href} className={buttonClasses} role="button">
+      <Link to={to} className={buttonClasses} role="button">
         {children}
-      </a>
+      </Link>
     );
   }
 
