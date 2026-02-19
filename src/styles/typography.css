@@ -32,7 +32,7 @@
   }
 
   .title1 {
-    @apply text-5xl md:text-6xl text-primary-darker;
+    @apply text-5xl md:text-6xl text-primary-darker text-center;
   }
 
   .title2 {
@@ -63,7 +63,7 @@
     max-width: 50ch;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    @apply text-base md:text-xl text-secondary-light;
+    @apply text-base md:text-lg text-neutral-400;
   }
 
   .text-overline {

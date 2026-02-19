@@ -18,7 +18,7 @@ const Footer: FC = () => (
       </div>
       <div className={styles.footnoteWrapper}>
         <Pill variant="primary" showBorder={false}>
-          <p className="text-center text-sm">
+          <p className="text-center text-xs md:text-sm text-neutral-400">
             Built with passion & love by <span className="text-primary">Ashu Jainvi</span>
           </p>
         </Pill>
