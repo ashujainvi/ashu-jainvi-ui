@@ -14,7 +14,7 @@
   cursor: pointer;
   transition: all 0.25s ease;
   min-height: 36px;
-  box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 12px 1px rgba(0, 0, 0, 0.2);
   
   /* AAA: Focus indicator */
   &:focus-visible {

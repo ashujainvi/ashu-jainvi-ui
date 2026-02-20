@@ -16,10 +16,10 @@
     rgba(16, 16, 16, 0) 86%
   );
   /* allow extra padding for smooth gradient transition */
-  padding-bottom: 10rem !important;
-  @apply rounded-4xl md:rounded-5xl p-12 items-center;
+  @apply rounded-4xl md:rounded-5xl p-12 pt-18 pb-22 items-center;
 }
 
 .container.reverseGradient {
   --gradient-angle: 0deg;
+  
 }

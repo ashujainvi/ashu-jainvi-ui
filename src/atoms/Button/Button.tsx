@@ -7,6 +7,9 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary';
   as?: 'button' | 'link';
   to?: string;
+  'aria-label'?: string;
+  'aria-describedby'?: string;
+  'aria-pressed'?: boolean;
 }
 
 const Button = ({ 
@@ -15,20 +18,40 @@ const Button = ({
   as = 'button',
   to,
   className = '',
+  'aria-label': ariaLabel,
+  'aria-describedby': ariaDescribedby,
+  'aria-pressed': ariaPressed,
+  disabled,
   ...props 
 }: ButtonProps) => {
   const buttonClasses = `${styles.button} ${styles[variant]} ${className}`.trim();
 
   if (as === 'link' && to) {
     return (
-      <Link to={to} className={buttonClasses} role="button">
+      <Link 
+        to={to} 
+        className={buttonClasses} 
+        role="button"
+        aria-label={ariaLabel}
+        aria-describedby={ariaDescribedby}
+        aria-pressed={ariaPressed}
+        aria-disabled={disabled}
+        tabIndex={disabled ? -1 : 0}
+      >
         {children}
       </Link>
     );
   }
 
   return (
-    <button className={buttonClasses} {...props}>
+    <button 
+      className={buttonClasses} 
+      aria-label={ariaLabel}
+      aria-describedby={ariaDescribedby}
+      aria-pressed={ariaPressed}
+      disabled={disabled}
+      {...props}
+    >
       {children}
     </button>
   );

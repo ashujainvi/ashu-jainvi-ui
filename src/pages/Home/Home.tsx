@@ -34,12 +34,15 @@ const Home = () => (
         <div className="mt-10 mx-auto w-[240px]">
           <img src={desktopSvg} alt="Desktop Illustration" className="mx-auto" />
         </div>
-        <Pill variant="primary" showBorder={false}>
-          <p className="caption">
-            Who builds clean yet playful digital worlds through photography, graphics,
-            and web design.
-          </p>
-        </Pill>
+        <div className="mb-36">
+          <Pill variant="primary" showBorder={false}>
+            <p className="caption">
+              Who builds clean yet playful digital worlds through photography, graphics,
+              and web design.
+            </p>
+          </Pill>
+        </div>
+
       </div>
     </section>
     <section className={styles.discoverSection}>
@@ -54,7 +57,7 @@ const Home = () => (
               <FeatureCard
                 title={'Photography'}
                 caption={
-                  'Artistic portraits photos taken over the years'
+                  'Artistic portrait photos taken over the years'
                 }
                 linkText="View Portfolio"
                 linkHref="/photos"
