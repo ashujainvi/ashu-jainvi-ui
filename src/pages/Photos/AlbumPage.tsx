@@ -7,6 +7,15 @@ import PhotoModal from '../../organisms/PhotoModal/PhotoModal';
 import type { PhotoItem } from '../../organisms/PhotoModal/PhotoModal';
 import { albums, SIZES_ALBUM_GRID } from '../../data/photos';
 
+type GridVariant = 'portrait' | 'portraitWide' | 'landscape';
+
+function getGridVariant(width: number, height: number): GridVariant {
+  const ratio = width / height;
+  if (ratio > 1) return 'landscape';
+  if (ratio <= 0.70) return 'portrait';
+  return 'portraitWide';
+}
+
 const AlbumPage = () => {
   const { albumId } = useParams<{ albumId: string }>();
   const album = albums.find(a => a.id === albumId);
@@ -42,24 +51,32 @@ const AlbumPage = () => {
         </Link>
         <div className={styles.meta}>
           <span className="text-overline">{album.photos.length} photo{album.photos.length !== 1 ? 's' : ''}</span>
-          <h1 className="display">{album.title}</h1>
+          <h1
+            className={`display ${album.gradient ? styles.gradientTitle : ''}`}
+            style={album.gradient ? { backgroundImage: `linear-gradient(135deg, ${album.gradient[0]}, ${album.gradient[1]})` } : undefined}
+          >
+            {album.title}
+          </h1>
           {album.description && <p className={styles.description}>{album.description}</p>}
         </div>
       </div>
       <div className={styles.photoGrid}>
-        {album.photos.map((photo, i) => (
-          <PhotoCard
-            key={i}
-            image={photo.src}
-            srcSet={photo.srcSet}
-            sizes={SIZES_ALBUM_GRID}
-            alt={photo.alt}
-            width={photo.width}
-            height={photo.height}
-            className={styles.photoCard}
-            onClick={() => openModal(i)}
-          />
-        ))}
+        {album.photos.map((photo, i) => {
+          const variant = getGridVariant(photo.width, photo.height);
+          return (
+            <PhotoCard
+              key={i}
+              image={photo.src}
+              srcSet={photo.srcSet}
+              sizes={SIZES_ALBUM_GRID}
+              alt={photo.alt}
+              width={photo.width}
+              height={photo.height}
+              className={`${styles.photoCard} ${styles[variant]}`}
+              onClick={() => openModal(i)}
+            />
+          );
+        })}
       </div>
       <PhotoModal
         photos={modalPhotos}

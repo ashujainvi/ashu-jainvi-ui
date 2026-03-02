@@ -138,6 +138,8 @@ export interface Album {
   cover: PhotoMeta;
   photos: PhotoMeta[];
   tags?: string[];
+  /** Two-tone gradient derived from the album's color palette [from, to] */
+  gradient?: [string, string];
 }
 
 export const heroPhoto: PhotoMeta = {
@@ -162,6 +164,7 @@ export const albums: Album[] = [
       { src: img8201, srcSet: img8201SrcSet, alt: 'Group Love Band wide shot', width: 1600, height: 2000 },
     ],
     tags: ['concert', 'music', 'portrait'],
+    gradient: ['#FFD194', '#D1568C'],
   },
   {
     id: 'bandits-fc',
@@ -182,6 +185,7 @@ export const albums: Album[] = [
       { src: img6204, srcSet: img6204SrcSet, alt: 'Bandits FC final shot', width: 1500, height: 2000 },
     ],
     tags: ['sports', 'soccer', 'action'],
+    gradient: ['#34D399', '#60A5FA'],
   },
   {
     id: 'at-vanta',
@@ -203,6 +207,7 @@ export const albums: Album[] = [
       { src: imgVanta7526, srcSet: imgVanta7526SrcSet, alt: 'At Vanta office', width: 2048, height: 1365 },
     ],
     tags: ['vanta', 'work', 'life'],
+    gradient: ['#C4B5FD', '#67E8F9'],
   },
   {
     id: 'youth',
@@ -217,6 +222,7 @@ export const albums: Album[] = [
       { src: img7224, srcSet: img7224SrcSet, alt: 'Youth game highlight', width: 1500, height: 2000 },
     ],
     tags: ['sports', 'youth'],
+    gradient: ['#FB923C', '#F472B6'],
   },
   {
     id: 'icarus-cup',
@@ -252,10 +258,11 @@ export const albums: Album[] = [
       { src: imgIcarus6493, srcSet: imgIcarus6493SrcSet, alt: 'Icarus Cup closing shot', width: 1638, height: 2048 },
     ],
     tags: ['sports', 'soccer', 'tournament'],
+    gradient: ['#F59E0B', '#EF4444'],
   },
 ];
 
 // sizes hints for <img sizes="...">
 export const SIZES_HERO = '100vw';
 export const SIZES_COVER = '(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw';
-export const SIZES_ALBUM_GRID = '(max-width: 639px) 50vw, 25vw';
+export const SIZES_ALBUM_GRID = '(max-width: 639px) 50vw, (max-width: 1023px) 50vw, 33vw';

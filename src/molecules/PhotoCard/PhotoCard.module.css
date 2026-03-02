@@ -3,6 +3,7 @@
   margin: 0;
   border-radius: 1rem;
   overflow: hidden;
+  -webkit-mask-image: radial-gradient(white, black);
   position: relative;
   perspective: 800px;
   transform-style: preserve-3d;
