@@ -1,13 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import './App.css';
 import Nav from './organisms/Nav/Nav';
 import Footer from './organisms/Footer/Footer';
 import ScrollToTop from './hooks/ScrollToTop';
-import Home from './pages/Home/Home';
-import About from './pages/About/About';
-import Photos from './pages/Photos/Photos';
-import Contact from './pages/Contact/Contact';
+import Home from './pages/Home/Home.lazy';
+import About from './pages/About/About.lazy';
+import Photos from './pages/Photos/Photos.lazy';
+import Contact from './pages/Contact/Contact.lazy';
 import PageTransition from './components/PageTransition/PageTransition';
 import { captureUtmParams, getStoredUtmParams } from './utils/analytics';
 
