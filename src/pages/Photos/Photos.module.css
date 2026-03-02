@@ -1,6 +1,6 @@
 .photos {
   position: relative;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -17,14 +17,14 @@
   min-height: 70vh;
   z-index: 1;
   overflow: hidden;
+  padding: 5rem 0.25rem 2rem;
 }
 
 .photoCard {
-  position: absolute;
-  inset: 6rem 0.25rem 2rem;
+  position: relative;
+  width: 100%;
   max-width: var(--screen-max-width);
-  margin-left: auto;
-  margin-right: auto;
+  aspect-ratio: 3 / 4;
   border-radius: 2rem;
   overflow: hidden;
   border: 1px solid var(--color-border-tertiary);
@@ -58,25 +58,33 @@
 }
 
 .photoImage {
+  position: absolute;
+  top: -30px;
+  left: 0;
   width: 100%;
-  height: 100%;
+  height: calc(100% + 60px);
   object-fit: cover;
   display: block;
   opacity: 0.5;
   filter: contrast(1.1) saturate(0.6);
+  will-change: transform;
 }
 
 .heroContent {
-  position: relative;
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
+  white-space: nowrap;
   will-change: transform, opacity;
   transition: transform 0.1s linear, opacity 0.1s linear;
 }
 
-.featuredSection {
+.albumsSection {
   width: 100%;
   max-width: var(--screen-max-width);
   padding: 4rem 0.25rem;
@@ -86,146 +94,9 @@
   gap: 2rem;
 }
 
-.featuredGrid {
+.albumsGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: minmax(0, 28.125rem);
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 0.5rem;
   width: 100%;
-}
-
-.featuredCard:nth-child(5) {
-  grid-column: span 2;
-}
-
-@media (min-width: 640px) {
-  .featuredGrid {
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: minmax(0, 40rem) minmax(0, 28.125rem);
-  }
-
-  .featuredCard:nth-child(1),
-  .featuredCard:nth-child(2) {
-    grid-column: span 3;
-  }
-
-  .featuredCard:nth-child(3),
-  .featuredCard:nth-child(4),
-  .featuredCard:nth-child(5) {
-    grid-column: span 2;
-  }
-}
-
-.featuredCard {
-  margin: 0;
-  border-radius: 1rem;
-  overflow: hidden;
-  border: 1px solid var(--color-border-tertiary);
-}
-
-.youthGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: minmax(0, 28.125rem);
-  gap: 0.5rem;
-  width: 100%;
-}
-
-@media (min-width: 640px) {
-  .youthGrid {
-    grid-template-columns: repeat(6, 1fr);
-  }
-
-  .youthGrid .featuredCard:nth-child(1),
-  .youthGrid .featuredCard:nth-child(2) {
-    grid-column: span 3;
-  }
-
-  .youthGrid .featuredCard:nth-child(3),
-  .youthGrid .featuredCard:nth-child(4),
-  .youthGrid .featuredCard:nth-child(5) {
-    grid-column: span 2;
-  }
-}
-
-.banditsGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: minmax(0, 28.125rem);
-  gap: 0.5rem;
-  width: 100%;
-}
-
-.banditsCard {
-  margin: 0;
-  border-radius: 1rem;
-  overflow: hidden;
-  border: 1px solid var(--color-border-tertiary);
-}
-
-.banditsCard:nth-child(7),
-.banditsCard:nth-child(8),
-.banditsCard:nth-child(11) {
-  grid-column: span 2;
-}
-
-.banditsCard:nth-child(11) {
-  aspect-ratio: 3 / 4;
-}
-
-@media (min-width: 640px) {
-  .banditsCard:nth-child(11) {
-    aspect-ratio: auto;
-  }
-
-  .banditsGrid {
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows:
-      minmax(0, 28rem)
-      minmax(0, 34rem)
-      minmax(0, 28rem)
-      minmax(0, 34rem)
-      minmax(0, 40rem);
-  }
-
-  /* Row 1: landscape (4) + portrait (2) */
-  .banditsCard:nth-child(1) {
-    grid-column: span 4;
-  }
-  .banditsCard:nth-child(2) {
-    grid-column: span 2;
-  }
-
-  /* Row 2: 3 portraits */
-  .banditsCard:nth-child(3),
-  .banditsCard:nth-child(4),
-  .banditsCard:nth-child(5) {
-    grid-column: span 2;
-  }
-
-  /* Row 3: portrait (2) + landscape (4) */
-  .banditsCard:nth-child(6) {
-    grid-column: span 2;
-  }
-  .banditsCard:nth-child(7) {
-    grid-column: span 4;
-  }
-
-  /* Row 4: portrait (2) + portrait wide (4) */
-  .banditsCard:nth-child(8) {
-    grid-column: span 4;
-  }
-  .banditsCard:nth-child(9) {
-    grid-column: span 2;
-  }
-
-  /* Row 5: 2 landscapes */
-  .banditsCard:nth-child(10) {
-    grid-column: span 3;
-  }
-
-  /* Row 6: portrait full width */
-  .banditsCard:nth-child(11) {
-    grid-column: span 3;
-  }
 }

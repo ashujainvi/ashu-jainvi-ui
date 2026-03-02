@@ -1,0 +1,75 @@
+.albumPage {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 6rem;
+}
+
+.header {
+  width: 100%;
+  max-width: var(--screen-max-width);
+  padding: 0 0.25rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-family-secondary);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--color-gray);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.backLink:hover {
+  color: var(--color-text-primary);
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.description {
+  font-family: var(--font-family-secondary);
+  font-size: 0.9rem;
+  color: var(--color-gray);
+  margin: 0;
+  max-width: 48ch;
+  line-height: 1.6;
+}
+
+.photoGrid {
+  width: 100%;
+  max-width: var(--screen-max-width);
+  padding: 0 0.25rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: minmax(0, 28rem);
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .photoGrid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-auto-rows: minmax(0, 32rem);
+  }
+}
+
+.photoCard {
+  margin: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--color-border-tertiary);
+}

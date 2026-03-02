@@ -1,4 +1,4 @@
-import { type FC, useRef, useState } from 'react';
+import { type FC, useEffect, useRef, useState } from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 import { useNavigate } from 'react-router-dom';
 import styles from './ContactForm.module.css';
@@ -10,7 +10,14 @@ const ContactForm: FC = () => {
   const [state, handleSubmit, reset] = useForm(FORMSPREE_FORM_ID);
   const navigate = useNavigate();
   const phoneRef = useRef<HTMLInputElement>(null);
+  const successRef = useRef<HTMLDivElement>(null);
   const [fields, setFields] = useState({ name: '', email: '', message: '' });
+
+  useEffect(() => {
+    if (state.succeeded) {
+      successRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [state.succeeded]);
 
   const isFormValid = fields.name.trim() !== '' && fields.email.trim() !== '' && fields.message.trim() !== '';
 
@@ -40,7 +47,7 @@ const ContactForm: FC = () => {
 
   if (state.succeeded) {
     return (
-      <div className={`${styles.form} ${styles.successWrapper}`}>
+      <div ref={successRef} className={`${styles.form} ${styles.successWrapper}`}>
         <p className={styles.successMessage}>Thanks for reaching out! I'll get back to you soon.</p>
         <Button type="button" variant="primary" onClick={() => { reset(); navigate('/photos'); }} style={{ maxWidth: '16.25rem' }}>View Portfolio</Button>
       </div>

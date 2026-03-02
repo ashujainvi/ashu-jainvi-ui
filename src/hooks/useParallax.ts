@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 
 interface ParallaxLayer {
-  ref: React.RefObject<HTMLElement | null>;
+  ref: { readonly current: HTMLElement | null };
   speed: number;
   scale?: [number, number];
   fadeOut?: boolean;

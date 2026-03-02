@@ -6,6 +6,7 @@ import ScrollToTop from './hooks/ScrollToTop';
 import Home from './pages/Home/Home.lazy';
 import About from './pages/About/About.lazy';
 import Photos from './pages/Photos/Photos.lazy';
+import AlbumPage from './pages/Photos/AlbumPage.lazy';
 import Contact from './pages/Contact/Contact.lazy';
 import PageTransition from './components/PageTransition/PageTransition';
 import { captureUtmParams, getStoredUtmParams } from './utils/analytics';
@@ -49,6 +50,7 @@ function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/photos" element={<Photos />} />
+        <Route path="/photos/:albumId" element={<AlbumPage />} />
         <Route path="/contact" element={<Contact />} />
         {/* Clean redirect for Instagram bio link — use https://ashujainvi.com/instagram */}
         <Route
