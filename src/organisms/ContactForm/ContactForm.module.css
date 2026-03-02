@@ -58,6 +58,51 @@
   color: var(--color-gray);
 }
 
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus,
+.textarea:-webkit-autofill,
+.textarea:-webkit-autofill:hover,
+.textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--color-gray-lighter);
+  -webkit-box-shadow: 0 0 0 1000px var(--color-gray-darkest) inset;
+  box-shadow: 0 0 0 1000px var(--color-gray-darkest) inset;
+  font-family: var(--font-family-secondary);
+  font-size: 0.875rem;
+  caret-color: var(--color-gray-lighter);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.phoneWrapper {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-gray-darkest);
+  border: 1px solid var(--color-gray-dark);
+  border-radius: 0.5rem;
+  transition: border-color 0.2s ease;
+}
+
+.phoneWrapper:focus-within {
+  border-color: var(--color-gray);
+}
+
+.phonePrefix {
+  padding-left: 1rem;
+  font-family: var(--font-family-secondary);
+  font-size: 0.875rem;
+  color: var(--color-gray-light);
+  user-select: none;
+}
+
+.phoneInput {
+  border: none;
+  background: transparent;
+}
+
+.phoneInput:focus {
+  border-color: transparent;
+}
+
 .textarea {
   min-height: 10rem;
   resize: vertical;
@@ -75,4 +120,10 @@
   color: var(--color-gray-lighter);
   text-align: center;
   padding: 2rem 0;
+}
+
+.successWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
