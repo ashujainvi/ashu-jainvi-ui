@@ -87,6 +87,14 @@
   pointer-events: none;
   z-index: 1;
 }
+@media (max-width: 500px) {
+  .redHue .image {
+    filter: brightness(1.45) contrast(1.15);
+  }
+  .redHue .imageWrapper::after {
+    background: rgba(200, 20, 20, 0.45);
+  }
+}
 
 .image {
   width: 100%;

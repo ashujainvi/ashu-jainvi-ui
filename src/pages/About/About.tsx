@@ -6,7 +6,7 @@ const About = () => (
   <>
     <Seo
       title="About"
-      description="Learn about Ashu Jainvi — a senior UI developer with 8+ years of experience at DSW and Apple, now focused on photography, graphic design, and AI-powered web projects in Austin, Texas."
+      description="Learn about Ashu Jainvi — a senior engineer with 8+ years of experience at DSW and Apple, focused on photography, graphic design, and AI-powered web projects in Austin, Texas."
       path="/about"
       type="profile"
     />
