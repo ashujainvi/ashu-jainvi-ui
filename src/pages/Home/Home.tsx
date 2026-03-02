@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import styles from './Home.module.css';
 import containerStyles from '../../styles/modules/container.module.css';
+import Seo from '../../components/Seo/Seo';
 import Pill from '../../atoms/Pill/Pill';
 import FeatureCard from '../../organisms/FeatureCard/FeatureCard';
 import PhotoCard from '../../molecules/PhotoCard/PhotoCard';
@@ -21,6 +22,11 @@ const Home = () => {
 
   return (
   <div className={styles.home}>
+    <Seo
+      title="Visual Artist & UI Developer"
+      description="Ashu Jainvi is an Austin, Texas-based visual artist and senior UI developer specializing in photography, graphic design, and web development."
+      path="/"
+    />
     <div
       className={styles.backgroundWrapper}
       style={{ backgroundImage: `url(${glitchPng})` }}></div>

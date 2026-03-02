@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import styles from './Photos.module.css';
+import Seo from '../../components/Seo/Seo';
 import PhotoCard from '../../molecules/PhotoCard/PhotoCard';
 import PhotoModal from '../../organisms/PhotoModal/PhotoModal';
 import type { PhotoItem } from '../../organisms/PhotoModal/PhotoModal';
@@ -103,6 +104,11 @@ const Photos = () => {
 
   return (
   <div className={styles.photos}>
+    <Seo
+      title="Photography Portfolio"
+      description="Browse Ashu Jainvi's photography portfolio featuring portrait sessions, Bandits FC soccer action shots, and youth sports photography in Austin, Texas."
+      path="/photos"
+    />
     <section className={styles.heroSection}>
       <div className={styles.photoCard}>
         <img

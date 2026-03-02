@@ -1,8 +1,16 @@
 import styles from './About.module.css';
 import PageHero from '../../components/PageHero/PageHero';
+import Seo from '../../components/Seo/Seo';
 
 const About = () => (
-  <PageHero overline="Get to know" title="About Me">
+  <>
+    <Seo
+      title="About"
+      description="Learn about Ashu Jainvi — a senior UI developer with 8+ years of experience at DSW and Apple, now focused on photography, graphic design, and AI-powered web projects in Austin, Texas."
+      path="/about"
+      type="profile"
+    />
+    <PageHero overline="Get to know" title="About Me">
     <section className={styles.prose}>
       <p>
         Hi, I am <strong>Ashu</strong>. I have been a professional web developer
@@ -51,6 +59,7 @@ const About = () => (
       </p>
     </section>
   </PageHero>
+  </>
 );
 
 export default About;

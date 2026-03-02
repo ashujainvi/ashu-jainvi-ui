@@ -10,7 +10,8 @@ This document outlines the design principles, patterns, and conventions used in 
 4. [Typography System](#typography-system)
 5. [Color System](#color-system)
 6. [Accessibility (WCAG AAA)](#accessibility-wcag-aaa)
-7. [Component Guidelines](#component-guidelines)
+7. [SEO Best Practices](#seo-best-practices)
+8. [Component Guidelines](#component-guidelines)
 
 ---
 
@@ -352,6 +353,205 @@ This project targets **WCAG 2.2 Level AAA** compliance. Every component must fol
 
 ---
 
+## SEO Best Practices
+
+This project is a client-side rendered React SPA. Because SPAs serve a single HTML shell and rely on JavaScript to render content, additional care is needed to ensure visibility to search engines and social platforms.
+
+> **Reference:** [Yalantis — React SEO-Friendly Optimization Tips & Best Practices](https://yalantis.com/blog/search-engine-optimization-for-react-apps/)
+
+### Architecture
+
+#### Per-Page Meta Tags (Seo Component)
+
+Every page **must** include the `<Seo>` component (`src/components/Seo/Seo.tsx`) as the first child inside its root element. This dynamically sets document title, meta description, Open Graph tags, Twitter Card tags, and the canonical URL.
+
+```tsx
+// ✅ Good — each page has unique meta
+import Seo from '../../components/Seo/Seo';
+
+const About = () => (
+  <>
+    <Seo
+      title="About"
+      description="Learn about Ashu Jainvi — a senior UI developer..."
+      path="/about"
+      type="profile"
+    />
+    <PageHero overline="Get to know" title="About Me">
+      ...
+    </PageHero>
+  </>
+);
+
+// ❌ Bad — relying on index.html defaults for every page
+const About = () => <PageHero>...</PageHero>;
+```
+
+| Prop | Required | Details |
+|------|----------|---------|
+| `title` | Yes | Page-specific title (appended with `\| Ashu Jainvi`) |
+| `description` | No | 50–160 character summary; defaults to site description |
+| `path` | No | URL path (e.g., `/about`); used for canonical URL |
+| `image` | No | OG/Twitter image URL; defaults to `/og-image.jpg` |
+| `type` | No | `website` (default), `article`, or `profile` |
+
+#### index.html Defaults
+
+The `index.html` file provides **fallback** SEO metadata for crawlers that don't execute JavaScript (Facebook, Twitter/X, LinkedIn, Slack, etc.). It includes:
+
+- `<meta name="description">`
+- Open Graph tags (`og:title`, `og:description`, `og:image`, `og:url`, `og:type`)
+- Twitter Card tags (`twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`)
+- Structured data (JSON-LD `Person` schema)
+- `<link rel="canonical">`
+- `<noscript>` fallback with critical content
+
+> **Important:** When updating the site's default branding or description, update **both** `index.html` and the constants in `src/components/Seo/Seo.tsx`.
+
+### Title Tags
+
+- Every page must have a **unique, descriptive title**.
+- Follow the format: `Page Name | Ashu Jainvi`.
+- Keep titles under **60 characters** to avoid truncation in SERPs.
+- The homepage title should describe the primary value proposition.
+
+```
+✅ "Photography Portfolio | Ashu Jainvi"
+✅ "About | Ashu Jainvi"
+❌ "Home"
+❌ "Ashu Jainvi | Visual Artist | Photographer | UI Developer | Austin TX"
+```
+
+### Meta Descriptions
+
+- Every page must have a **unique meta description**.
+- Keep descriptions between **50–160 characters**.
+- Include relevant keywords naturally — no keyword stuffing.
+- Write descriptions that encourage click-through from search results.
+
+```
+✅ "Browse Ashu Jainvi's photography portfolio featuring portrait sessions,
+    Bandits FC soccer shots, and youth sports photography in Austin, Texas."
+❌ "photography photos pictures images portfolio gallery Austin"
+```
+
+### Open Graph & Social Sharing
+
+For each page, the Seo component sets OG and Twitter Card tags. For optimal social sharing:
+
+- **OG Image:** Use a 1200×630px image. Keep the default `og-image.jpg` in the `public/` folder.
+- **OG Type:** Use `website` for most pages, `profile` for the About page.
+- **OG Description:** Mirrors the meta description.
+
+### Canonical URLs
+
+Every page must declare a **canonical URL** via the Seo component's `path` prop. This prevents duplicate-content issues from:
+
+- Trailing slashes (`/about` vs `/about/`)
+- Query parameters (`/photos?ref=nav`)
+- Firebase Hosting alternative domains
+
+### Structured Data (JSON-LD)
+
+A `Person` schema is embedded in `index.html` using JSON-LD. This helps Google display rich results (knowledge panels, enhanced search listings).
+
+When adding new structured data:
+
+- Use `<script type="application/ld+json">` in `index.html` or render it from the Seo component
+- Validate with [Google Rich Results Test](https://search.google.com/test/rich-results)
+- Follow [Schema.org](https://schema.org/) vocabulary
+
+### Sitemap & Robots
+
+- **`public/sitemap.xml`**: Lists all public pages with `<changefreq>` and `<priority>`. Update whenever new pages are added.
+- **`public/robots.txt`**: Allows all crawlers and points to the sitemap.
+
+When adding a new page:
+1. Add a `<url>` entry to `sitemap.xml`
+2. Add the `<Seo>` component to the page with unique title/description
+
+### Semantic HTML for SEO
+
+Semantic elements help search engines understand page structure:
+
+- Use **one `<h1>` per page** — the primary topic.
+- Follow a **logical heading hierarchy** (`h1` → `h2` → `h3`); never skip levels.
+- Use `<main>`, `<section>`, `<article>`, `<nav>`, `<header>`, `<footer>` appropriately.
+- Use `<figure>` + `<figcaption>` for images with captions.
+
+```tsx
+// ✅ Good — clear heading hierarchy
+<h1 className="display">Photos</h1>
+<h2 className="title4">Featured</h2>
+<h2 className="title4">Bandits FC</h2>
+
+// ❌ Bad — skipping heading levels
+<h1>Photos</h1>
+<h4>Featured</h4>
+```
+
+### Images & Media
+
+- Provide **descriptive `alt` text** for all meaningful images — this is critical for both accessibility and image SEO.
+- Use **`width` and `height` attributes** on `<img>` to prevent layout shifts (improves Core Web Vitals CLS score).
+- Use **responsive `srcSet` and `sizes`** for optimal loading across devices.
+- **Lazy-load** off-screen images with `loading="lazy"` where appropriate.
+- Compress images via `vite-plugin-imagemin` (already configured).
+
+```tsx
+// ✅ Good — SEO-optimized image
+<img
+  src={photo}
+  srcSet={photoSrcSet}
+  sizes="(max-width: 639px) 50vw, 33vw"
+  alt="Bandits FC player dribbling past defender during night match"
+  width={1500}
+  height={2000}
+  loading="lazy"
+/>
+
+// ❌ Bad — generic or missing alt, no dimensions
+<img src={photo} alt="image" />
+```
+
+### URL Structure
+
+- Use **clean, descriptive URLs** (`/about`, `/photos`, `/contact`).
+- Avoid query parameters for navigable content.
+- Firebase Hosting's `cleanUrls: true` strips `.html` extensions automatically.
+
+### Performance (Core Web Vitals)
+
+Google uses [Core Web Vitals](https://web.dev/vitals/) as ranking signals. Maintain:
+
+- **LCP (Largest Contentful Paint):** < 2.5s — optimize hero images, preload critical assets.
+- **FID/INP (Interaction to Next Paint):** < 200ms — avoid long-running scripts on interaction.
+- **CLS (Cumulative Layout Shift):** < 0.1 — always specify image dimensions, avoid layout-shifting content.
+
+Existing optimizations:
+- Image compression (`vite-plugin-imagemin`)
+- Responsive images (`vite-imagetools` with `srcSet`)
+- Font preconnect for Google Fonts
+- Code splitting via React lazy routes
+
+### Caching Strategy
+
+Firebase Hosting is configured with aggressive caching headers for static assets:
+
+- Images, JS, CSS, and fonts: `Cache-Control: public, max-age=31536000, immutable`
+- Vite's content-hashed filenames ensure cache-busting on updates
+
+### SPA-Specific Considerations
+
+Since this is a client-side SPA:
+
+1. **Google can render JavaScript** — Googlebot runs JavaScript and will see dynamically rendered content. However, rendering may be delayed (deferred by the Web Rendering Service).
+2. **Social crawlers cannot** — Facebook, Twitter, LinkedIn crawlers do **not** execute JS. They rely on `index.html` default meta tags. This means social share previews will use the homepage metadata for all pages.
+3. **Crawl budget** — for a small portfolio site, this is not a concern. For larger SPAs, consider prerendering.
+4. **If SSR/prerendering is needed in the future** — consider migrating to a framework like Next.js or using a prerendering service.
+
+---
+
 ## Component Guidelines
 
 ### Creating New Components
@@ -446,7 +646,8 @@ Usage: `rounded-5xl` or `@apply rounded-5xl`
 3. **Centralize design tokens** - define in `@theme` and `:root`
 4. **Typography classes** - use semantic names, responsive by default
 5. **WCAG AAA accessibility** - semantic HTML, contrast, focus, alt text
-6. **Single responsibility** - each component does one thing well
+6. **SEO on every page** - unique title, description, canonical URL, and OG tags via `<Seo>` component
+7. **Single responsibility** - each component does one thing well
 
 ### When to Update This Guide
 
@@ -454,6 +655,7 @@ Usage: `rounded-5xl` or `@apply rounded-5xl`
 - Introducing new design patterns
 - Changing color/typography systems
 - Establishing new conventions
+- **Adding new pages** — update `sitemap.xml` and add `<Seo>` component
 
 ---
 
