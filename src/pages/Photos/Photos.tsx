@@ -1,9 +1,11 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import styles from './Photos.module.css';
 import Seo from '../../components/Seo/Seo';
 import PhotoCard from '../../molecules/PhotoCard/PhotoCard';
 import PhotoModal from '../../organisms/PhotoModal/PhotoModal';
 import type { PhotoItem } from '../../organisms/PhotoModal/PhotoModal';
+import useParallax from '../../hooks/useParallax';
+import TwinkleCanvas from '../../atoms/TwinkleCanvas/TwinkleCanvas';
 
 // Original JPEG imports (used as fallback src)
 import img0033 from '../../assets/photos/IMG_0033.jpg';
@@ -90,6 +92,15 @@ const banditsPhotos = [
 const Photos = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const photoCardRef = useRef<HTMLDivElement>(null);
+  const heroOverlineRef = useRef<HTMLSpanElement>(null);
+  const heroTitleRef = useRef<HTMLHeadingElement>(null);
+
+  const heroRef = useParallax(useMemo(() => [
+    { ref: photoCardRef, speed: 40, scale: [1, 0.97] as [number, number] },
+    { ref: heroOverlineRef, speed: -40, fadeOut: true },
+    { ref: heroTitleRef, speed: -70, scale: [1, 1.06] as [number, number], fadeOut: true },
+  ], []));
 
   const allPhotos: PhotoItem[] = useMemo(() => [
     ...featuredPhotos.map(p => ({ src: p.src, alt: p.alt, srcSet: p.srcSet })),
@@ -109,8 +120,8 @@ const Photos = () => {
       description="Browse Ashu Jainvi's photography portfolio featuring portrait sessions, Bandits FC soccer action shots, and youth sports photography in Austin, Texas."
       path="/photos"
     />
-    <section className={styles.heroSection}>
-      <div className={styles.photoCard}>
+    <section ref={heroRef} className={styles.heroSection}>
+      <div ref={photoCardRef} className={styles.photoCard}>
         <img
           src={img0033}
           srcSet={img0033SrcSet}
@@ -120,10 +131,11 @@ const Photos = () => {
           height={1272}
           className={styles.photoImage}
         />
+        <TwinkleCanvas />
       </div>
       <div className={styles.heroContent}>
-        <span className="text-overline">Explore</span>
-        <h1 className="display">Photos</h1>
+        <span ref={heroOverlineRef} className="text-overline">Explore</span>
+        <h1 ref={heroTitleRef} className="display">Photos</h1>
       </div>
     </section>
     <section className={styles.featuredSection}>

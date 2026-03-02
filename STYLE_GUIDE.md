@@ -571,6 +571,54 @@ Since this is a client-side SPA:
 3. **Crawl budget** — for a small portfolio site, this is not a concern. For larger SPAs, consider prerendering.
 4. **If SSR/prerendering is needed in the future** — consider migrating to a framework like Next.js or using a prerendering service.
 
+### UTM Campaign Tracking
+
+UTM parameters (`utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content`) are used to attribute traffic sources in Google Analytics. This is especially important for **Instagram**, whose in-app browser strips referrer headers, causing traffic to appear as "direct" in GA reports.
+
+> **Reference:** [Sked Social — How to Track Instagram Traffic with Google Analytics](https://skedsocial.com/blog/how-to-track-instagram-traffic-with-google-analytics)
+
+#### Architecture
+
+- **UTM capture:** `captureUtmParams()` in `src/App.tsx` reads UTM params from the landing URL's query string and stores them in `sessionStorage` under the key `utm_params`. This ensures they persist across SPA route navigations within the same session.
+- **Page view events:** `usePageTracking()` attaches the stored UTM params (`campaign_source`, `campaign_medium`, `campaign_name`, `campaign_term`, `campaign_content`) to every `page_view` event sent to GA4 via `gtag`.
+- **GA4 auto-detection:** GA4's `gtag('config', ...)` call in `index.html` automatically reads UTM params from the landing URL. The `sessionStorage` persistence ensures subsequent SPA navigations also carry the attribution.
+
+#### Instagram Bio Link
+
+A dedicated `/instagram` route in `src/App.tsx` redirects to the homepage with UTM params pre-attached:
+
+```
+https://ashujainvi.com/instagram
+→ redirects to → /?utm_source=instagram&utm_medium=social&utm_campaign=bio_link
+```
+
+**Use this URL in your Instagram bio.** It's short, clean, and automatically tags all traffic from Instagram so it shows as "instagram / social" in GA4 instead of "direct".
+
+Firebase Hosting's `cleanUrls` + SPA rewrite ensures `/instagram` is routed to the React app, which handles the redirect client-side via `<Navigate>`.
+
+#### Adding New Campaign Links
+
+When sharing links on other platforms, append UTM params manually:
+
+```
+# Instagram Story link
+https://ashujainvi.com/photos?utm_source=instagram&utm_medium=social&utm_campaign=story_link
+
+# LinkedIn post
+https://ashujainvi.com/about?utm_source=linkedin&utm_medium=social&utm_campaign=portfolio_share
+
+# Email signature
+https://ashujainvi.com/?utm_source=email&utm_medium=email&utm_campaign=signature
+```
+
+#### Rules
+
+- **Always use lowercase** — GA4 is case-sensitive. `utm_source=Instagram` and `utm_source=instagram` create separate entries.
+- **Keep `utm_source` consistent** — use `instagram`, `linkedin`, `twitter`, `email`, etc.
+- **Use `utm_medium=social`** for all social platforms so GA4 groups them under the "Social" channel.
+- **Use descriptive `utm_campaign` values** — `bio_link`, `story_link`, `post_q1_2026`, etc.
+- **Never put UTM params on internal links** — they're only for external inbound links. Adding them to `<Link>` or `<a>` within the site will overwrite the original source attribution.
+
 ---
 
 ## Mobile Performance & Cross-Browser
