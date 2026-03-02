@@ -1,4 +1,5 @@
 import styles from './Photos.module.css';
+import PhotoCard from '../../molecules/PhotoCard/PhotoCard';
 import img0033 from '../../assets/photos/IMG_0033.jpg';
 import img8298 from '../../assets/photos/IMG_8298.jpg';
 import img8201 from '../../assets/photos/IMG_8201.jpg';
@@ -74,15 +75,14 @@ const Photos = () => (
       <h2 className="title4 text-gray-400">Featured</h2>
       <div className={styles.featuredGrid}>
         {featuredPhotos.map((photo, i) => (
-          <figure key={i} className={styles.featuredCard}>
-            <img
-              src={photo.src}
-              alt={photo.alt}
-              width={photo.width}
-              height={photo.height}
-              className={styles.featuredImage}
-            />
-          </figure>
+          <PhotoCard
+            key={i}
+            image={photo.src}
+            alt={photo.alt}
+            width={photo.width}
+            height={photo.height}
+            className={styles.featuredCard}
+          />
         ))}
       </div>
     </section>
@@ -90,15 +90,14 @@ const Photos = () => (
       <h2 className="title4 text-gray-400">Bandits FC</h2>
       <div className={styles.banditsGrid}>
         {banditsPhotos.map((photo, i) => (
-          <figure key={i} className={styles.banditsCard}>
-            <img
-              src={photo.src}
-              alt={photo.alt}
-              width={photo.width}
-              height={photo.height}
-              className={styles.featuredImage}
-            />
-          </figure>
+          <PhotoCard
+            key={i}
+            image={photo.src}
+            alt={photo.alt}
+            width={photo.width}
+            height={photo.height}
+            className={styles.banditsCard}
+          />
         ))}
       </div>
     </section>
@@ -106,15 +105,14 @@ const Photos = () => (
       <h2 className="title4 text-gray-400">Youth</h2>
       <div className={styles.youthGrid}>
         {youthPhotos.map((photo, i) => (
-          <figure key={i} className={styles.featuredCard}>
-            <img
-              src={photo.src}
-              alt={photo.alt}
-              width={photo.width}
-              height={photo.height}
-              className={styles.featuredImage}
-            />
-          </figure>
+          <PhotoCard
+            key={i}
+            image={photo.src}
+            alt={photo.alt}
+            width={photo.width}
+            height={photo.height}
+            className={styles.featuredCard}
+          />
         ))}
       </div>
     </section>

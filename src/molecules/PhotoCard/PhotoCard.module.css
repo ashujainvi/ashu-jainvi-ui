@@ -1,5 +1,4 @@
 .photoCard {
-  max-width: 11.25rem;
   margin: 0;
   border-radius: 1rem;
   overflow: hidden;
@@ -14,7 +13,7 @@
 
 .image {
   width: 100%;
-  aspect-ratio: 3 / 4;
+  height: 100%;
   object-fit: cover;
   display: block;
 }

@@ -60,7 +60,7 @@ const Home = () => {
           Visual Artist
         </h2>
         <div className="mt-10">
-          <PhotoCard image={desktopSvg} caption="ashu.jpeg" alt="Ashu Jainvi" />
+          <PhotoCard image={desktopSvg} caption="ashu.jpeg" alt="Ashu Jainvi" className="max-w-[11.25rem] aspect-[3/4]" />
         </div>
         <div className="mb-36">
           <Pill variant="primary" showBorder={false}>
