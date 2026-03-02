@@ -102,6 +102,24 @@
   margin-top: -6.5rem;
 }
 
+.craftContainer {
+  overflow: hidden;
+}
+
+.craftContainer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--craft-bg);
+  background-repeat: no-repeat;
+  background-position: center 0;
+  background-size: cover;
+  mix-blend-mode: color-burn;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.75;
+}
+
 .discoverSection {
   position: relative;
   width: 100%;

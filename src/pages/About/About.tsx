@@ -1,11 +1,8 @@
 import styles from './About.module.css';
+import PageHero from '../../components/PageHero/PageHero';
 
 const About = () => (
-  <div className={styles.about}>
-    <section className={styles.heroSection}>
-      <span className="text-overline">Get to know</span>
-      <h1 className="display">About Me</h1>
-    </section>
+  <PageHero overline="Get to know" title="About Me">
     <section className={styles.prose}>
       <p>
         Hi, I am <strong>Ashu</strong>. I have been a professional web developer
@@ -53,7 +50,7 @@ const About = () => (
         </em>
       </p>
     </section>
-  </div>
+  </PageHero>
 );
 
 export default About;

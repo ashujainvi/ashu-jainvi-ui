@@ -51,6 +51,7 @@
   --color-bg-secondary: var(--color-gray-darker);
   --color-border-primary: var(--color-gray-dark);
   --color-border-secondary: var(--color-gray);
+  --color-border-tertiary: rgba(74, 74, 74, 0.3);
   --color-text-primary: var(--color-gray-lighter);
   --color-text-secondary: var(--color-gray-light);
 

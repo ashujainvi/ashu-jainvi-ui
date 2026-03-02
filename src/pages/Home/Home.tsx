@@ -3,12 +3,14 @@ import styles from './Home.module.css';
 import containerStyles from '../../styles/modules/container.module.css';
 import Pill from '../../atoms/Pill/Pill';
 import FeatureCard from '../../organisms/FeatureCard/FeatureCard';
-import desktopSvg from '../../assets/desktop.svg';
+import PhotoCard from '../../molecules/PhotoCard/PhotoCard';
+import desktopSvg from '../../assets/ashu-photo-card.png';
 import glitchPng from '../../assets/glitch.png';
 import cameraOutlinePng from '../../assets/camera-outline.png';
 import penToolOutlinePng from '../../assets/pen-tool-outline.png';
 import browserWindowOutlinePng from '../../assets/browser-window-outline.png';
 import sunriseButtonSvg from '../../assets/sunrise-button.svg';
+import texasCactusLandscapePng from '../../assets/texas-cactus-landscape.png';
 
 const Home = () => {
   const craftSectionRef = useRef<HTMLElement>(null);
@@ -47,15 +49,18 @@ const Home = () => {
       <img src={sunriseButtonSvg} alt="Sunrise Button" role="presentation" />
     </button>
     <section ref={craftSectionRef} className={styles.craftSection}>
-      <div className={containerStyles.container}>
+      <div
+        className={`${containerStyles.container} ${styles.craftContainer}`}
+        style={{ '--craft-bg': `url(${texasCactusLandscapePng})` } as React.CSSProperties}
+      >
         <span className="text-overline text-primary-darker">
           Austin, Texas based
         </span>
         <h2 className="title1">
           Visual Artist
         </h2>
-        <div className="mt-10 mx-auto w-[240px]">
-          <img src={desktopSvg} alt="Desktop Illustration" className="mx-auto" />
+        <div className="mt-10">
+          <PhotoCard image={desktopSvg} caption="ashu.jpeg" alt="Ashu Jainvi" />
         </div>
         <div className="mb-36">
           <Pill variant="primary" showBorder={false}>

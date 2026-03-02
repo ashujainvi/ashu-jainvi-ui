@@ -9,7 +9,8 @@ This document outlines the design principles, patterns, and conventions used in 
 3. [Styling Approach](#styling-approach)
 4. [Typography System](#typography-system)
 5. [Color System](#color-system)
-6. [Component Guidelines](#component-guidelines)
+6. [Accessibility (WCAG AAA)](#accessibility-wcag-aaa)
+7. [Component Guidelines](#component-guidelines)
 
 ---
 
@@ -247,6 +248,110 @@ This enables:
 
 ---
 
+## Accessibility (WCAG AAA)
+
+This project targets **WCAG 2.2 Level AAA** compliance. Every component must follow these principles.
+
+### Images
+
+- **Informative images** must have descriptive `alt` text that conveys the image's meaning or purpose.
+- **Decorative images** must use `alt=""` and `role="presentation"` so assistive technology skips them.
+- Never leave `alt` undefined — always make an explicit choice between informative and decorative.
+
+```tsx
+// ✅ Good - informative image
+<img src={photo} alt="Ashu standing outdoors in Austin, Texas" />
+
+// ✅ Good - decorative image
+<img src={bg} alt="" role="presentation" />
+
+// ❌ Bad - missing or vague alt
+<img src={photo} />
+<img src={photo} alt="image" />
+```
+
+### Color Contrast
+
+- **Text** must meet a **7:1** contrast ratio against its background (AAA).
+- **Large text** (≥ 18pt / 24px, or ≥ 14pt / 18.66px bold) must meet **4.5:1** (AAA).
+- **UI components and graphical objects** must meet **3:1** against adjacent colors.
+- Use tools like [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) to verify.
+
+### Semantic HTML
+
+- Use the correct HTML element for its purpose: `<button>` for actions, `<a>` for navigation, `<nav>`, `<main>`, `<section>`, `<article>`, `<figure>`, `<figcaption>`, etc.
+- Never use `<div>` or `<span>` for interactive elements.
+- Heading levels (`h1`–`h6`) must follow a logical hierarchy — never skip levels.
+
+```tsx
+// ✅ Good - semantic figure with caption
+<figure>
+  <img src={photo} alt="Portrait of Ashu" />
+  <figcaption>ashu.jpeg</figcaption>
+</figure>
+
+// ❌ Bad - div soup
+<div>
+  <img src={photo} />
+  <span>ashu.jpeg</span>
+</div>
+```
+
+### Focus Management
+
+- All interactive elements must have a **visible focus indicator** with sufficient contrast.
+- Focus styles should use `outline` (not just `border` or `box-shadow`).
+- Use `--color-focus-ring` for consistent focus styling across the project.
+- Never use `outline: none` without a replacement focus style.
+- Support `focus-visible` to show focus rings only for keyboard navigation.
+
+```css
+/* ✅ Good */
+.button:focus-visible {
+  outline: 0.125rem solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* ❌ Bad */
+.button:focus {
+  outline: none;
+}
+```
+
+### Keyboard Navigation
+
+- All interactive elements must be reachable and operable via keyboard.
+- Custom interactive elements must handle `Enter` and `Space` key events.
+- Avoid positive `tabIndex` values; use `tabIndex={0}` for custom focusable elements.
+
+### Motion & Animations
+
+- Respect `prefers-reduced-motion` — disable or reduce animations for users who request it.
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  .animated {
+    transition: none;
+    animation: none;
+  }
+}
+```
+
+### Forms
+
+- Every input must have a visible `<label>` associated via `htmlFor`/`id`.
+- Use `aria-describedby` for supplementary help text or error messages.
+- Use `aria-invalid="true"` to indicate validation errors.
+- Group related fields with `<fieldset>` and `<legend>`.
+
+### ARIA Rules
+
+- Prefer semantic HTML over ARIA — only add ARIA attributes when native semantics are insufficient.
+- Never use `aria-label` on non-interactive elements that already have visible text.
+- Test with a screen reader (VoiceOver on macOS) when adding ARIA attributes.
+
+---
+
 ## Component Guidelines
 
 ### Creating New Components
@@ -340,7 +445,8 @@ Usage: `rounded-5xl` or `@apply rounded-5xl`
 2. **CSS-first with Tailwind** - use `@apply` in CSS, not JSX
 3. **Centralize design tokens** - define in `@theme` and `:root`
 4. **Typography classes** - use semantic names, responsive by default
-5. **Single responsibility** - each component does one thing well
+5. **WCAG AAA accessibility** - semantic HTML, contrast, focus, alt text
+6. **Single responsibility** - each component does one thing well
 
 ### When to Update This Guide
 

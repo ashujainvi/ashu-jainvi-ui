@@ -1,0 +1,32 @@
+.photoCard {
+  max-width: 11.25rem;
+  margin: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photoCard {
+    transition: none;
+  }
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+}
+
+.caption {
+  display: block;
+  padding: 0.5rem 0;
+  font-family: var(--font-family-secondary);
+  font-size: 0.75rem;
+  color: var(--color-gray);
+  text-align: center;
+  text-transform: var(--caption-text-transform, none);
+  letter-spacing: 0.05em;
+  background-color: var(--color-bg-secondary);
+}
