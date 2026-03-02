@@ -1,8 +1,64 @@
+
 .photoCard {
   margin: 0;
   border-radius: 1rem;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  perspective: 800px;
+  transform-style: preserve-3d;
+  transform:
+    translate(calc(var(--magnetic-x, 0) * 1px), calc(var(--magnetic-y, 0) * 1px))
+    rotateX(calc(var(--tilt-x, 0) * 1deg))
+    rotateY(calc(var(--tilt-y, 0) * 1deg));
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+  will-change: transform, box-shadow;
+  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.08);
+}
+
+.photoCard:hover {
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+
+.photoCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      ellipse 90px 130px at var(--spotlight-x, -999px) var(--spotlight-y, -999px),
+      rgba(255, 255, 255, 0.14) 0%,
+      rgba(255, 255, 255, 0.05) 45%,
+      transparent 100%
+    ),
+    radial-gradient(
+      ellipse 200px 300px at var(--spotlight-x, -999px) var(--spotlight-y, -999px),
+      rgba(255, 255, 255, 0.04) 0%,
+      transparent 70%
+    );
+  filter: blur(14px);
+  opacity: var(--spotlight-active, 0);
+  transition: opacity 0.4s ease;
+  z-index: 2;
+}
+
+.photoCard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(
+    ellipse 120px 50px at var(--spotlight-x, -999px) var(--spotlight-y, -999px),
+    rgba(255, 255, 255, 0.06) 0%,
+    transparent 100%
+  );
+  filter: blur(10px);
+  opacity: var(--spotlight-active, 0);
+  transition: opacity 0.4s ease;
+  z-index: 2;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -16,6 +72,14 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transform:
+    scale(1.08)
+    translate(
+      calc(var(--parallax-x, 0) * -12px),
+      calc(var(--parallax-y, 0) * -12px)
+    );
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
 }
 
 .caption {
@@ -28,4 +92,6 @@
   text-transform: var(--caption-text-transform, none);
   letter-spacing: 0.05em;
   background-color: var(--color-bg-secondary);
+  position: relative;
+  z-index: 1;
 }

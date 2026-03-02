@@ -1,5 +1,8 @@
+import { useState, useMemo } from 'react';
 import styles from './Photos.module.css';
 import PhotoCard from '../../molecules/PhotoCard/PhotoCard';
+import PhotoModal from '../../organisms/PhotoModal/PhotoModal';
+import type { PhotoItem } from '../../organisms/PhotoModal/PhotoModal';
 
 // Original JPEG imports (used as fallback src)
 import img0033 from '../../assets/photos/IMG_0033.jpg';
@@ -83,7 +86,22 @@ const banditsPhotos = [
   { src: img6204, srcSet: img6204SrcSet, alt: 'Bandits FC final shot', width: 1500, height: 2000 },
 ];
 
-const Photos = () => (
+const Photos = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const allPhotos: PhotoItem[] = useMemo(() => [
+    ...featuredPhotos.map(p => ({ src: p.src, alt: p.alt, srcSet: p.srcSet })),
+    ...banditsPhotos.map(p => ({ src: p.src, alt: p.alt, srcSet: p.srcSet })),
+    ...youthPhotos.map(p => ({ src: p.src, alt: p.alt, srcSet: p.srcSet })),
+  ], []);
+
+  const openModal = (sectionOffset: number, index: number) => {
+    setCurrentIndex(sectionOffset + index);
+    setModalOpen(true);
+  };
+
+  return (
   <div className={styles.photos}>
     <section className={styles.heroSection}>
       <div className={styles.photoCard}>
@@ -115,6 +133,7 @@ const Photos = () => (
             width={photo.width}
             height={photo.height}
             className={styles.featuredCard}
+            onClick={() => openModal(0, i)}
           />
         ))}
       </div>
@@ -132,6 +151,7 @@ const Photos = () => (
             width={photo.width}
             height={photo.height}
             className={styles.banditsCard}
+            onClick={() => openModal(featuredPhotos.length, i)}
           />
         ))}
       </div>
@@ -149,11 +169,20 @@ const Photos = () => (
             width={photo.width}
             height={photo.height}
             className={styles.featuredCard}
+            onClick={() => openModal(featuredPhotos.length + banditsPhotos.length, i)}
           />
         ))}
       </div>
     </section>
+    <PhotoModal
+      photos={allPhotos}
+      currentIndex={currentIndex}
+      isOpen={modalOpen}
+      onClose={() => setModalOpen(false)}
+      onNavigate={setCurrentIndex}
+    />
   </div>
 );
+}
 
 export default Photos;

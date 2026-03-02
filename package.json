@@ -15,6 +15,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@fiddle-digital/string-tune": "^1.1.50",
     "@formspree/react": "^3.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
