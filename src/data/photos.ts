@@ -33,6 +33,32 @@ import img5729 from '../assets/photos/bandits/IMG_5729-web-watermarked-2.jpg';
 import img5836 from '../assets/photos/bandits/IMG_5836-web-watermarked-2.jpg';
 import img5947 from '../assets/photos/bandits/IMG_5947-web-watermarked-2.jpg';
 import img6204 from '../assets/photos/bandits/IMG_6204-web-watermarked-2.jpg';
+import imgIcarus1679 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-1679.jpg';
+import imgIcarus1732 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-1732.jpg';
+import imgIcarus1781 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-1781.jpg';
+import imgIcarus1898 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-1898.jpg';
+import imgIcarus1999 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-1999.jpg';
+import imgIcarus2071 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-2071.jpg';
+import imgIcarus2230 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-2230.jpg';
+import imgIcarus2422 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-2422.jpg';
+import imgIcarus2423 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-2423.jpg';
+import imgIcarus2425 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-2425.jpg';
+import imgIcarus2426 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-2426.jpg';
+import imgIcarus2467 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-2467.jpg';
+import imgIcarus2468 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-2468.jpg';
+import imgIcarus2469 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-2469.jpg';
+import imgIcarus3465 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-3465.jpg';
+import imgIcarus3894 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-3894.jpg';
+import imgIcarus3928 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-3928.jpg';
+import imgIcarus5427 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-5427.jpg';
+import imgIcarus5430 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-5430.jpg';
+import imgIcarus5501 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-5501.jpg';
+import imgIcarus5772 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-5772.jpg';
+import imgIcarus5833 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-5833.jpg';
+import imgIcarus6025 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-6025.jpg';
+import imgIcarus6114 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-6114.jpg';
+import imgIcarus6442 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-6442.jpg';
+import imgIcarus6493 from '../assets/photos/icarus-cup/Ashu Jainvi IMG-6493.jpg';
 
 // Responsive WebP srcSet imports (multiple widths — JPEG src above is the fallback)
 import img0033SrcSet from '../assets/photos/IMG_0033.jpg?w=480;768;1024;1500&format=webp&as=srcset';
@@ -69,6 +95,32 @@ import img5729SrcSet from '../assets/photos/bandits/IMG_5729-web-watermarked-2.j
 import img5836SrcSet from '../assets/photos/bandits/IMG_5836-web-watermarked-2.jpg?w=480;768;1024;2000&format=webp&as=srcset';
 import img5947SrcSet from '../assets/photos/bandits/IMG_5947-web-watermarked-2.jpg?w=480;768;1024;1500&format=webp&as=srcset';
 import img6204SrcSet from '../assets/photos/bandits/IMG_6204-web-watermarked-2.jpg?w=480;768;1024;1500&format=webp&as=srcset';
+import imgIcarus1679SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-1679.jpg?w=480;768;1024;1365&format=webp&as=srcset';
+import imgIcarus1732SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-1732.jpg?w=480;768;1024;1365&format=webp&as=srcset';
+import imgIcarus1781SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-1781.jpg?w=480;768;1024;1638&format=webp&as=srcset';
+import imgIcarus1898SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-1898.jpg?w=480;768;1024;1365&format=webp&as=srcset';
+import imgIcarus1999SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-1999.jpg?w=480;768;1024;2048&format=webp&as=srcset';
+import imgIcarus2071SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-2071.jpg?w=480;768;1024;1638&format=webp&as=srcset';
+import imgIcarus2230SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-2230.jpg?w=480;768;1024;1365&format=webp&as=srcset';
+import imgIcarus2422SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-2422.jpg?w=480;768;1024;2048&format=webp&as=srcset';
+import imgIcarus2423SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-2423.jpg?w=480;768;1024;2048&format=webp&as=srcset';
+import imgIcarus2425SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-2425.jpg?w=480;768;1024;2048&format=webp&as=srcset';
+import imgIcarus2426SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-2426.jpg?w=480;768;1024;2048&format=webp&as=srcset';
+import imgIcarus2467SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-2467.jpg?w=480;768;1024;1638&format=webp&as=srcset';
+import imgIcarus2468SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-2468.jpg?w=480;768;1024;1365&format=webp&as=srcset';
+import imgIcarus2469SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-2469.jpg?w=480;768;1024;1638&format=webp&as=srcset';
+import imgIcarus3465SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-3465.jpg?w=480;768;1024;2048&format=webp&as=srcset';
+import imgIcarus3894SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-3894.jpg?w=480;768;1024;1638&format=webp&as=srcset';
+import imgIcarus3928SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-3928.jpg?w=480;768;1024;1638&format=webp&as=srcset';
+import imgIcarus5427SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-5427.jpg?w=480;768;1024;1638&format=webp&as=srcset';
+import imgIcarus5430SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-5430.jpg?w=480;768;1024;2048&format=webp&as=srcset';
+import imgIcarus5501SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-5501.jpg?w=480;768;1024;1638&format=webp&as=srcset';
+import imgIcarus5772SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-5772.jpg?w=480;768;1024;2048&format=webp&as=srcset';
+import imgIcarus5833SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-5833.jpg?w=480;768;1024;2048&format=webp&as=srcset';
+import imgIcarus6025SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-6025.jpg?w=480;768;1024;2048&format=webp&as=srcset';
+import imgIcarus6114SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-6114.jpg?w=480;768;1024;2048&format=webp&as=srcset';
+import imgIcarus6442SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-6442.jpg?w=480;768;1024;1638&format=webp&as=srcset';
+import imgIcarus6493SrcSet from '../assets/photos/icarus-cup/Ashu Jainvi IMG-6493.jpg?w=480;768;1024;1638&format=webp&as=srcset';
 
 export interface PhotoMeta {
   src: string;
@@ -165,6 +217,41 @@ export const albums: Album[] = [
       { src: img7224, srcSet: img7224SrcSet, alt: 'Youth game highlight', width: 1500, height: 2000 },
     ],
     tags: ['sports', 'youth'],
+  },
+  {
+    id: 'icarus-cup',
+    title: 'Icarus Cup',
+    description: 'Action and portrait photography from the Icarus Cup',
+    cover: { src: imgIcarus1679, srcSet: imgIcarus1679SrcSet, alt: 'Icarus Cup player portrait', width: 1365, height: 2048 },
+    photos: [
+      { src: imgIcarus1679, srcSet: imgIcarus1679SrcSet, alt: 'Icarus Cup player portrait', width: 1365, height: 2048 },
+      { src: imgIcarus1732, srcSet: imgIcarus1732SrcSet, alt: 'Icarus Cup sideline moment', width: 1365, height: 2048 },
+      { src: imgIcarus1781, srcSet: imgIcarus1781SrcSet, alt: 'Icarus Cup match moment', width: 1638, height: 2048 },
+      { src: imgIcarus1898, srcSet: imgIcarus1898SrcSet, alt: 'Icarus Cup player focus', width: 1365, height: 2048 },
+      { src: imgIcarus1999, srcSet: imgIcarus1999SrcSet, alt: 'Icarus Cup match action', width: 2048, height: 1365 },
+      { src: imgIcarus2071, srcSet: imgIcarus2071SrcSet, alt: 'Icarus Cup game highlight', width: 1638, height: 2048 },
+      { src: imgIcarus2230, srcSet: imgIcarus2230SrcSet, alt: 'Icarus Cup player closeup', width: 1365, height: 2048 },
+      { src: imgIcarus2422, srcSet: imgIcarus2422SrcSet, alt: 'Icarus Cup wide shot', width: 2048, height: 1365 },
+      { src: imgIcarus2423, srcSet: imgIcarus2423SrcSet, alt: 'Icarus Cup field action', width: 2048, height: 1365 },
+      { src: imgIcarus2425, srcSet: imgIcarus2425SrcSet, alt: 'Icarus Cup team play', width: 2048, height: 1365 },
+      { src: imgIcarus2426, srcSet: imgIcarus2426SrcSet, alt: 'Icarus Cup on the pitch', width: 2048, height: 1365 },
+      { src: imgIcarus2467, srcSet: imgIcarus2467SrcSet, alt: 'Icarus Cup player portrait', width: 1638, height: 2048 },
+      { src: imgIcarus2468, srcSet: imgIcarus2468SrcSet, alt: 'Icarus Cup sideline shot', width: 1365, height: 2048 },
+      { src: imgIcarus2469, srcSet: imgIcarus2469SrcSet, alt: 'Icarus Cup match detail', width: 1638, height: 2048 },
+      { src: imgIcarus3465, srcSet: imgIcarus3465SrcSet, alt: 'Icarus Cup wide angle', width: 2048, height: 1365 },
+      { src: imgIcarus3894, srcSet: imgIcarus3894SrcSet, alt: 'Icarus Cup player action', width: 1638, height: 2048 },
+      { src: imgIcarus3928, srcSet: imgIcarus3928SrcSet, alt: 'Icarus Cup game moment', width: 1638, height: 2048 },
+      { src: imgIcarus5427, srcSet: imgIcarus5427SrcSet, alt: 'Icarus Cup competition shot', width: 1638, height: 2048 },
+      { src: imgIcarus5430, srcSet: imgIcarus5430SrcSet, alt: 'Icarus Cup field view', width: 2048, height: 1365 },
+      { src: imgIcarus5501, srcSet: imgIcarus5501SrcSet, alt: 'Icarus Cup player highlight', width: 1638, height: 2048 },
+      { src: imgIcarus5772, srcSet: imgIcarus5772SrcSet, alt: 'Icarus Cup pitch action', width: 2048, height: 1365 },
+      { src: imgIcarus5833, srcSet: imgIcarus5833SrcSet, alt: 'Icarus Cup match atmosphere', width: 2048, height: 1365 },
+      { src: imgIcarus6025, srcSet: imgIcarus6025SrcSet, alt: 'Icarus Cup game action', width: 2048, height: 1365 },
+      { src: imgIcarus6114, srcSet: imgIcarus6114SrcSet, alt: 'Icarus Cup final moments', width: 2048, height: 1365 },
+      { src: imgIcarus6442, srcSet: imgIcarus6442SrcSet, alt: 'Icarus Cup celebration', width: 1638, height: 2048 },
+      { src: imgIcarus6493, srcSet: imgIcarus6493SrcSet, alt: 'Icarus Cup closing shot', width: 1638, height: 2048 },
+    ],
+    tags: ['sports', 'soccer', 'tournament'],
   },
 ];
 

@@ -41,14 +41,10 @@ export default function useSpotlight<T extends HTMLElement>(
     const nx = (currentX.current / w) * 2 - 1;
     const ny = (currentY.current / h) * 2 - 1;
 
-    // Angle from centre in degrees (0 = right, rotates clockwise)
-    const angle = Math.atan2(ny, nx) * (180 / Math.PI);
-
     const tf = tiltFactor.current;
 
     el.style.setProperty('--spotlight-x', `${currentX.current}px`);
     el.style.setProperty('--spotlight-y', `${currentY.current}px`);
-    el.style.setProperty('--spotlight-angle', `${angle}deg`);
     el.style.setProperty('--parallax-x', `${nx * tf}`);
     el.style.setProperty('--parallax-y', `${ny * tf}`);
     el.style.setProperty('--tilt-x', `${-ny * tiltMax * tf}`);
