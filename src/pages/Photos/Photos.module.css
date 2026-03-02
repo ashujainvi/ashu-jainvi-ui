@@ -165,7 +165,21 @@
   border: 1px solid var(--color-border-tertiary);
 }
 
+.banditsCard:nth-child(7),
+.banditsCard:nth-child(8),
+.banditsCard:nth-child(11) {
+  grid-column: span 2;
+}
+
+.banditsCard:nth-child(11) {
+  aspect-ratio: 3 / 4;
+}
+
 @media (min-width: 640px) {
+  .banditsCard:nth-child(11) {
+    aspect-ratio: auto;
+  }
+
   .banditsGrid {
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows:
@@ -173,7 +187,6 @@
       minmax(0, 34rem)
       minmax(0, 28rem)
       minmax(0, 34rem)
-      minmax(0, 40rem)
       minmax(0, 40rem);
   }
 
@@ -200,10 +213,12 @@
     grid-column: span 4;
   }
 
-  /* Row 4: 2 portraits */
-  .banditsCard:nth-child(8),
+  /* Row 4: portrait (2) + portrait wide (4) */
+  .banditsCard:nth-child(8) {
+    grid-column: span 4;
+  }
   .banditsCard:nth-child(9) {
-    grid-column: span 3;
+    grid-column: span 2;
   }
 
   /* Row 5: 2 landscapes */

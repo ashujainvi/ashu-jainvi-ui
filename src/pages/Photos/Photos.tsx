@@ -47,8 +47,8 @@ const banditsPhotos = [
   { src: img5454, alt: 'Bandits FC team play', width: 1500, height: 2000 },
   { src: img5672, alt: 'Bandits FC on the pitch', width: 1500, height: 2000 },
   { src: img5687, alt: 'Bandits FC wide angle', width: 2000, height: 1333 },
-  { src: img5729, alt: 'Bandits FC player focus', width: 1500, height: 2000 },
   { src: img5836, alt: 'Bandits FC match action', width: 2000, height: 1333 },
+  { src: img5729, alt: 'Bandits FC player focus', width: 1500, height: 2000 },
   { src: img5947, alt: 'Bandits FC celebration', width: 1500, height: 2000 },
   { src: img6204, alt: 'Bandits FC final shot', width: 1500, height: 2000 },
 ];
@@ -87,10 +87,10 @@ const Photos = () => (
       </div>
     </section>
     <section className={styles.featuredSection}>
-      <h2 className="title4 text-gray-400">Youth</h2>
-      <div className={styles.youthGrid}>
-        {youthPhotos.map((photo, i) => (
-          <figure key={i} className={styles.featuredCard}>
+      <h2 className="title4 text-gray-400">Bandits FC</h2>
+      <div className={styles.banditsGrid}>
+        {banditsPhotos.map((photo, i) => (
+          <figure key={i} className={styles.banditsCard}>
             <img
               src={photo.src}
               alt={photo.alt}
@@ -103,10 +103,10 @@ const Photos = () => (
       </div>
     </section>
     <section className={styles.featuredSection}>
-      <h2 className="title4 text-gray-400">Bandits FC</h2>
-      <div className={styles.banditsGrid}>
-        {banditsPhotos.map((photo, i) => (
-          <figure key={i} className={styles.banditsCard}>
+      <h2 className="title4 text-gray-400">Youth</h2>
+      <div className={styles.youthGrid}>
+        {youthPhotos.map((photo, i) => (
+          <figure key={i} className={styles.featuredCard}>
             <img
               src={photo.src}
               alt={photo.alt}
