@@ -42,10 +42,11 @@
   transform: translateY(0);
 }
 
+/* Hat icon now sits bottom right of socials */
 .hatIcon {
-  position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
+  position: relative;
+  align-self: flex-end;
+  margin-left: 0.5rem;
   width: 1.75rem;
   height: 1.75rem;
   background-color: var(--color-primary);
