@@ -1,12 +1,23 @@
-/* eslint-disable */
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import Card from './Card';
 
-export default {
-  title: "Card",
+const meta: Meta<typeof Card> = {
+  title: 'Molecules/Card',
+  component: Card,
+  tags: ['autodocs'],
+  argTypes: {
+    children: {
+      control: 'text',
+      description: 'Card content',
+    },
+  },
 };
 
-export const Default = () => <Card>Card Content</Card>;
+export default meta;
+type Story = StoryObj<typeof Card>;
 
-Default.story = {
-  name: 'default',
+export const Default: Story = {
+  args: {
+    children: 'Card content goes here',
+  },
 };
