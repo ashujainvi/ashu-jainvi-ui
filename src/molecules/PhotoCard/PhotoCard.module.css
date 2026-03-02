@@ -67,6 +67,27 @@
   }
 }
 
+.redHue .image {
+  position: relative;
+  filter: brightness(1.25);
+}
+
+.redHue .imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.redHue .imageWrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(200, 20, 20, 0.7);
+  mix-blend-mode: color-burn;
+  pointer-events: none;
+  z-index: 1;
+}
+
 .image {
   width: 100%;
   height: 100%;

@@ -1,4 +1,4 @@
-import { type FC, useRef } from 'react';
+import { type FC, useRef, useState } from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 import { useNavigate } from 'react-router-dom';
 import styles from './ContactForm.module.css';
@@ -10,6 +10,13 @@ const ContactForm: FC = () => {
   const [state, handleSubmit, reset] = useForm(FORMSPREE_FORM_ID);
   const navigate = useNavigate();
   const phoneRef = useRef<HTMLInputElement>(null);
+  const [fields, setFields] = useState({ name: '', email: '', message: '' });
+
+  const isFormValid = fields.name.trim() !== '' && fields.email.trim() !== '' && fields.message.trim() !== '';
+
+  const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFields(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   const formatPhoneNumber = (value: string): string => {
     const digits = value.replace(/\D/g, '');
@@ -52,6 +59,8 @@ const ContactForm: FC = () => {
           placeholder="What do your friends call you?"
           required
           autoComplete="name"
+          value={fields.name}
+          onChange={handleFieldChange}
         />
         <ValidationError field="name" prefix="Name" errors={state.errors} className={styles.error} />
       </div>
@@ -65,6 +74,8 @@ const ContactForm: FC = () => {
           placeholder="you@somewhere-cool.com"
           required
           autoComplete="email"
+          value={fields.email}
+          onChange={handleFieldChange}
         />
         <ValidationError field="email" prefix="Email" errors={state.errors} className={styles.error} />
       </div>
@@ -104,11 +115,13 @@ const ContactForm: FC = () => {
           className={styles.textarea}
           placeholder="Tell me about the wild idea you have..."
           required
+          value={fields.message}
+          onChange={handleFieldChange}
         />
         <ValidationError field="message" prefix="Message" errors={state.errors} className={styles.error} />
       </div>
       <div className="mt-4">
-        <Button type="submit" variant="primary" disabled={state.submitting}>
+        <Button type="submit" variant="primary" disabled={state.submitting || !isFormValid}>
           {state.submitting ? 'Sending...' : 'Submit'}
         </Button>
       </div>

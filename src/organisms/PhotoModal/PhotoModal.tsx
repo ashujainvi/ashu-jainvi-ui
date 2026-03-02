@@ -87,6 +87,7 @@ const PhotoModal: FC<PhotoModalProps> = ({ photos, currentIndex, isOpen, onClose
         aria-modal={isOpen}
         aria-label="Photo viewer"
         aria-hidden={!isOpen}
+        onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
       >
         <div className={`${styles.imageContainer} ${loaded ? styles.imageContainerLoaded : ''}`}>
           <button

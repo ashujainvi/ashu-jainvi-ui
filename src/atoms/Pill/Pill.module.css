@@ -4,9 +4,11 @@
   text-align: center;
   border: 2px solid var(--color-primary);
   background-color: var(--color-bg-primary);
-  /* min-width: 100%; */
+  max-width: 100%;
   width: max-content;
   z-index: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .pill.noBorder {
@@ -18,5 +20,34 @@
 }
 
 .pill.secondary {
-  border-color: var(--color-secondary);
+  border: none;
+}
+
+.overlap-left {
+  padding-left: 6rem;
+  text-align: left;
+}
+
+.overlap-right {
+  padding-right: 6rem;
+  text-align: right;
+}
+
+@media (max-width: 500px) {
+  .pill {
+    border-radius: 0.75rem !important;
+    width: auto;
+    max-width: 100%;
+    padding: 0.4rem 1.25em;
+  }
+
+  .overlap-left {
+    padding-left: 1.25em;
+    text-align: center;
+  }
+
+  .overlap-right {
+    padding-right: 1.25em;
+    text-align: center;
+  }
 }

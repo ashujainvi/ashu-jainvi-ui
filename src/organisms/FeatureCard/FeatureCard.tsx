@@ -1,5 +1,6 @@
 import Card from '../../molecules/Card/Card';
 import Button from '../../atoms/Button/Button';
+import Pill from '../../atoms/Pill/Pill';
 import styles from './FeatureCard.module.css';
 
 interface FeatureCardProps {
@@ -8,9 +9,10 @@ interface FeatureCardProps {
   linkText?: string;
   linkHref?: string;
   imageUrl?: string;
+  comingSoon?: boolean;
 }
 
-const FeatureCard = ({ title, caption, linkText, linkHref, imageUrl }: FeatureCardProps) => (
+const FeatureCard = ({ title, caption, linkText, linkHref, imageUrl, comingSoon }: FeatureCardProps) => (
   <Card>
     <div className='flex flex-col items-start'>
       {imageUrl && (
@@ -27,6 +29,11 @@ const FeatureCard = ({ title, caption, linkText, linkHref, imageUrl }: FeatureCa
             {linkText}
           </Button>
         </div>
+      )}
+      {comingSoon && (
+        <Pill variant="secondary">
+          <span className="caption">Coming Soon</span>
+        </Pill>
       )}
     </div>
   </Card>

@@ -17,8 +17,8 @@
 
 .menu {
   position: absolute;
-  top: 1.25rem;
-  right: 2rem;
+  top: -0.5rem;
+  right: -0.25rem;
   width: min(280px, 75vw);
   background-color: var(--color-bg-secondary);
   border: 1px solid var(--color-border-primary);
@@ -27,17 +27,37 @@
   display: flex;
   flex-direction: column;
   padding: 2rem 1.5rem;
-  transform-origin: top right;
-  transform: scale(0);
+  clip-path: circle(0% at calc(100% - 1.5rem) 2rem);
   opacity: 0;
+  transform: translateY(-8px);
   transition:
-    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-    opacity 0.25s ease;
+    clip-path 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s ease,
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .menuOpen {
-  transform: scale(1);
+  clip-path: circle(150% at calc(100% - 1.5rem) 2rem);
   opacity: 1;
+  transform: translateY(0);
+}
+
+.hatIcon {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  background-color: var(--color-primary);
+  mask-image: url('../../assets/texas-cowboy-hat.svg');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: url('../../assets/texas-cowboy-hat.svg');
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  opacity: 0.7;
 }
 
 .navList {
@@ -68,19 +88,56 @@
   border-radius: 0.5rem;
   text-decoration: none;
   @apply text-secondary-light;
-  font-family: var(--font-family-display);
-  font-size: 1.25rem;
+  font-family: var(--font-family-primary);
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .navLink:hover {
   background-color: var(--color-bg-primary);
-  @apply text-secondary;
+  color: var(--color-primary);
 }
 
 .navLink:focus-visible {
   outline: 0.125rem solid var(--color-focus-ring);
   outline-offset: 2px;
+}
+
+.socials {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border-primary);
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-gray-dark);
+  @apply text-secondary-light;
+  text-decoration: none;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.socialLink:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.socialLink:focus-visible {
+  outline: 0.125rem solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.socialIcon {
+  width: 1.125rem;
+  height: 1.125rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

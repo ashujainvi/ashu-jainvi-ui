@@ -23,12 +23,16 @@ export function useFocusTrap<T extends HTMLElement>({
       }
       if (e.key !== 'Tab') return;
 
-      const focusableElements =
+      const containerElements =
         containerRef.current?.querySelectorAll<HTMLElement>(focusableSelector);
-      if (!focusableElements?.length) return;
 
-      const first = focusableElements[0];
-      const last = focusableElements[focusableElements.length - 1];
+      const allFocusable: HTMLElement[] = [];
+      if (triggerRef.current) allFocusable.push(triggerRef.current);
+      if (containerElements) allFocusable.push(...containerElements);
+      if (!allFocusable.length) return;
+
+      const first = allFocusable[0];
+      const last = allFocusable[allFocusable.length - 1];
 
       if (e.shiftKey && document.activeElement === first) {
         e.preventDefault();

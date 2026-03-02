@@ -4,7 +4,7 @@ import containerStyles from '../../styles/modules/container.module.css';
 import Pill from '../../atoms/Pill/Pill';
 import FeatureCard from '../../organisms/FeatureCard/FeatureCard';
 import PhotoCard from '../../molecules/PhotoCard/PhotoCard';
-import desktopSvg from '../../assets/ashu-photo-card.png';
+import profileImage from '../../assets/photos/profile.jpg';
 import glitchPng from '../../assets/glitch.png';
 import cameraOutlinePng from '../../assets/camera-outline.png';
 import penToolOutlinePng from '../../assets/pen-tool-outline.png';
@@ -59,16 +59,18 @@ const Home = () => {
         <h2 className="title1">
           Visual Artist
         </h2>
-        <div className="mt-10">
-          <PhotoCard image={desktopSvg} caption="ashu.jpeg" alt="Ashu Jainvi" className="max-w-[11.25rem] aspect-[3/4]" />
-        </div>
-        <div className="mb-36">
-          <Pill variant="primary" showBorder={false}>
-            <p className="caption">
-              I build clean yet playful digital worlds through photography, graphics,
-              and web design.
-            </p>
-          </Pill>
+        <div className={styles.profileRow}>
+          <div className={styles.profileCard}>
+            <PhotoCard image={profileImage} caption="profile.jpeg" alt="Ashu Jainvi" className="max-w-[7.875rem] aspect-[3/4]" redHue />
+          </div>
+          <div className={styles.profilePill}>
+            <Pill variant="primary" showBorder={false} overlapOn="left">
+              <p className="caption">
+                I build clean yet playful digital worlds through photography, graphics,
+                and web design.
+              </p>
+            </Pill>
+          </div>
         </div>
 
       </div>
@@ -99,6 +101,7 @@ const Home = () => {
                   'Curated branding for your needs'
                 }
                 imageUrl={penToolOutlinePng}
+                comingSoon
               />
             </div>
             <div className="w-full flex justify-center">
@@ -108,6 +111,7 @@ const Home = () => {
                   'Curated web design for your needs'
                 }
                 imageUrl={browserWindowOutlinePng}
+                comingSoon
               />
             </div>
           </div>
