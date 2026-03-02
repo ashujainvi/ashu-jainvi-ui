@@ -1,4 +1,5 @@
 import { type FC, useCallback, useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useFocusTrap } from '../../hooks/useFocusTrap';
 import styles from './PhotoModal.module.css';
 
@@ -180,7 +181,7 @@ const PhotoModal: FC<PhotoModalProps> = ({ photos, currentIndex, isOpen, onClose
 
   if (!current) return null;
 
-  return (
+  return createPortal(
     <>
       <div
         className={`${styles.overlay} ${isOpen ? styles.overlayOpen : ''}`}
@@ -258,7 +259,8 @@ const PhotoModal: FC<PhotoModalProps> = ({ photos, currentIndex, isOpen, onClose
           </button>
         </nav>
       </div>
-    </>
+    </>,
+    document.body,
   );
 };
 

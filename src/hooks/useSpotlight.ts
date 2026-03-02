@@ -9,7 +9,8 @@ const DESKTOP_MQ = '(pointer: fine)';
  *   --parallax-x / --parallax-y    (normalised –1 → 1)
  *   --tilt-x / --tilt-y            (degrees, ±12)
  *
- * Uses a lerp loop for buttery-smooth movement.
+ * The spotlight flows in from the nearest edge on entry and fades
+ * out smoothly on leave, creating a seamless transition between cards.
  * Desktop-only — no-ops on touch devices.
  */
 export default function useSpotlight<T extends HTMLElement>(
@@ -20,6 +21,8 @@ export default function useSpotlight<T extends HTMLElement>(
   const targetY = useRef(0);
   const currentX = useRef(0);
   const currentY = useRef(0);
+  const tiltFactor = useRef(0);
+  const targetTiltFactor = useRef(0);
   const active = useRef(false);
   const rafId = useRef(0);
 
@@ -29,6 +32,7 @@ export default function useSpotlight<T extends HTMLElement>(
 
     currentX.current += (targetX.current - currentX.current) * lerpFactor;
     currentY.current += (targetY.current - currentY.current) * lerpFactor;
+    tiltFactor.current += (targetTiltFactor.current - tiltFactor.current) * lerpFactor;
 
     const w = el.offsetWidth || 1;
     const h = el.offsetHeight || 1;
@@ -40,18 +44,21 @@ export default function useSpotlight<T extends HTMLElement>(
     // Angle from centre in degrees (0 = right, rotates clockwise)
     const angle = Math.atan2(ny, nx) * (180 / Math.PI);
 
+    const tf = tiltFactor.current;
+
     el.style.setProperty('--spotlight-x', `${currentX.current}px`);
     el.style.setProperty('--spotlight-y', `${currentY.current}px`);
     el.style.setProperty('--spotlight-angle', `${angle}deg`);
-    el.style.setProperty('--parallax-x', `${nx}`);
-    el.style.setProperty('--parallax-y', `${ny}`);
-    el.style.setProperty('--tilt-x', `${-ny * tiltMax}`);
-    el.style.setProperty('--tilt-y', `${nx * tiltMax}`);
+    el.style.setProperty('--parallax-x', `${nx * tf}`);
+    el.style.setProperty('--parallax-y', `${ny * tf}`);
+    el.style.setProperty('--tilt-x', `${-ny * tiltMax * tf}`);
+    el.style.setProperty('--tilt-y', `${nx * tiltMax * tf}`);
 
     const needsUpdate =
       active.current ||
       Math.abs(targetX.current - currentX.current) > 0.1 ||
-      Math.abs(targetY.current - currentY.current) > 0.1;
+      Math.abs(targetY.current - currentY.current) > 0.1 ||
+      Math.abs(targetTiltFactor.current - tiltFactor.current) > 0.01;
 
     if (needsUpdate) {
       rafId.current = requestAnimationFrame(tick);
@@ -69,8 +76,25 @@ export default function useSpotlight<T extends HTMLElement>(
       targetY.current = e.clientY - rect.top;
 
       if (!active.current) {
-        currentX.current = targetX.current;
-        currentY.current = targetY.current;
+        // Start spotlight from nearest edge for a seamless flow-in
+        const x = targetX.current;
+        const y = targetY.current;
+        const w = rect.width;
+        const h = rect.height;
+
+        const edges = [
+          { dist: x, cx: 0, cy: y },
+          { dist: w - x, cx: w, cy: y },
+          { dist: y, cx: x, cy: 0 },
+          { dist: h - y, cx: x, cy: h },
+        ];
+        const nearest = edges.reduce((a, b) => (a.dist < b.dist ? a : b));
+
+        currentX.current = nearest.cx;
+        currentY.current = nearest.cy;
+        tiltFactor.current = 0;
+        targetTiltFactor.current = 1;
+
         active.current = true;
         el.style.setProperty('--spotlight-active', '1');
         rafId.current = requestAnimationFrame(tick);
@@ -80,9 +104,8 @@ export default function useSpotlight<T extends HTMLElement>(
     const onLeave = () => {
       active.current = false;
       el.style.setProperty('--spotlight-active', '0');
-      // Ease tilt + parallax back to 0
-      targetX.current = el.offsetWidth / 2;
-      targetY.current = el.offsetHeight / 2;
+      // Tilt eases back to zero; spotlight position stays and fades via CSS
+      targetTiltFactor.current = 0;
       rafId.current = requestAnimationFrame(tick);
     };
 
