@@ -11,10 +11,10 @@ const Contact = () => (
       path="/contact"
     />
     <PageHero overline="Get in touch" title="Contact">
-    <div className={styles.formContainer}>
-      <ContactForm />
-    </div>
-  </PageHero>
+      <div className={styles.formContainer}>
+        <ContactForm />
+      </div>
+    </PageHero>
   </>
 );
 

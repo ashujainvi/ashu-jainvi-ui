@@ -13,6 +13,10 @@
   z-index: 100;
 }
 
+:global(body[data-modal-open="true"]) .Nav {
+  display: none;
+}
+
 .CircleSurface {
   display: flex;
   align-items: center;

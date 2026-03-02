@@ -28,17 +28,17 @@
   border-radius: inherit;
   background:
     radial-gradient(
-      ellipse 90px 130px at var(--spotlight-x, -999px) var(--spotlight-y, -999px),
+      ellipse 60px 90px at var(--spotlight-x, -999px) var(--spotlight-y, -999px),
       rgba(255, 255, 255, 0.14) 0%,
       rgba(255, 255, 255, 0.05) 45%,
       transparent 100%
     ),
     radial-gradient(
-      ellipse 200px 300px at var(--spotlight-x, -999px) var(--spotlight-y, -999px),
+      ellipse 130px 200px at var(--spotlight-x, -999px) var(--spotlight-y, -999px),
       rgba(255, 255, 255, 0.04) 0%,
       transparent 70%
     );
-  filter: blur(14px);
+  filter: blur(10px);
   opacity: var(--spotlight-active, 0);
   transition: opacity 0.4s ease;
   z-index: 2;
@@ -51,11 +51,11 @@
   pointer-events: none;
   border-radius: inherit;
   background: radial-gradient(
-    ellipse 120px 50px at var(--spotlight-x, -999px) var(--spotlight-y, -999px),
+    ellipse 80px 35px at var(--spotlight-x, -999px) var(--spotlight-y, -999px),
     rgba(255, 255, 255, 0.06) 0%,
     transparent 100%
   );
-  filter: blur(10px);
+  filter: blur(6px);
   opacity: var(--spotlight-active, 0);
   transition: opacity 0.4s ease;
   z-index: 2;

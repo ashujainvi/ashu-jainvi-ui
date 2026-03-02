@@ -11,7 +11,8 @@ This document outlines the design principles, patterns, and conventions used in 
 5. [Color System](#color-system)
 6. [Accessibility (WCAG AAA)](#accessibility-wcag-aaa)
 7. [SEO Best Practices](#seo-best-practices)
-8. [Component Guidelines](#component-guidelines)
+8. [Mobile Performance & Cross-Browser](#mobile-performance--cross-browser)
+9. [Component Guidelines](#component-guidelines)
 
 ---
 
@@ -328,15 +329,35 @@ This project targets **WCAG 2.2 Level AAA** compliance. Every component must fol
 ### Motion & Animations
 
 - Respect `prefers-reduced-motion` — disable or reduce animations for users who request it.
+- Reset `will-change` to `auto` inside reduced-motion media queries.
 
 ```css
 @media (prefers-reduced-motion: reduce) {
   .animated {
     transition: none;
     animation: none;
+    will-change: auto;
   }
 }
 ```
+
+### Modals & Overlays
+
+- Lock body scroll with `document.body.style.overflow = 'hidden'` when a modal is open; restore on close.
+- Set `data-modal-open="true"` on `<body>` so other components (e.g., Nav) can hide themselves via CSS `:global(body[data-modal-open="true"])`.
+- Use `role="dialog"` with `aria-modal="true"` and `aria-label`.
+- Trap focus inside the modal using `useFocusTrap` — cycles Tab between focusable elements, closes on Escape, and restores focus to the trigger element.
+- Add `aria-hidden` to the modal when it is not open to remove it from the accessibility tree.
+
+### Carousels & Image Viewers
+
+- Use `aria-roledescription="carousel"` on the scrolling container.
+- Announce photo changes with an `aria-live="polite"` region that includes the photo index and alt text.
+- Mark decorative controls ("Prev"/"Next" labels, counters) with `aria-hidden="true"` — the `aria-label` on their parent button already conveys the action.
+- Include the target photo's alt text in navigation button labels (e.g., `aria-label="Next photo: Sunset portrait"`).
+- Set `aria-busy="true"` on the image container while the current image is loading.
+- Add `draggable={false}` on all `<img>` elements inside carousels to prevent ghost drag on desktop and iOS.
+- Set `loading="eager"` on thumbnail images that are always visible (nav previews).
 
 ### Forms
 
@@ -552,6 +573,107 @@ Since this is a client-side SPA:
 
 ---
 
+## Mobile Performance & Cross-Browser
+
+This project targets **Chrome, Safari, and Instagram's in-app browser on iPhone 14 and newer**. All interactive components — especially touch-driven carousels and modals — must follow these patterns.
+
+### Touch & Swipe Handling
+
+- Attach touch listeners as **native DOM events** (via `useEffect` + `addEventListener`), not React synthetic events. This allows setting `{ passive: true }` on `touchstart`/`touchend` and `{ passive: false }` on `touchmove` (required for `preventDefault` to block page scroll during horizontal swipes).
+- Track swipe state in **refs** (`useRef`), not React state. Updating state on every `touchmove` frame triggers re-renders and causes jank on mid-range devices. Pair refs with `requestAnimationFrame` to batch DOM writes.
+- Cancel the pending `requestAnimationFrame` in the cleanup function of the `useEffect` that attaches touch listeners.
+
+```tsx
+// ✅ Good — ref + rAF, zero re-renders during drag
+const offsetRef = useRef(0);
+const rafRef = useRef(0);
+
+const applyTransform = useCallback(() => {
+  el.style.transform = `translate3d(${offsetRef.current}px, 0, 0)`;
+  rafRef.current = 0;
+}, []);
+
+const onTouchMove = useCallback((e: TouchEvent) => {
+  offsetRef.current = deltaX;
+  if (!rafRef.current) rafRef.current = requestAnimationFrame(applyTransform);
+}, [applyTransform]);
+
+// ❌ Bad — state update per frame
+const [offset, setOffset] = useState(0);
+const onTouchMove = (e: React.TouchEvent) => setOffset(deltaX);
+```
+
+### GPU Compositing & 3D Transforms
+
+- Use `translate3d()` instead of `translateX()` to promote elements to the GPU compositor layer.
+- Add `will-change: transform` **only during active interaction** (e.g., via a `.swiping` CSS class toggled with `classList.add/remove`). Do not leave `will-change` on permanently — it reserves GPU memory.
+- Use `-webkit-backface-visibility: hidden` / `backface-visibility: hidden` on 3D-transformed elements to prevent flicker on iOS Safari.
+- Use `transform-style: preserve-3d` on the parent when children use 3D transforms (e.g., `rotateY`).
+
+### WebKit / Safari / IG In-App Browser Fixes
+
+Instagram's in-app browser uses WebKit (WKWebView). Apply these rules for consistent behavior:
+
+| CSS Property | Purpose |
+|---|---|
+| `-webkit-backdrop-filter` | Required prefix — `backdrop-filter` alone has no effect in older WebKit |
+| `-webkit-user-select: none` | Prevents text selection during swipe; pair with `user-select: none` |
+| `-webkit-touch-callout: none` | Prevents iOS long-press context menu on images |
+| `-webkit-tap-highlight-color: transparent` | Removes the blue/gray flash on tap for buttons |
+| `touch-action: pan-y pinch-zoom` | Allows vertical scroll and pinch zoom but locks horizontal axis for swipe gestures |
+| `overscroll-behavior: contain` | Prevents pull-to-refresh or parent scroll interference inside modals |
+
+### Safe Area Insets
+
+Use `env(safe-area-inset-*)` for fixed UI elements (close buttons, bottom navigation) to avoid the iPhone notch and home indicator:
+
+```css
+/* ✅ Good — fallback + safe area */
+.closeButton {
+  top: 0.75rem;
+  top: calc(0.75rem + env(safe-area-inset-top, 0px));
+  right: 0.75rem;
+  right: calc(0.75rem + env(safe-area-inset-right, 0px));
+}
+
+.navigation {
+  bottom: 1.5rem;
+  bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+}
+```
+
+Both the raw value and the `calc()` line are needed — the first acts as a fallback for browsers that don't support `env()`.
+
+### Image Preloading
+
+For carousels and image viewers, preload adjacent images when the modal opens:
+
+```tsx
+useEffect(() => {
+  if (!isOpen) return;
+  const preload = (photo: PhotoItem) => {
+    const img = new Image();
+    if (photo.srcSet) img.srcset = photo.srcSet;
+    img.sizes = '90vw';
+    img.src = photo.src;
+  };
+  preload(photos[prevIndex]);
+  preload(photos[nextIndex]);
+}, [isOpen, currentIndex]);
+```
+
+This ensures the next/previous photos are already in the browser cache before the user swipes.
+
+### Layout Containment
+
+Use `contain: layout style paint` on animated containers (carousel image wrappers, swipeable cards). This tells the browser that internal layout changes don't affect the rest of the page, limiting repaint scope and improving frame rates.
+
+### Touch Target Sizes
+
+All tap targets (buttons, links) in mobile UI must be at least **44×44 CSS pixels** (WCAG 2.5.5, Level AAA). The close button and nav buttons in the PhotoModal use ≥ 2.75rem (44px) to meet this requirement.
+
+---
+
 ## Component Guidelines
 
 ### Creating New Components
@@ -645,9 +767,11 @@ Usage: `rounded-5xl` or `@apply rounded-5xl`
 2. **CSS-first with Tailwind** - use `@apply` in CSS, not JSX
 3. **Centralize design tokens** - define in `@theme` and `:root`
 4. **Typography classes** - use semantic names, responsive by default
-5. **WCAG AAA accessibility** - semantic HTML, contrast, focus, alt text
+5. **WCAG AAA accessibility** - semantic HTML, contrast, focus, alt text, modal focus trapping, carousel ARIA
 6. **SEO on every page** - unique title, description, canonical URL, and OG tags via `<Seo>` component
-7. **Single responsibility** - each component does one thing well
+7. **Mobile-first performance** - ref-based animations, native touch events, GPU compositing, image preloading
+8. **Cross-browser compatibility** - WebKit prefixes, safe area insets, passive touch listeners for Safari/IG browser
+9. **Single responsibility** - each component does one thing well
 
 ### When to Update This Guide
 
@@ -656,7 +780,9 @@ Usage: `rounded-5xl` or `@apply rounded-5xl`
 - Changing color/typography systems
 - Establishing new conventions
 - **Adding new pages** — update `sitemap.xml` and add `<Seo>` component
+- Adding new interactive components with touch gestures or animations
+- Discovering new cross-browser quirks that need documented workarounds
 
 ---
 
-**Last Updated:** February 16, 2026
+**Last Updated:** March 2, 2026
