@@ -8,12 +8,14 @@ jobs:
     deploy:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-node@v1
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
               with:
-                  node-version: 18
+                  node-version: 20
             - run: npm ci
             - run: npm run build
+              env:
+                  VITE_FORMSPREE_FORM_ID: ${{ secrets.VITE_FORMSPREE_FORM_ID }}
             - uses: w9jds/firebase-action@master
               with:
                   args: deploy --only hosting

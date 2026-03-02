@@ -62,3 +62,17 @@
   min-height: 10rem;
   resize: vertical;
 }
+
+.error {
+  font-family: var(--font-family-secondary);
+  font-size: 0.8125rem;
+  color: #f87171;
+}
+
+.successMessage {
+  font-family: var(--font-family-secondary);
+  font-size: 1.125rem;
+  color: var(--color-gray-lighter);
+  text-align: center;
+  padding: 2rem 0;
+}
