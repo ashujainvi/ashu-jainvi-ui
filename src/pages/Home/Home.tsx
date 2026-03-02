@@ -23,7 +23,7 @@ const Home = () => {
   return (
   <div className={styles.home}>
     <Seo
-      title="Visual Artist & UI Developer"
+      title="Visual Artist & Photographer | Home"
       description="Ashu Jainvi is an Austin, Texas-based visual artist and senior UI developer specializing in photography, graphic design, and web development."
       path="/"
     />
