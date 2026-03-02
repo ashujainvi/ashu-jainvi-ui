@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import styles from './Home.module.css';
 import containerStyles from '../../styles/modules/container.module.css';
 import Pill from '../../atoms/Pill/Pill';
@@ -7,8 +8,16 @@ import glitchPng from '../../assets/glitch.png';
 import cameraOutlinePng from '../../assets/camera-outline.png';
 import penToolOutlinePng from '../../assets/pen-tool-outline.png';
 import browserWindowOutlinePng from '../../assets/browser-window-outline.png';
+import sunriseButtonSvg from '../../assets/sunrise-button.svg';
 
-const Home = () => (
+const Home = () => {
+  const craftSectionRef = useRef<HTMLElement>(null);
+
+  const scrollToCraft = () => {
+    craftSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  return (
   <div className={styles.home}>
     <div
       className={styles.backgroundWrapper}
@@ -23,7 +32,21 @@ const Home = () => (
         </div>
       </div>
     </section>
-    <section className={styles.craftSection}>
+    <button
+      className={styles.sunriseButton}
+      onClick={scrollToCraft}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          scrollToCraft();
+        }
+      }}
+      tabIndex={0}
+      aria-label="Scroll to craft section"
+    >
+      <img src={sunriseButtonSvg} alt="Sunrise Button" role="presentation" />
+    </button>
+    <section ref={craftSectionRef} className={styles.craftSection}>
       <div className={containerStyles.container}>
         <span className="text-overline text-primary-darker">
           Austin, Texas based
@@ -37,7 +60,7 @@ const Home = () => (
         <div className="mb-36">
           <Pill variant="primary" showBorder={false}>
             <p className="caption">
-              Who builds clean yet playful digital worlds through photography, graphics,
+              I build clean yet playful digital worlds through photography, graphics,
               and web design.
             </p>
           </Pill>
@@ -87,6 +110,7 @@ const Home = () => (
       </div>
     </section>
   </div>
-);
+  );
+};
 
 export default Home;

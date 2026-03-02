@@ -171,6 +171,18 @@ When a heading needs a different color, use Tailwind utilities (they override `@
 
 ---
 
+## Readability
+
+### Line Length
+
+For body/paragraph text, limit line length to **65 characters** (`--width-prose: 65ch`). This follows the widely accepted readability guideline of 45–75 characters per line, optimizing for comfortable reading and reducing eye strain.
+
+- Use `max-width: var(--width-prose)` on prose containers
+- Center prose blocks with `margin: 0 auto`
+- This applies to long-form content like About pages, blog posts, and descriptions — not to headings, navigation, or UI controls
+
+---
+
 ## Color System
 
 Colors are defined in two places for Tailwind integration:

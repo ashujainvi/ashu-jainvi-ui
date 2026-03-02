@@ -54,6 +54,9 @@
   --color-text-primary: var(--color-gray-lighter);
   --color-text-secondary: var(--color-gray-light);
 
+  /* ======= FOCUS ======== */
+  --color-focus-ring: rgba(245, 197, 140, 0.8);
+
   /* ======= WIDTHS ======== */
   --width-xxl: 1400px;
   --width-xl: 1200px;
@@ -62,6 +65,10 @@
   --width-sm: 540px;
   --width-xs: 360px;
   --width-xxs: 320px;
+  --width-prose: 65ch;
+
+  /* ======= BREAKPOINTS ======== */
+  --screen-max-width: var(--width-lg);
 
   /* ====== GRADIENTS ======= */
 }

@@ -37,7 +37,7 @@
 .heroContainer {
   position: relative;
   display: flex;
-  width: min(var(--width-lg), 100%);
+  width: min(var(--screen-max-width), 100%);
   min-width: var(--width-sm);
   align-items: center;
   flex-direction: column;
@@ -55,6 +55,42 @@
   padding: 0.35rem 1.5rem;
 }
 
+.sunriseButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 180px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+  margin: -90px auto 0;
+  padding: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.sunriseButton:hover {
+  transform: scale(1.05);
+}
+
+.sunriseButton:focus {
+  outline: 0.125rem solid var(--color-focus-ring);
+  outline-offset: 4px;
+  border-radius: 50%;
+}
+
+.sunriseButton:active {
+  transform: scale(0.98);
+}
+
+.sunriseButton img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 .craftSection {
   position: relative;
   display: flex;
@@ -63,6 +99,7 @@
   align-items: center;
   width: 100%;
   z-index: 1;
+  margin-top: -6.5rem;
 }
 
 .discoverSection {
@@ -78,7 +115,7 @@
 .discoverContainer {
   position: relative;
   width: 100%;
-  max-width: var(--width-lg);
+  max-width: var(--screen-max-width);
   display: flex;
   flex-direction: column;
   align-items: center;
