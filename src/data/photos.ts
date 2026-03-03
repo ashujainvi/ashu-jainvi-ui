@@ -5,11 +5,11 @@ import img8201 from '../assets/photos/IMG_8201.jpg';
 import img8259 from '../assets/photos/IMG_8259.jpg';
 import img8306 from '../assets/photos/IMG_8306.jpg';
 import img8320 from '../assets/photos/IMG_8320.jpg';
-import img6615 from '../assets/photos/youth/IMG_6615.jpg';
-import img6627 from '../assets/photos/youth/IMG_6627.jpg';
-import img7224 from '../assets/photos/youth/IMG_7224.jpg';
-import img7360 from '../assets/photos/youth/IMG_7360.jpg';
-import img7157 from '../assets/photos/youth/IMG_7157.jpg';
+import img6615 from '../assets/photos/untapped-talent/IMG_6615.jpg';
+import img6627 from '../assets/photos/untapped-talent/IMG_6627.jpg';
+import img7224 from '../assets/photos/untapped-talent/IMG_7224.jpg';
+import img7360 from '../assets/photos/untapped-talent/IMG_7360.jpg';
+import img7157 from '../assets/photos/untapped-talent/IMG_7157.jpg';
 import imgVanta6767 from '../assets/photos/vanta/Ashu Jainvi IMG-6767.jpg';
 import imgVanta6772 from '../assets/photos/vanta/Ashu Jainvi IMG-6772.jpg';
 import imgVanta6775 from '../assets/photos/vanta/Ashu Jainvi IMG-6775.jpg';
@@ -67,11 +67,11 @@ import img8201SrcSet from '../assets/photos/IMG_8201.jpg?w=480;768;1024;1600&for
 import img8259SrcSet from '../assets/photos/IMG_8259.jpg?w=480;768;1024;1500&format=webp&as=srcset';
 import img8306SrcSet from '../assets/photos/IMG_8306.jpg?w=480;768;1024;1500&format=webp&as=srcset';
 import img8320SrcSet from '../assets/photos/IMG_8320.jpg?w=480;768;1024;1500&format=webp&as=srcset';
-import img6615SrcSet from '../assets/photos/youth/IMG_6615.jpg?w=480;768;1024;1500&format=webp&as=srcset';
-import img6627SrcSet from '../assets/photos/youth/IMG_6627.jpg?w=480;768;1024;1500&format=webp&as=srcset';
-import img7224SrcSet from '../assets/photos/youth/IMG_7224.jpg?w=480;768;1024;1500&format=webp&as=srcset';
-import img7360SrcSet from '../assets/photos/youth/IMG_7360.jpg?w=480;768;1024;1500&format=webp&as=srcset';
-import img7157SrcSet from '../assets/photos/youth/IMG_7157.jpg?w=480;768;1024;1500&format=webp&as=srcset';
+import img6615SrcSet from '../assets/photos/untapped-talent/IMG_6615.jpg?w=480;768;1024;1500&format=webp&as=srcset';
+import img6627SrcSet from '../assets/photos/untapped-talent/IMG_6627.jpg?w=480;768;1024;1500&format=webp&as=srcset';
+import img7224SrcSet from '../assets/photos/untapped-talent/IMG_7224.jpg?w=480;768;1024;1500&format=webp&as=srcset';
+import img7360SrcSet from '../assets/photos/untapped-talent/IMG_7360.jpg?w=480;768;1024;1500&format=webp&as=srcset';
+import img7157SrcSet from '../assets/photos/untapped-talent/IMG_7157.jpg?w=480;768;1024;1500&format=webp&as=srcset';
 import imgVanta6767SrcSet from '../assets/photos/vanta/Ashu Jainvi IMG-6767.jpg?w=480;768;1024;2048&format=webp&as=srcset';
 import imgVanta6772SrcSet from '../assets/photos/vanta/Ashu Jainvi IMG-6772.jpg?w=480;768;1024;2048&format=webp&as=srcset';
 import imgVanta6775SrcSet from '../assets/photos/vanta/Ashu Jainvi IMG-6775.jpg?w=480;768;1024;2048&format=webp&as=srcset';
@@ -210,18 +210,18 @@ export const albums: Album[] = [
     gradient: ['#C4B5FD', '#67E8F9'],
   },
   {
-    id: 'youth',
-    title: 'Youth',
-    description: 'Youth sports photography capturing energy and determination',
-    cover: { src: img7360, srcSet: img7360SrcSet, alt: 'Youth soccer player in action', width: 1500, height: 2000 },
+    id: 'untapped-talent',
+    title: 'Untapped Talent',
+    description: 'Untapped Talent sports photography capturing energy and determination',
+    cover: { src: img7360, srcSet: img7360SrcSet, alt: 'Untapped Talent soccer player in action', width: 1500, height: 2000 },
     photos: [
-      { src: img7360, srcSet: img7360SrcSet, alt: 'Youth soccer player in action', width: 1500, height: 2000 },
-      { src: img7157, srcSet: img7157SrcSet, alt: 'Youth player portrait', width: 1500, height: 2000 },
-      { src: img6615, srcSet: img6615SrcSet, alt: 'Youth match moment', width: 1500, height: 2000 },
-      { src: img6627, srcSet: img6627SrcSet, alt: 'Youth team play', width: 1500, height: 2000 },
-      { src: img7224, srcSet: img7224SrcSet, alt: 'Youth game highlight', width: 1500, height: 2000 },
+      { src: img7360, srcSet: img7360SrcSet, alt: 'Untapped Talent soccer player in action', width: 1500, height: 2000 },
+      { src: img7157, srcSet: img7157SrcSet, alt: 'Untapped Talent player portrait', width: 1500, height: 2000 },
+      { src: img6615, srcSet: img6615SrcSet, alt: 'Untapped Talent match moment', width: 1500, height: 2000 },
+      { src: img6627, srcSet: img6627SrcSet, alt: 'Untapped Talent team play', width: 1500, height: 2000 },
+      { src: img7224, srcSet: img7224SrcSet, alt: 'Untapped Talent game highlight', width: 1500, height: 2000 },
     ],
-    tags: ['sports', 'youth'],
+    tags: ['sports', 'untapped-talent'],
     gradient: ['#FB923C', '#F472B6'],
   },
   {

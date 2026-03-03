@@ -23,7 +23,7 @@ const Photos = () => {
     <div className={styles.photos}>
       <Seo
         title="Photography Portfolio"
-        description="Browse Ashu Jainvi's photography portfolio featuring portrait sessions, concerts, soccer action shots, and youth sports photography in Austin, Texas."
+        description="Browse Ashu Jainvi's photography portfolio featuring portrait sessions, concerts, soccer action shots, and untapped talent sports photography in Austin, Texas."
         path="/photos"
       />
       <section ref={heroRef} className={styles.heroSection}>
