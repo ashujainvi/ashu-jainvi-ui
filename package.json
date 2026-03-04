@@ -6,6 +6,8 @@
   "scripts": {
     "start": "vite",
     "dev": "vite",
+    "dev:functions": "cd functions && npm run build && firebase emulators:start --only functions,firestore",
+    "dev:stripe": "echo 'Run: stripe listen --forward-to http://localhost:5001/ashutoshjainvi-ui/us-central1/stripeWebhook'",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",

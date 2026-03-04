@@ -41,6 +41,7 @@ const AlbumPage = () => {
         title={`${album.title} — Photography`}
         description={album.description ?? `Browse ${album.photos.length} photos from the ${album.title} collection by Ashu Jainvi.`}
         path={`/photos/${album.id}`}
+        image={album.photos[0]?.src}
       />
       <div className={styles.header}>
         <Link to="/photos" className={styles.backLink}>

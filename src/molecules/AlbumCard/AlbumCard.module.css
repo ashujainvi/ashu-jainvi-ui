@@ -1,3 +1,41 @@
+.albumCardWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.shareButton {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 3;
+}
+
+.copiedToast {
+  position: absolute;
+  top: 0.75rem;
+  right: 3.5rem;
+  z-index: 3;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.5rem;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-primary);
+  color: var(--color-secondary-light);
+  font-family: var(--font-family-secondary);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  animation: toastFade 2s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes toastFade {
+  0% { opacity: 0; transform: translateX(4px); }
+  15% { opacity: 1; transform: translateX(0); }
+  75% { opacity: 1; }
+  100% { opacity: 0; }
+}
 .albumCard {
   position: relative;
   display: block;

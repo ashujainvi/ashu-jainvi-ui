@@ -37,6 +37,7 @@ const Seo = ({ title, description = DEFAULT_DESCRIPTION, path = '', image = DEFA
   useEffect(() => {
     const fullTitle = `${title} | ${SITE_NAME}`;
     const canonicalUrl = `${BASE_URL}${path}`;
+    const absoluteImage = image.startsWith('http') ? image : `${BASE_URL}${image.startsWith('/') ? '' : '/'}${image}`;
 
     document.title = fullTitle;
 
@@ -47,7 +48,7 @@ const Seo = ({ title, description = DEFAULT_DESCRIPTION, path = '', image = DEFA
     setMetaTag('property', 'og:title', fullTitle);
     setMetaTag('property', 'og:description', description);
     setMetaTag('property', 'og:url', canonicalUrl);
-    setMetaTag('property', 'og:image', image);
+    setMetaTag('property', 'og:image', absoluteImage);
     setMetaTag('property', 'og:type', type);
     setMetaTag('property', 'og:site_name', SITE_NAME);
 
@@ -55,7 +56,7 @@ const Seo = ({ title, description = DEFAULT_DESCRIPTION, path = '', image = DEFA
     setMetaTag('name', 'twitter:card', 'summary_large_image');
     setMetaTag('name', 'twitter:title', fullTitle);
     setMetaTag('name', 'twitter:description', description);
-    setMetaTag('name', 'twitter:image', image);
+    setMetaTag('name', 'twitter:image', absoluteImage);
 
     // Canonical
     setCanonicalLink(canonicalUrl);
