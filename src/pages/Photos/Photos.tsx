@@ -38,7 +38,14 @@ const Photos = () => {
             height={heroPhoto.height}
             className={styles.photoImage}
           />
-          <TwinkleCanvas />
+          <TwinkleCanvas
+            count={40}
+            minRadius={0.6}
+            maxRadius={1.8}
+            minOpacity={0.3}
+            maxOpacity={0.8}
+            color={[220, 220, 255]}
+          />
           <div className={styles.heroContent}>
             <span ref={heroOverlineRef} className="text-overline">Explore</span>
             <h1 ref={heroTitleRef} className="display">Photos</h1>

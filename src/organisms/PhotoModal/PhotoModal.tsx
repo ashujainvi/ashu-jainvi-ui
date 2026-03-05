@@ -32,12 +32,18 @@ const PhotoModal: FC<PhotoModalProps> = ({ photos, currentIndex, isOpen, onClose
 
   const touchStartRef = useRef<{ x: number; y: number; time: number } | null>(null);
   const imageContainerRef = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
   const swipeOffsetRef = useRef(0);
   const rafIdRef = useRef(0);
 
-  // Reset loaded state when image changes
+  // Reset loaded state when image changes; re-check in case onLoad already fired (cached)
   useEffect(() => {
     setLoaded(false);
+    requestAnimationFrame(() => {
+      if (imgRef.current?.complete && imgRef.current.naturalWidth > 0) {
+        setLoaded(true);
+      }
+    });
   }, [currentIndex]);
 
   const current = photos[currentIndex];
@@ -217,6 +223,7 @@ const PhotoModal: FC<PhotoModalProps> = ({ photos, currentIndex, isOpen, onClose
           aria-busy={!loaded}
         >
           <img
+            ref={imgRef}
             key={currentIndex}
             src={current.src}
             srcSet={current.srcSet}
