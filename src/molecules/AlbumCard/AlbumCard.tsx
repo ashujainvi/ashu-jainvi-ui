@@ -1,10 +1,7 @@
-import { useRef, useState, type FC } from 'react';
-import { useCallback } from 'react';
-import { Link } from 'react-router-dom';
-import useMagnetic from '../../hooks/useMagnetic';
-import useSpotlight from '../../hooks/useSpotlight';
+import { useState, useCallback, type FC } from 'react';
 import type { Album } from '../../data/photos';
 import { SIZES_COVER } from '../../data/photos';
+import PhotoCard from '../PhotoCard/PhotoCard';
 import GlassButton from '../../atoms/GlassButton/GlassButton';
 import styles from './AlbumCard.module.css';
 
@@ -13,9 +10,6 @@ interface AlbumCardProps {
 }
 
 const AlbumCard: FC<AlbumCardProps> = ({ album }) => {
-  const cardRef = useRef<HTMLAnchorElement>(null);
-  const magneticProps = useMagnetic({ strength: 0.15, radius: 200 });
-  useSpotlight(cardRef);
   const [copied, setCopied] = useState(false);
 
   const handleShare = useCallback(
@@ -50,23 +44,17 @@ const AlbumCard: FC<AlbumCardProps> = ({ album }) => {
 
   return (
     <div className={styles.albumCardWrapper}>
-      <Link
-        ref={cardRef}
-        to={`/photos/${album.id}`}
-        {...magneticProps}
+      <PhotoCard
+        image={album.cover.src}
+        srcSet={album.cover.srcSet}
+        sizes={SIZES_COVER}
+        alt={album.cover.alt}
+        width={album.cover.width}
+        height={album.cover.height}
+        linkTo={`/photos/${album.id}`}
         className={styles.albumCard}
-        aria-label={`${album.title} — ${album.photos.length} photo${album.photos.length !== 1 ? 's' : ''}`}
+        ariaLabel={`${album.title} — ${album.photos.length} photo${album.photos.length !== 1 ? 's' : ''}`}
       >
-        <img
-          src={album.cover.src}
-          srcSet={album.cover.srcSet}
-          sizes={SIZES_COVER}
-          alt={album.cover.alt}
-          width={album.cover.width}
-          height={album.cover.height}
-          className={styles.coverImage}
-          decoding="async"
-        />
         <div className={styles.overlay}>
           <span className={styles.count}>{album.photos.length} photo{album.photos.length !== 1 ? 's' : ''}</span>
           <h3 className={styles.title}>{album.title}</h3>
@@ -74,7 +62,7 @@ const AlbumCard: FC<AlbumCardProps> = ({ album }) => {
             <p className={styles.description}>{album.description}</p>
           )}
         </div>
-      </Link>
+      </PhotoCard>
       <GlassButton
         className={styles.shareButton}
         title="Share album"

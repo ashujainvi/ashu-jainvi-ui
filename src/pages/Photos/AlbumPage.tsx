@@ -89,7 +89,8 @@ const AlbumPage = () => {
           width={nextAlbum.cover.width}
           height={nextAlbum.cover.height}
           linkTo={`/photos/${nextAlbum.id}`}
-          className={`${styles.photoCard} ${styles.landscape} ${styles.nextAlbumCard}`}
+          className={styles.photoCard}
+          wrapperClassName={`${styles.landscape} ${styles.nextAlbumCard}`}
         >
           <div className={styles.nextAlbumOverlay}>
             <span className={styles.nextAlbumLabel}>Next Album</span>

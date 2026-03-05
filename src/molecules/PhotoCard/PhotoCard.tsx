@@ -10,6 +10,7 @@ interface PhotoCardProps {
   caption?: string;
   uppercaseCaption?: boolean;
   className?: string;
+  wrapperClassName?: string;
   width?: number;
   height?: number;
   srcSet?: string;
@@ -18,9 +19,10 @@ interface PhotoCardProps {
   redHue?: boolean;
   linkTo?: string;
   children?: ReactNode;
+  ariaLabel?: string;
 }
 
-const PhotoCard: FC<PhotoCardProps> = ({ image, alt, caption, uppercaseCaption = false, className = '', width, height, srcSet, sizes, onClick, redHue = false, linkTo, children }) => {
+const PhotoCard: FC<PhotoCardProps> = ({ image, alt, caption, uppercaseCaption = false, className = '', wrapperClassName = '', width, height, srcSet, sizes, onClick, redHue = false, linkTo, children, ariaLabel }) => {
   const figureRef = useRef<HTMLElement>(null);
   const magneticProps = useMagnetic({ strength: 0.2, radius: 200 });
   useSpotlight(figureRef);
@@ -52,7 +54,7 @@ const PhotoCard: FC<PhotoCardProps> = ({ image, alt, caption, uppercaseCaption =
 
   if (linkTo) {
     return (
-      <Link to={linkTo} className={`${styles.linkWrapper} ${className}`.trim()}>
+      <Link to={linkTo} className={`${styles.linkWrapper} ${wrapperClassName}`.trim()} aria-label={ariaLabel}>
         {card}
       </Link>
     );
