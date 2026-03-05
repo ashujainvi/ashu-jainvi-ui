@@ -65,7 +65,6 @@ const AlbumCard: FC<AlbumCardProps> = ({ album }) => {
           width={album.cover.width}
           height={album.cover.height}
           className={styles.coverImage}
-          loading="lazy"
           decoding="async"
         />
         <div className={styles.overlay}>
