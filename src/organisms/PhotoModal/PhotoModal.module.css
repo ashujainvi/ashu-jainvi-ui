@@ -67,8 +67,8 @@
 }
 
 .closeButton:focus-visible {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 3px;
 }
 
 .closeIcon {
@@ -221,8 +221,8 @@
 }
 
 .navButton:focus-visible {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 3px;
 }
 
 .previewImage {

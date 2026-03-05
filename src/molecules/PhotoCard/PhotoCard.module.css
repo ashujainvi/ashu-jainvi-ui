@@ -21,6 +21,12 @@
   cursor: pointer;
 }
 
+.photoCard:focus-visible {
+  -webkit-mask-image: none;
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 3px;
+}
+
 /* Diffuse glass reflection — large soft glow */
 .photoCard::before {
   content: '';

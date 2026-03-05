@@ -52,6 +52,9 @@ export function useFocusTrap<T extends HTMLElement>({
       const firstEl =
         containerRef.current?.querySelector<HTMLElement>(focusableSelector);
       firstEl?.focus();
+    } else if (triggerRef.current) {
+      triggerRef.current.focus();
+      triggerRef.current = null;
     }
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, handleKeyDown, focusableSelector]);
