@@ -124,3 +124,79 @@
   overflow: hidden;
   border: 1px solid var(--color-border-tertiary);
 }
+
+.nextAlbumCard {
+  grid-column: span 4;
+  grid-row: span 4;
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--color-border-tertiary);
+  text-decoration: none;
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  .nextAlbumCard {
+    grid-column: span 3;
+    grid-row: span 6;
+  }
+}
+
+.nextAlbumCover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: brightness(0.55);
+}
+
+.nextAlbumCard:hover .nextAlbumCover {
+  transform: scale(1.05);
+  filter: brightness(0.4);
+}
+
+.nextAlbumCard:focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 3px;
+}
+
+.nextAlbumOverlay {
+  position: relative;
+  z-index: 1;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.nextAlbumLabel {
+  font-family: var(--font-family-secondary);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-gray);
+}
+
+.nextAlbumTitle {
+  font-family: var(--font-family-primary);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nextAlbumArrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.nextAlbumCard:hover .nextAlbumArrow {
+  transform: translateX(4px);
+}

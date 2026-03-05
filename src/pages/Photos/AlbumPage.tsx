@@ -30,6 +30,9 @@ const AlbumPage = () => {
 
   if (!album) return <Navigate to="/photos" replace />;
 
+  const albumIndex = albums.indexOf(album);
+  const nextAlbum = albums[(albumIndex + 1) % albums.length];
+
   const openModal = (index: number) => {
     setCurrentIndex(index);
     setModalOpen(true);
@@ -78,6 +81,23 @@ const AlbumPage = () => {
             />
           );
         })}
+        <Link to={`/photos/${nextAlbum.id}`} className={styles.nextAlbumCard}>
+          <img
+            src={nextAlbum.cover.src}
+            srcSet={nextAlbum.cover.srcSet}
+            sizes={SIZES_ALBUM_GRID}
+            alt={nextAlbum.title}
+            className={styles.nextAlbumCover}
+            loading="lazy"
+          />
+          <div className={styles.nextAlbumOverlay}>
+            <span className={styles.nextAlbumLabel}>Next Album</span>
+            <span className={styles.nextAlbumTitle}>
+              {nextAlbum.title}
+              <span className={styles.nextAlbumArrow} aria-hidden="true">&rarr;</span>
+            </span>
+          </div>
+        </Link>
       </div>
       <PhotoModal
         photos={modalPhotos}
