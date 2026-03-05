@@ -27,6 +27,32 @@
   outline-offset: 3px;
 }
 
+.linkWrapper {
+  text-decoration: none;
+  display: block;
+  border-radius: 1rem;
+}
+
+.linkWrapper .photoCard {
+  width: 100%;
+  height: 100%;
+}
+
+.linkWrapper:hover .photoCard {
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.18);
+}
+
+.linkWrapper:focus-visible {
+  outline: none;
+}
+
+.linkWrapper:focus-visible .photoCard {
+  -webkit-mask-image: none;
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 3px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.18);
+}
+
 /* Diffuse glass reflection — large soft glow */
 .photoCard::before {
   content: '';

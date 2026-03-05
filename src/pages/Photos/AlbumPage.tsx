@@ -81,15 +81,16 @@ const AlbumPage = () => {
             />
           );
         })}
-        <Link to={`/photos/${nextAlbum.id}`} className={styles.nextAlbumCard}>
-          <img
-            src={nextAlbum.cover.src}
-            srcSet={nextAlbum.cover.srcSet}
-            sizes={SIZES_ALBUM_GRID}
-            alt={nextAlbum.title}
-            className={styles.nextAlbumCover}
-            loading="lazy"
-          />
+        <PhotoCard
+          image={nextAlbum.cover.src}
+          srcSet={nextAlbum.cover.srcSet}
+          sizes={SIZES_ALBUM_GRID}
+          alt={`Next album: ${nextAlbum.title}`}
+          width={nextAlbum.cover.width}
+          height={nextAlbum.cover.height}
+          linkTo={`/photos/${nextAlbum.id}`}
+          className={`${styles.photoCard} ${styles.landscape} ${styles.nextAlbumCard}`}
+        >
           <div className={styles.nextAlbumOverlay}>
             <span className={styles.nextAlbumLabel}>Next Album</span>
             <span className={styles.nextAlbumTitle}>
@@ -97,7 +98,7 @@ const AlbumPage = () => {
               <span className={styles.nextAlbumArrow} aria-hidden="true">&rarr;</span>
             </span>
           </div>
-        </Link>
+        </PhotoCard>
       </div>
       <PhotoModal
         photos={modalPhotos}
