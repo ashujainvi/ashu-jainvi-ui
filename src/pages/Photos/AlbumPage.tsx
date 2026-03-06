@@ -57,7 +57,7 @@ const AlbumPage = () => {
           <span className="text-overline">{album.photos.length} photo{album.photos.length !== 1 ? 's' : ''}</span>
           <h1
             className={`display ${album.gradient ? styles.gradientTitle : ''}`}
-            style={album.gradient ? { backgroundImage: `linear-gradient(135deg, ${album.gradient[0]}, ${album.gradient[1]})` } : undefined}
+            style={album.gradient ? { backgroundImage: `linear-gradient(135deg, ${album.gradient[0]}, ${album.gradient[1]}, ${album.gradient[2]})` } : undefined}
           >
             {album.title}
           </h1>

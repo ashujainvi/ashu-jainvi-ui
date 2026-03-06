@@ -66,11 +66,6 @@
   transform: scale(1.05);
 }
 
-.closeButton:focus-visible {
-  outline: 3px solid var(--color-secondary);
-  outline-offset: 3px;
-}
-
 .closeIcon {
   width: 1.25rem;
   height: 1.25rem;
@@ -218,11 +213,6 @@
 .navButton:hover {
   background-color: var(--color-gray-dark);
   transform: scale(1.03);
-}
-
-.navButton:focus-visible {
-  outline: 3px solid var(--color-secondary);
-  outline-offset: 3px;
 }
 
 .previewImage {

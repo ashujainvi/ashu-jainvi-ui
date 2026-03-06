@@ -35,28 +35,38 @@
   --color-red-darker: #3B050B;
   --color-yellow-light: #FFE4C4;
   --color-yellow: #f5c58c;
+  --color-yellow-alpha: rgba(245, 197, 140, 0.8);
   --color-gray-darkest: #101010;
   --color-gray-darker: #161616;
   --color-gray-dark: #343434;
   --color-gray: #4a4a4a;
   --color-gray-light: #dddddd;
   --color-gray-lighter: #f8f8f8;
+  --color-white-alpha-subtle: rgba(255, 255, 255, 0.07);
+  --color-white-alpha-light: rgba(255, 255, 255, 0.13);
 
   --color-primary: var(--color-red);
   --color-primary-dark: var(--color-red-dark);
   --color-primary-darker: var(--color-red-darker);
   --color-secondary: var(--color-yellow);
   --color-secondary-light: var(--color-yellow-light);
+  --color-secondary-alpha: var(--color-yellow-alpha);
   --color-bg-primary: var(--color-gray-darkest);
   --color-bg-secondary: var(--color-gray-darker);
+  --color-bg-glass: var(--color-white-alpha-subtle);
+  --color-bg-glass-hover: var(--color-white-alpha-light);
   --color-border-primary: var(--color-gray-dark);
   --color-border-secondary: var(--color-gray);
   --color-border-tertiary: rgba(74, 74, 74, 0.3);
+  --color-border-glass: var(--color-white-alpha-subtle);
+  --color-border-glass-hover: var(--color-white-alpha-light);
   --color-text-primary: var(--color-gray-lighter);
   --color-text-secondary: var(--color-gray-light);
 
   /* ======= FOCUS ======== */
-  --color-focus-ring: rgba(245, 197, 140, 0.8);
+  --color-focus-ring: var(--color-secondary-alpha);
+  --focus-outline: 2px solid var(--color-focus-ring);
+  --focus-outline-offset: 2px;
 
   /* ======= WIDTHS ======== */
   --width-xxl: 1400px;
@@ -91,4 +101,9 @@ body {
 a {
   font-weight: 500;
   text-decoration: none;
+}
+
+:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
 }

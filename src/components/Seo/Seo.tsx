@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 const SITE_NAME = 'Ashu Jainvi';
 const BASE_URL = 'https://ashujainvi.com';
 const DEFAULT_DESCRIPTION = 'Ashu Jainvi is an Austin, Texas-based visual artist and senior UI developer specializing in photography, graphic design, and web development.';
-const DEFAULT_IMAGE = `${BASE_URL}/og-image.jpg`;
+const DEFAULT_IMAGE = `${BASE_URL}/og-image.png`;
 
 interface SeoProps {
   title: string;

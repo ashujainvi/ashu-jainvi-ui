@@ -487,8 +487,8 @@ When adding new structured data:
 - **`public/sitemap.xml`**: Lists all public pages with `<changefreq>` and `<priority>`. Update whenever new pages are added.
 - **`public/robots.txt`**: Allows all crawlers and points to the sitemap.
 
-When adding a new page:
-1. Add a `<url>` entry to `sitemap.xml`
+When adding a new page or album:
+1. Add a `<url>` entry to `sitemap.xml` (including individual album pages like `/photos/album-id`)
 2. Add the `<Seo>` component to the page with unique title/description
 
 ### Semantic HTML for SEO
@@ -540,6 +540,47 @@ Semantic elements help search engines understand page structure:
 - Use **clean, descriptive URLs** (`/about`, `/photos`, `/contact`).
 - Avoid query parameters for navigable content.
 - Firebase Hosting's `cleanUrls: true` strips `.html` extensions automatically.
+
+### Internal Linking
+
+Use React Router's `<Link>` component for all internal navigation — never raw `<a>` tags. This preserves SPA client-side routing, avoids full page reloads, and ensures `ScrollToTop` and page transitions work correctly.
+
+```tsx
+// ✅ Good — React Router Link
+import { Link } from 'react-router-dom';
+<Link to="/photos">View Photos</Link>
+
+// ✅ Good — Button component with link behavior
+<Button as="link" to="/contact">Get in Touch</Button>
+
+// ❌ Bad — raw anchor for internal route
+<a href="/photos">View Photos</a>
+```
+
+### External Links
+
+All links to external sites must include `target="_blank"` and `rel="noopener noreferrer"`:
+
+- **`target="_blank"`** — opens in a new tab so users don't lose their place.
+- **`rel="noopener"`** — prevents the opened page from accessing `window.opener` (security).
+- **`rel="noreferrer"`** — prevents sending the Referer header to the external site (privacy).
+
+```tsx
+// ✅ Good — secure external link
+<a
+  href="https://www.instagram.com/ashu.jpeg"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Instagram (opens in new tab)"
+>
+  Instagram
+</a>
+
+// ❌ Bad — missing security attributes
+<a href="https://www.instagram.com/ashu.jpeg">Instagram</a>
+```
+
+Add an `aria-label` that mentions "(opens in new tab)" so screen reader users know they'll leave the site.
 
 ### Performance (Core Web Vitals)
 
@@ -827,10 +868,10 @@ Usage: `rounded-5xl` or `@apply rounded-5xl`
 - Introducing new design patterns
 - Changing color/typography systems
 - Establishing new conventions
-- **Adding new pages** — update `sitemap.xml` and add `<Seo>` component
+- **Adding new pages or albums** — update `sitemap.xml` and add `<Seo>` component
 - Adding new interactive components with touch gestures or animations
 - Discovering new cross-browser quirks that need documented workarounds
 
 ---
 
-**Last Updated:** March 2, 2026
+**Last Updated:** March 6, 2026

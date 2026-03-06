@@ -23,8 +23,6 @@
 
 .photoCard:focus-visible {
   -webkit-mask-image: none;
-  outline: 3px solid var(--color-secondary);
-  outline-offset: 3px;
 }
 
 .linkWrapper {
@@ -48,8 +46,8 @@
 
 .linkWrapper:focus-visible .photoCard {
   -webkit-mask-image: none;
-  outline: 3px solid var(--color-secondary);
-  outline-offset: 3px;
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.18);
 }
 

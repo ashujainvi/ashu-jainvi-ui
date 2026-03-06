@@ -138,8 +138,8 @@ export interface Album {
   cover: PhotoMeta;
   photos: PhotoMeta[];
   tags?: string[];
-  /** Two-tone gradient derived from the album's color palette [from, to] */
-  gradient?: [string, string];
+  /** Three-tone gradient derived from the album's color palette [from, mid, to] */
+  gradient?: [string, string, string];
 }
 
 export const heroPhoto: PhotoMeta = {
@@ -164,7 +164,7 @@ export const albums: Album[] = [
       { src: img8201, srcSet: img8201SrcSet, alt: 'Group Love Band wide shot', width: 1600, height: 2000 },
     ],
     tags: ['concert', 'music', 'portrait'],
-    gradient: ['#FFD194', '#D1568C'],
+    gradient: ['#FFD194', '#E894A0', '#D1568C'],
   },
   {
     id: 'bandits-fc',
@@ -185,7 +185,7 @@ export const albums: Album[] = [
       { src: img6204, srcSet: img6204SrcSet, alt: 'Bandits FC final shot', width: 1500, height: 2000 },
     ],
     tags: ['sports', 'soccer', 'action'],
-    gradient: ['#34D399', '#60A5FA'],
+    gradient: ['#34D399', '#4ABCCA', '#60A5FA'],
   },
   {
     id: 'at-vanta',
@@ -207,7 +207,7 @@ export const albums: Album[] = [
       { src: imgVanta7526, srcSet: imgVanta7526SrcSet, alt: 'At Vanta office', width: 2048, height: 1365 },
     ],
     tags: ['vanta', 'work', 'life'],
-    gradient: ['#C4B5FD', '#67E8F9'],
+    gradient: ['#C4B5FD', '#96CFFB', '#67E8F9'],
   },
   {
     id: 'untapped-talent',
@@ -222,7 +222,7 @@ export const albums: Album[] = [
       { src: img7224, srcSet: img7224SrcSet, alt: 'Untapped Talent game highlight', width: 1500, height: 2000 },
     ],
     tags: ['sports', 'untapped-talent'],
-    gradient: ['#FB923C', '#F472B6'],
+    gradient: ['#FB923C', '#f8794e', '#F472B6'],
   },
   {
     id: 'icarus-cup',
@@ -258,7 +258,7 @@ export const albums: Album[] = [
       { src: imgIcarus6493, srcSet: imgIcarus6493SrcSet, alt: 'Icarus Cup closing shot', width: 1638, height: 2048 },
     ],
     tags: ['sports', 'soccer', 'tournament'],
-    gradient: ['#F59E0B', '#EF4444'],
+    gradient: ['#F59E0B', '#F27128', '#EF4444'],
   },
 ];
 

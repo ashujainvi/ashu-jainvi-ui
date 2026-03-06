@@ -16,6 +16,31 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://ashujainvi.com/photos/featured</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ashujainvi.com/photos/bandits-fc</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ashujainvi.com/photos/at-vanta</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ashujainvi.com/photos/untapped-talent</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ashujainvi.com/photos/icarus-cup</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://ashujainvi.com/contact</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>

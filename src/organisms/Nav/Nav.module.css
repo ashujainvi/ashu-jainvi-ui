@@ -33,11 +33,6 @@
   text-decoration: none;
 }
 
-.CircleSurface:focus-visible {
-  outline: 0.125rem solid var(--color-focus-ring);
-  outline-offset: 3px;
-}
-
 .LogoImage {
   width: 1rem;
   z-index: 1;
