@@ -3,6 +3,7 @@ import type { Album } from '../../data/photos';
 import { SIZES_COVER } from '../../data/photos';
 import PhotoCard from '../PhotoCard/PhotoCard';
 import GlassButton from '../../atoms/GlassButton/GlassButton';
+import Toast from '../../atoms/Toast/Toast';
 import styles from './AlbumCard.module.css';
 
 interface AlbumCardProps {
@@ -78,7 +79,7 @@ const AlbumCard: FC<AlbumCardProps> = ({ album }) => {
         </svg>
       </GlassButton>
       {copied && (
-        <span className={styles.copiedToast}>Link copied!</span>
+        <Toast className={styles.copiedToast}>Link copied!</Toast>
       )}
     </div>
   );
