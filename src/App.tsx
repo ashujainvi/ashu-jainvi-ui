@@ -1,5 +1,11 @@
 import { useEffect, useRef } from 'react';
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from 'react-router-dom';
 import Nav from './organisms/Nav/Nav';
 import Footer from './organisms/Footer/Footer';
 import ScrollToTop from './hooks/ScrollToTop';
@@ -71,7 +77,7 @@ function App() {
   useEffect(() => {
     // Dynamically import the unimportant CSS file
     import('./styles/typography.css').catch((err) =>
-      console.error('Failed to load typography:', err)
+      console.error('Failed to load typography:', err),
     );
   }, []);
   return (

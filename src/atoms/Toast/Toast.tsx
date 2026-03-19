@@ -7,9 +7,7 @@ interface ToastProps {
 }
 
 const Toast = ({ children, className = '' }: ToastProps) => (
-  <span className={`${styles.toast} ${className}`.trim()}>
-    {children}
-  </span>
+  <span className={`${styles.toast} ${className}`.trim()}>{children}</span>
 );
 
 export default Toast;

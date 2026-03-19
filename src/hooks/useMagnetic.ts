@@ -27,15 +27,15 @@ function ensureEngine() {
  * are present when the node enters the DOM (required for the library's
  * MutationObserver to pick them up).
  */
-export default function useMagnetic(
-  { strength = 0.3, radius = 150 }: MagneticOptions = {},
-): Record<string, string> {
+export default function useMagnetic({
+  strength = 0.3,
+  radius = 150,
+}: MagneticOptions = {}): Record<string, string> {
   const id = useId();
 
   // Synchronous check — fine for a Vite SPA (no SSR).
   const isDesktop =
-    typeof window !== 'undefined' &&
-    window.matchMedia(DESKTOP_MQ).matches;
+    typeof window !== 'undefined' && window.matchMedia(DESKTOP_MQ).matches;
 
   // Start the engine before the browser paints so initObjects()
   // can discover elements that already carry string="magnetic".

@@ -21,30 +21,40 @@ This document outlines the design principles, patterns, and conventions used in 
 This project follows **[Atomic Design](https://atomicdesign.bradfrost.com/)** principles by Brad Frost. Components are organized hierarchically from smallest to largest:
 
 ### Atoms
+
 The foundational building blocks that cannot be broken down further without losing meaning.
+
 - **Examples:** Pill, buttons, inputs, labels
 - **Location:** `src/atoms/`
 - **Purpose:** Reusable, single-purpose UI elements
 
 ### Molecules
+
 Simple combinations of atoms that work together as a unit.
+
 - **Examples:** Card, search form
 - **Location:** `src/molecules/`
 - **Purpose:** Small functional components following single responsibility principle
 
 ### Organisms
+
 Complex UI components composed of molecules, atoms, or other organisms that form distinct interface sections.
+
 - **Examples:** FeatureCard, Nav, Footer
 - **Location:** `src/organisms/`
 - **Purpose:** Standalone, context-aware sections of the interface
 
 ### Templates
+
 Page-level layouts that place organisms into a structure and define content hierarchy.
+
 - **Location:** Layout components in `src/styles/modules/`
 - **Purpose:** Define the skeleton and content structure
 
 ### Pages
+
 Specific instances of templates with real representative content.
+
 - **Location:** `src/pages/`
 - **Purpose:** Final user-facing interfaces with actual content
 
@@ -87,6 +97,7 @@ We use **Tailwind CSS v4** with a CSS-first approach:
 ### Key Principles
 
 #### ✅ DO: Use `@apply` in CSS
+
 ```css
 @layer components {
   .title2 {
@@ -97,6 +108,7 @@ We use **Tailwind CSS v4** with a CSS-first approach:
 ```
 
 #### ✅ DO: Define design tokens in `@theme`
+
 ```css
 @theme {
   --color-primary: var(--color-red);
@@ -105,6 +117,7 @@ We use **Tailwind CSS v4** with a CSS-first approach:
 ```
 
 #### ❌ DON'T: Scatter utility classes throughout JSX
+
 ```tsx
 // Bad - color/typography utilities in JSX
 <h2 className="title2 text-primary-darker text-center">
@@ -114,6 +127,7 @@ We use **Tailwind CSS v4** with a CSS-first approach:
 ```
 
 #### ❌ DON'T: Use conflicting Tailwind utility names
+
 ```css
 /* Bad - conflicts with Tailwind's built-in 'overline' utility */
 .overline { ... }
@@ -137,19 +151,19 @@ Typography classes are defined in `src/styles/typography.css` using `@layer comp
 
 ### Heading Classes
 
-| Class | Size (Mobile → Tablet → Desktop) | Default Color |
-|-------|----------------------------------|---------------|
-| `.display` | text-5xl → text-7xl → text-9xl | `text-primary` |
-| `.title1` | text-3xl → text-5xl → text-7xl | `text-primary-darker` |
-| `.title2` | text-xl → text-3xl → text-5xl | `text-primary-darker` |
-| `.title3` | text-base → text-xl → text-3xl | `text-primary` |
-| `.title4` | text-base → text-lg → text-xl | `text-primary` |
+| Class      | Size (Mobile → Tablet → Desktop) | Default Color         |
+| ---------- | -------------------------------- | --------------------- |
+| `.display` | text-5xl → text-7xl → text-9xl   | `text-primary`        |
+| `.title1`  | text-3xl → text-5xl → text-7xl   | `text-primary-darker` |
+| `.title2`  | text-xl → text-3xl → text-5xl    | `text-primary-darker` |
+| `.title3`  | text-base → text-xl → text-3xl   | `text-primary`        |
+| `.title4`  | text-base → text-lg → text-xl    | `text-primary`        |
 
 ### Text Classes
 
-| Class | Purpose | Default Color |
-|-------|---------|---------------|
-| `.caption` | Body text, descriptions | `text-secondary-light` |
+| Class            | Purpose                    | Default Color                |
+| ---------------- | -------------------------- | ---------------------------- |
+| `.caption`       | Body text, descriptions    | `text-secondary-light`       |
 | `.text-overline` | Section labels (uppercase) | `text-secondary text-center` |
 
 ### Color Overrides
@@ -197,16 +211,16 @@ Colors are defined in two places for Tailwind integration:
   /* Base colors */
   --color-red: #e31329;
   --color-red-dark: #a10515;
-  --color-red-darker: #3B050B;
+  --color-red-darker: #3b050b;
   --color-yellow: #f5c58c;
-  --color-yellow-light: #FFE4C4;
-  
+  --color-yellow-light: #ffe4c4;
+
   --color-primary: var(--color-red);
   --color-primary-dark: var(--color-red-dark);
   --color-primary-darker: var(--color-red-darker);
   --color-secondary: var(--color-yellow);
   --color-secondary-light: var(--color-yellow-light);
-  
+
   /* UI colors */
   --color-bg-primary: var(--color-gray-1);
   --color-bg-secondary: var(--color-gray-2);
@@ -228,6 +242,7 @@ Colors are defined in two places for Tailwind integration:
 ```
 
 This enables:
+
 - **CSS usage:** `var(--color-primary)`
 - **Tailwind utilities:** `text-primary`, `bg-primary`, etc.
 - **Single source of truth:** Change colors in one place
@@ -408,13 +423,13 @@ const About = () => (
 const About = () => <PageHero>...</PageHero>;
 ```
 
-| Prop | Required | Details |
-|------|----------|---------|
-| `title` | Yes | Page-specific title (appended with `\| Ashu Jainvi`) |
-| `description` | No | 50–160 character summary; defaults to site description |
-| `path` | No | URL path (e.g., `/about`); used for canonical URL |
-| `image` | No | OG/Twitter image URL; defaults to `/og-image.jpg` |
-| `type` | No | `website` (default), `article`, or `profile` |
+| Prop          | Required | Details                                                |
+| ------------- | -------- | ------------------------------------------------------ |
+| `title`       | Yes      | Page-specific title (appended with `\| Ashu Jainvi`)   |
+| `description` | No       | 50–160 character summary; defaults to site description |
+| `path`        | No       | URL path (e.g., `/about`); used for canonical URL      |
+| `image`       | No       | OG/Twitter image URL; defaults to `/og-image.jpg`      |
+| `type`        | No       | `website` (default), `article`, or `profile`           |
 
 #### index.html Defaults
 
@@ -488,6 +503,7 @@ When adding new structured data:
 - **`public/robots.txt`**: Allows all crawlers and points to the sitemap.
 
 When adding a new page or album:
+
 1. Add a `<url>` entry to `sitemap.xml` (including individual album pages like `/photos/album-id`)
 2. Add the `<Seo>` component to the page with unique title/description
 
@@ -591,6 +607,7 @@ Google uses [Core Web Vitals](https://web.dev/vitals/) as ranking signals. Maint
 - **CLS (Cumulative Layout Shift):** < 0.1 — always specify image dimensions, avoid layout-shifting content.
 
 Existing optimizations:
+
 - Image compression (`vite-plugin-imagemin`)
 - Responsive images (`vite-imagetools` with `srcSet`)
 - Font preconnect for Google Fonts
@@ -682,10 +699,13 @@ const applyTransform = useCallback(() => {
   rafRef.current = 0;
 }, []);
 
-const onTouchMove = useCallback((e: TouchEvent) => {
-  offsetRef.current = deltaX;
-  if (!rafRef.current) rafRef.current = requestAnimationFrame(applyTransform);
-}, [applyTransform]);
+const onTouchMove = useCallback(
+  (e: TouchEvent) => {
+    offsetRef.current = deltaX;
+    if (!rafRef.current) rafRef.current = requestAnimationFrame(applyTransform);
+  },
+  [applyTransform],
+);
 
 // ❌ Bad — state update per frame
 const [offset, setOffset] = useState(0);
@@ -703,14 +723,14 @@ const onTouchMove = (e: React.TouchEvent) => setOffset(deltaX);
 
 Instagram's in-app browser uses WebKit (WKWebView). Apply these rules for consistent behavior:
 
-| CSS Property | Purpose |
-|---|---|
-| `-webkit-backdrop-filter` | Required prefix — `backdrop-filter` alone has no effect in older WebKit |
-| `-webkit-user-select: none` | Prevents text selection during swipe; pair with `user-select: none` |
-| `-webkit-touch-callout: none` | Prevents iOS long-press context menu on images |
-| `-webkit-tap-highlight-color: transparent` | Removes the blue/gray flash on tap for buttons |
-| `touch-action: pan-y pinch-zoom` | Allows vertical scroll and pinch zoom but locks horizontal axis for swipe gestures |
-| `overscroll-behavior: contain` | Prevents pull-to-refresh or parent scroll interference inside modals |
+| CSS Property                               | Purpose                                                                            |
+| ------------------------------------------ | ---------------------------------------------------------------------------------- |
+| `-webkit-backdrop-filter`                  | Required prefix — `backdrop-filter` alone has no effect in older WebKit            |
+| `-webkit-user-select: none`                | Prevents text selection during swipe; pair with `user-select: none`                |
+| `-webkit-touch-callout: none`              | Prevents iOS long-press context menu on images                                     |
+| `-webkit-tap-highlight-color: transparent` | Removes the blue/gray flash on tap for buttons                                     |
+| `touch-action: pan-y pinch-zoom`           | Allows vertical scroll and pinch zoom but locks horizontal axis for swipe gestures |
+| `overscroll-behavior: contain`             | Prevents pull-to-refresh or parent scroll interference inside modals               |
 
 ### Safe Area Insets
 
@@ -770,6 +790,7 @@ All tap targets (buttons, links) in mobile UI must be at least **44×44 CSS pixe
 #### 1. Determine Atomic Level
 
 Ask: "Can this be broken down further without losing functionality?"
+
 - **Yes** → It's an organism or molecule
 - **No** → It's an atom
 
@@ -789,8 +810,6 @@ src/[atoms|molecules|organisms]/ComponentName/
 - **Simple atoms:** May not need CSS module, use typography classes
 - **Molecules/organisms:** Use CSS modules with `@apply`
 - **One-off spacing:** Inline Tailwind utilities (e.g., `mt-4`, `gap-6`)
-
-
 
 ### Component Composition
 
@@ -815,7 +834,7 @@ Use TypeScript interfaces and controlled variants:
 ```tsx
 interface CardProps {
   children: ReactNode;
-  shape?: 'ellipse' | 'rectangle';  // ✅ Specific variants
+  shape?: 'ellipse' | 'rectangle'; // ✅ Specific variants
 }
 
 // ❌ Avoid: variant?: string (too loose)
@@ -832,6 +851,7 @@ Use Tailwind's default spacing (`mt-4`, `gap-6`, `p-12`) or define custom in `@t
 ### Breakpoints
 
 Tailwind defaults:
+
 - `md`: 768px
 - `lg`: 1024px
 - `xl`: 1280px

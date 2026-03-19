@@ -12,8 +12,18 @@
 }
 
 @keyframes toastFade {
-  0% { opacity: 0; transform: translateX(4px); }
-  15% { opacity: 1; transform: translateX(0); }
-  75% { opacity: 1; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 0;
+    transform: translateX(4px);
+  }
+  15% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

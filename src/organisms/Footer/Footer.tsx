@@ -14,20 +14,26 @@ const Footer: FC = () => {
   if (showCta) {
     return (
       <footer className={styles.footer}>
-        <div className={`${containerStyles.container} ${containerStyles.reverseGradient}`}>
+        <div
+          className={`${containerStyles.container} ${containerStyles.reverseGradient}`}
+        >
           <div className={styles.ctaSection}>
             <span className="text-overline mb-4">Project in mind?</span>
-            <h2 className="title2 mb-8">
-              Let's Collaborate
-            </h2>
-            <Button as="link" to="/contact" variant="secondary" className="mt-8">
+            <h2 className="title2 mb-8">Let's Collaborate</h2>
+            <Button
+              as="link"
+              to="/contact"
+              variant="secondary"
+              className="mt-8"
+            >
               Get in touch
             </Button>
           </div>
           <div className={styles.footnoteWrapper}>
             <Pill variant="primary" showBorder={false}>
               <p className="text-center text-xs md:text-sm text-neutral-400">
-                Built with passion & love by <span className="text-primary">Ashu Jainvi</span>
+                Built with passion & love by{' '}
+                <span className="text-primary">Ashu Jainvi</span>
               </p>
             </Pill>
           </div>
@@ -41,7 +47,8 @@ const Footer: FC = () => {
       <div className={styles.footnoteWrapperMuted}>
         <Pill variant="primary" showBorder={false}>
           <p className="text-center text-xs md:text-sm text-neutral-400">
-            Built with passion & love by <span className="text-primary">Ashu Jainvi</span>
+            Built with passion & love by{' '}
+            <span className="text-primary">Ashu Jainvi</span>
           </p>
         </Pill>
       </div>

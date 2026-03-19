@@ -1,5 +1,4 @@
-@import "tailwindcss";
-
+@import 'tailwindcss';
 
 @theme {
   --font-display: var(--font-family-primary);
@@ -32,8 +31,8 @@
   --color-red: #e31329;
   --color-red-dark: #a10515;
   --color-red-dark-alpha: #a1051554;
-  --color-red-darker: #3B050B;
-  --color-yellow-light: #FFE4C4;
+  --color-red-darker: #3b050b;
+  --color-yellow-light: #ffe4c4;
   --color-yellow: #f5c58c;
   --color-yellow-alpha: rgba(245, 197, 140, 0.8);
   --color-gray-darkest: #101010;

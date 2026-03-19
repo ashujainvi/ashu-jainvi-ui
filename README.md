@@ -35,6 +35,7 @@ npm run gc <component-name>
 ```
 
 This will generate the following files in `component` folder:
+
 - `ComponentName.tsx` - Main component file
 - `ComponentName.module.css` - CSS module for styling
 - `ComponentName.stories.tsx` - Storybook stories file
@@ -48,6 +49,7 @@ npm run gp <page-name>
 ```
 
 This will generate the following files in `pages` folder:
+
 - `PageName.tsx` - Main page component
 - `PageName.lazy.tsx` - Lazy-loaded version for code splitting
 - `PageName.module.css` - CSS module for styling

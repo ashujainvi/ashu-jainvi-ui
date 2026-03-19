@@ -12,11 +12,22 @@ interface FeatureCardProps {
   comingSoon?: boolean;
 }
 
-const FeatureCard = ({ title, caption, linkText, linkHref, imageUrl, comingSoon }: FeatureCardProps) => (
+const FeatureCard = ({
+  title,
+  caption,
+  linkText,
+  linkHref,
+  imageUrl,
+  comingSoon,
+}: FeatureCardProps) => (
   <Card>
-    <div className='flex flex-col items-start'>
+    <div className="flex flex-col items-start">
       {imageUrl && (
-        <img src={imageUrl} alt={title} className={`w-12 h-12 object-contain mb-32 ${styles.icon}`} />
+        <img
+          src={imageUrl}
+          alt={title}
+          className={`w-12 h-12 object-contain mb-32 ${styles.icon}`}
+        />
       )}
       <div className="flex flex-col gap-3 mb-8">
         <h4 className="title5">{title}</h4>

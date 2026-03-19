@@ -22,7 +22,23 @@ interface PhotoCardProps {
   ariaLabel?: string;
 }
 
-const PhotoCard: FC<PhotoCardProps> = ({ image, alt, caption, uppercaseCaption = false, className = '', wrapperClassName = '', width, height, srcSet, sizes, onClick, redHue = false, linkTo, children, ariaLabel }) => {
+const PhotoCard: FC<PhotoCardProps> = ({
+  image,
+  alt,
+  caption,
+  uppercaseCaption = false,
+  className = '',
+  wrapperClassName = '',
+  width,
+  height,
+  srcSet,
+  sizes,
+  onClick,
+  redHue = false,
+  linkTo,
+  children,
+  ariaLabel,
+}) => {
   const figureRef = useRef<HTMLElement>(null);
   const magneticProps = useMagnetic({ strength: 0.2, radius: 200 });
   useSpotlight(figureRef);
@@ -34,18 +50,55 @@ const PhotoCard: FC<PhotoCardProps> = ({ image, alt, caption, uppercaseCaption =
       ref={figureRef}
       {...magneticProps}
       className={`${styles.photoCard} ${redHue ? styles.redHue : ''} ${className}`.trim()}
-      style={caption ? { '--caption-text-transform': uppercaseCaption ? 'uppercase' : 'none' } as React.CSSProperties : undefined}
+      style={
+        caption
+          ? ({
+              '--caption-text-transform': uppercaseCaption
+                ? 'uppercase'
+                : 'none',
+            } as React.CSSProperties)
+          : undefined
+      }
       onClick={linkTo ? undefined : onClick}
       role={!linkTo && onClick ? 'button' : undefined}
       tabIndex={!linkTo && onClick ? 0 : undefined}
-      onKeyDown={!linkTo && onClick ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(); } } : undefined}
+      onKeyDown={
+        !linkTo && onClick
+          ? (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                onClick();
+              }
+            }
+          : undefined
+      }
     >
       {redHue ? (
         <div className={styles.imageWrapper}>
-          <img src={image} alt={alt} className={styles.image} width={width} height={height} srcSet={srcSet} sizes={sizes} loading="lazy" decoding="async" />
+          <img
+            src={image}
+            alt={alt}
+            className={styles.image}
+            width={width}
+            height={height}
+            srcSet={srcSet}
+            sizes={sizes}
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       ) : (
-        <img src={image} alt={alt} className={`${styles.image} ${isInteractive ? styles.imageInteractive : ''}`} width={width} height={height} srcSet={srcSet} sizes={sizes} loading="lazy" decoding="async" />
+        <img
+          src={image}
+          alt={alt}
+          className={`${styles.image} ${isInteractive ? styles.imageInteractive : ''}`}
+          width={width}
+          height={height}
+          srcSet={srcSet}
+          sizes={sizes}
+          loading="lazy"
+          decoding="async"
+        />
       )}
       {children}
       {caption && <figcaption className={styles.caption}>{caption}</figcaption>}
@@ -54,7 +107,11 @@ const PhotoCard: FC<PhotoCardProps> = ({ image, alt, caption, uppercaseCaption =
 
   if (linkTo) {
     return (
-      <Link to={linkTo} className={`${styles.linkWrapper} ${wrapperClassName}`.trim()} aria-label={ariaLabel}>
+      <Link
+        to={linkTo}
+        className={`${styles.linkWrapper} ${wrapperClassName}`.trim()}
+        aria-label={ariaLabel}
+      >
         {card}
       </Link>
     );

@@ -1,7 +1,7 @@
-import { initializeApp, getApps } from "firebase-admin/app";
-import { getFirestore } from "firebase-admin/firestore";
-import { defineSecret } from "firebase-functions/params";
-import Stripe from "stripe";
+import { initializeApp, getApps } from 'firebase-admin/app';
+import { getFirestore } from 'firebase-admin/firestore';
+import { defineSecret } from 'firebase-functions/params';
+import Stripe from 'stripe';
 
 // Firebase Admin — singleton init
 if (getApps().length === 0) {
@@ -11,8 +11,8 @@ if (getApps().length === 0) {
 export const db = getFirestore();
 
 // Secrets managed via `firebase functions:secrets:set`
-export const stripeSecretKey = defineSecret("STRIPE_SECRET_KEY");
-export const stripeWebhookSecret = defineSecret("STRIPE_WEBHOOK_SECRET");
+export const stripeSecretKey = defineSecret('STRIPE_SECRET_KEY');
+export const stripeWebhookSecret = defineSecret('STRIPE_WEBHOOK_SECRET');
 
 /**
  * Returns a Stripe client bound to the current secret value.
@@ -20,13 +20,14 @@ export const stripeWebhookSecret = defineSecret("STRIPE_WEBHOOK_SECRET");
  */
 export function getStripe(): Stripe {
   return new Stripe(stripeSecretKey.value(), {
-    apiVersion: "2025-02-24.acacia",
+    apiVersion: '2025-02-24.acacia',
     typescript: true,
   });
 }
 
 // Server-defined URLs — never accept these from the client
-export const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN ?? "https://ashujainvi.com";
+export const ALLOWED_ORIGIN =
+  process.env.ALLOWED_ORIGIN ?? 'https://ashujainvi.com';
 export const SUCCESS_URL = `${ALLOWED_ORIGIN}/order/success?session_id={CHECKOUT_SESSION_ID}`;
 export const CANCEL_URL = `${ALLOWED_ORIGIN}/shop`;
 

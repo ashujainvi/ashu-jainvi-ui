@@ -12,9 +12,11 @@ const Pill = ({
   variant = 'primary',
   showBorder = true,
   overlapOn,
-  children
+  children,
 }: PillProps) => (
-  <div className={`rounded-full ${styles.pill} ${styles[variant]} ${!showBorder ? styles.noBorder : ''} ${overlapOn ? styles[`overlap-${overlapOn}`] : ''}`}>
+  <div
+    className={`rounded-full ${styles.pill} ${styles[variant]} ${!showBorder ? styles.noBorder : ''} ${overlapOn ? styles[`overlap-${overlapOn}`] : ''}`}
+  >
     {children}
   </div>
 );

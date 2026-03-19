@@ -2,14 +2,11 @@
 import FeatureCard from './FeatureCard';
 
 export default {
-  title: "FeatureCard",
+  title: 'FeatureCard',
 };
 
 export const Default = () => (
-  <FeatureCard 
-    title="Sample Title" 
-    caption="Sample caption text" 
-  />
+  <FeatureCard title="Sample Title" caption="Sample caption text" />
 );
 
 Default.story = {

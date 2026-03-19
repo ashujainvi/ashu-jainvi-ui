@@ -14,7 +14,7 @@ const GlassButton = ({
   ...props
 }: GlassButtonProps) => {
   const buttonStyle = size
-    ? { ...style, '--glass-button-size': size } as React.CSSProperties
+    ? ({ ...style, '--glass-button-size': size } as React.CSSProperties)
     : style;
 
   return (

@@ -57,7 +57,8 @@ function findAlbumDir(input: string): string | null {
   if (exactMatch) return path.join(PHOTOS_DIR, exactMatch);
 
   const containsMatch = dirs.find(
-    (d) => norm(d).includes(normalizedInput) || normalizedInput.includes(norm(d)),
+    (d) =>
+      norm(d).includes(normalizedInput) || normalizedInput.includes(norm(d)),
   );
   if (containsMatch) return path.join(PHOTOS_DIR, containsMatch);
 
@@ -72,7 +73,7 @@ if (!albumDir) {
     .filter((f) => fs.statSync(path.join(PHOTOS_DIR, f)).isDirectory());
   console.error(
     `Album folder not found for "${albumFolder}".\n` +
-    `Available folders: ${available.join(', ')}`,
+      `Available folders: ${available.join(', ')}`,
   );
   process.exit(1);
 }
@@ -214,14 +215,19 @@ const medianColors = bestKMeans(allColors, 3);
 
 // Sort by luminance (dark to light) for a natural gradient flow
 medianColors.sort(
-  (a, b) => 0.299 * a[0] + 0.587 * a[1] + 0.114 * a[2]
-           - (0.299 * b[0] + 0.587 * b[1] + 0.114 * b[2]),
+  (a, b) =>
+    0.299 * a[0] +
+    0.587 * a[1] +
+    0.114 * a[2] -
+    (0.299 * b[0] + 0.587 * b[1] + 0.114 * b[2]),
 );
 
 function rgbToHex(rgb: RGB): string {
   return (
     '#' +
-    rgb.map((c) => Math.max(0, Math.min(255, c)).toString(16).padStart(2, '0')).join('')
+    rgb
+      .map((c) => Math.max(0, Math.min(255, c)).toString(16).padStart(2, '0'))
+      .join('')
   );
 }
 
@@ -238,8 +244,8 @@ const photosContent = fs.readFileSync(PHOTOS_TS, 'utf-8');
 function normalize(s: string): string {
   return s
     .toLowerCase()
-    .replace(/[^a-z0-9]/g, ' ')  // replace hyphens, @, punctuation etc. with space
-    .replace(/\s+/g, ' ')         // collapse whitespace
+    .replace(/[^a-z0-9]/g, ' ') // replace hyphens, @, punctuation etc. with space
+    .replace(/\s+/g, ' ') // collapse whitespace
     .trim();
 }
 
@@ -267,14 +273,21 @@ function matchScore(title: string): number {
   // Check if all words from input appear in the title (or vice versa)
   const inputWords = normalizedInput.split(' ');
   const titleWords = normalizedTitle.split(' ');
-  const inputInTitle = inputWords.filter((w) => titleWords.some((tw) => tw.includes(w) || w.includes(tw)));
-  const titleInInput = titleWords.filter((w) => inputWords.some((iw) => iw.includes(w) || w.includes(iw)));
+  const inputInTitle = inputWords.filter((w) =>
+    titleWords.some((tw) => tw.includes(w) || w.includes(tw)),
+  );
+  const titleInInput = titleWords.filter((w) =>
+    inputWords.some((iw) => iw.includes(w) || w.includes(iw)),
+  );
 
-  if (inputInTitle.length === inputWords.length) return 70 + inputInTitle.length;
-  if (titleInInput.length === titleWords.length) return 60 + titleInInput.length;
+  if (inputInTitle.length === inputWords.length)
+    return 70 + inputInTitle.length;
+  if (titleInInput.length === titleWords.length)
+    return 60 + titleInInput.length;
 
   // Partial word overlap
-  const overlapRatio = inputInTitle.length / Math.max(inputWords.length, titleWords.length);
+  const overlapRatio =
+    inputInTitle.length / Math.max(inputWords.length, titleWords.length);
   if (overlapRatio > 0) return Math.round(overlapRatio * 50);
 
   return 0;
@@ -288,7 +301,7 @@ const scored = albumTitles
 if (scored.length === 0) {
   console.error(
     `\nNo album found matching "${albumFolder}" in photos.ts.\n` +
-    `Available albums: ${albumTitles.join(', ')}`,
+      `Available albums: ${albumTitles.join(', ')}`,
   );
   process.exit(1);
 }
@@ -324,4 +337,6 @@ const updatedContent = photosContent.replace(
 );
 
 fs.writeFileSync(PHOTOS_TS, updatedContent, 'utf-8');
-console.log(`\nDone! Updated gradient for "${targetTitle}" to: [${hexColors.join(', ')}]`);
+console.log(
+  `\nDone! Updated gradient for "${targetTitle}" to: [${hexColors.join(', ')}]`,
+);

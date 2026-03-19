@@ -1,4 +1,10 @@
-const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'] as const;
+const UTM_KEYS = [
+  'utm_source',
+  'utm_medium',
+  'utm_campaign',
+  'utm_term',
+  'utm_content',
+] as const;
 const STORAGE_KEY = 'utm_params';
 
 /** Store UTM params from the landing URL in sessionStorage so they persist across SPA navigations. */

@@ -42,7 +42,10 @@ export default function useParallax(layers: ParallaxLayer[]) {
       requestAnimationFrame(() => {
         const rect = container.getBoundingClientRect();
         const scrolled = -rect.top;
-        scrollRef.current.progress = Math.max(0, Math.min(scrolled / rect.height, 1));
+        scrollRef.current.progress = Math.max(
+          0,
+          Math.min(scrolled / rect.height, 1),
+        );
         applyTransforms();
         scrollTicking = false;
       });

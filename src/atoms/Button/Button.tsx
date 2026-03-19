@@ -12,9 +12,9 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   'aria-pressed'?: boolean;
 }
 
-const Button = ({ 
-  children, 
-  variant = 'primary', 
+const Button = ({
+  children,
+  variant = 'primary',
   as = 'button',
   to,
   className = '',
@@ -22,15 +22,16 @@ const Button = ({
   'aria-describedby': ariaDescribedby,
   'aria-pressed': ariaPressed,
   disabled,
-  ...props 
+  ...props
 }: ButtonProps) => {
-  const buttonClasses = `${styles.button} ${styles[variant]} ${className}`.trim();
+  const buttonClasses =
+    `${styles.button} ${styles[variant]} ${className}`.trim();
 
   if (as === 'link' && to) {
     return (
-      <Link 
-        to={to} 
-        className={buttonClasses} 
+      <Link
+        to={to}
+        className={buttonClasses}
         role="button"
         aria-label={ariaLabel}
         aria-describedby={ariaDescribedby}
@@ -44,8 +45,8 @@ const Button = ({
   }
 
   return (
-    <button 
-      className={buttonClasses} 
+    <button
+      className={buttonClasses}
       aria-label={ariaLabel}
       aria-describedby={ariaDescribedby}
       aria-pressed={ariaPressed}

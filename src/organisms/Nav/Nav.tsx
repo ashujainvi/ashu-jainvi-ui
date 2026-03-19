@@ -39,8 +39,12 @@ const Nav: FC = () => {
           aria-expanded={isMenuOpen}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          <span className={`${styles.hamburgerLine} ${isMenuOpen ? styles.lineTopOpen : ''}`} />
-          <span className={`${styles.hamburgerLine} ${isMenuOpen ? styles.lineBottomOpen : ''}`} />
+          <span
+            className={`${styles.hamburgerLine} ${isMenuOpen ? styles.lineTopOpen : ''}`}
+          />
+          <span
+            className={`${styles.hamburgerLine} ${isMenuOpen ? styles.lineBottomOpen : ''}`}
+          />
         </button>
         <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       </div>

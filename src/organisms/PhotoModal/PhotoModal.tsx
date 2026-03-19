@@ -20,7 +20,13 @@ interface PhotoModalProps {
 const SWIPE_THRESHOLD = 50;
 const SWIPE_VELOCITY_THRESHOLD = 0.3;
 
-const PhotoModal: FC<PhotoModalProps> = ({ photos, currentIndex, isOpen, onClose, onNavigate }) => {
+const PhotoModal: FC<PhotoModalProps> = ({
+  photos,
+  currentIndex,
+  isOpen,
+  onClose,
+  onNavigate,
+}) => {
   const { containerRef } = useFocusTrap<HTMLDivElement>({
     isOpen,
     onClose,
@@ -30,7 +36,9 @@ const PhotoModal: FC<PhotoModalProps> = ({ photos, currentIndex, isOpen, onClose
   const [direction, setDirection] = useState<'left' | 'right' | null>(null);
   const [loaded, setLoaded] = useState(false);
 
-  const touchStartRef = useRef<{ x: number; y: number; time: number } | null>(null);
+  const touchStartRef = useRef<{ x: number; y: number; time: number } | null>(
+    null,
+  );
   const imageContainerRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
   const swipeOffsetRef = useRef(0);
@@ -93,22 +101,29 @@ const PhotoModal: FC<PhotoModalProps> = ({ photos, currentIndex, isOpen, onClose
   // Native touch handlers — passive/non-passive for Safari & IG WebView
   const handleTouchStart = useCallback((e: TouchEvent) => {
     const touch = e.touches[0];
-    touchStartRef.current = { x: touch.clientX, y: touch.clientY, time: Date.now() };
+    touchStartRef.current = {
+      x: touch.clientX,
+      y: touch.clientY,
+      time: Date.now(),
+    };
     imageContainerRef.current?.classList.add(styles.swiping);
   }, []);
 
-  const handleTouchMove = useCallback((e: TouchEvent) => {
-    if (!touchStartRef.current) return;
-    const touch = e.touches[0];
-    const deltaX = touch.clientX - touchStartRef.current.x;
-    const deltaY = touch.clientY - touchStartRef.current.y;
+  const handleTouchMove = useCallback(
+    (e: TouchEvent) => {
+      if (!touchStartRef.current) return;
+      const touch = e.touches[0];
+      const deltaX = touch.clientX - touchStartRef.current.x;
+      const deltaY = touch.clientY - touchStartRef.current.y;
 
-    if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaX) < 10) return;
+      if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaX) < 10) return;
 
-    e.preventDefault();
-    swipeOffsetRef.current = deltaX;
-    scheduleTransformUpdate();
-  }, [scheduleTransformUpdate]);
+      e.preventDefault();
+      swipeOffsetRef.current = deltaX;
+      scheduleTransformUpdate();
+    },
+    [scheduleTransformUpdate],
+  );
 
   const handleTouchEnd = useCallback(() => {
     if (!touchStartRef.current) return;
@@ -117,7 +132,10 @@ const PhotoModal: FC<PhotoModalProps> = ({ photos, currentIndex, isOpen, onClose
     const offset = swipeOffsetRef.current;
     const velocity = Math.abs(offset) / elapsed;
 
-    if (velocity > SWIPE_VELOCITY_THRESHOLD || Math.abs(offset) > SWIPE_THRESHOLD) {
+    if (
+      velocity > SWIPE_VELOCITY_THRESHOLD ||
+      Math.abs(offset) > SWIPE_THRESHOLD
+    ) {
       if (offset < 0) goToNext();
       else goToPrev();
     }
@@ -201,7 +219,9 @@ const PhotoModal: FC<PhotoModalProps> = ({ photos, currentIndex, isOpen, onClose
         aria-modal={isOpen}
         aria-label="Photo viewer"
         aria-hidden={!isOpen}
-        onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) onClose();
+        }}
       >
         <button
           type="button"
@@ -210,7 +230,15 @@ const PhotoModal: FC<PhotoModalProps> = ({ photos, currentIndex, isOpen, onClose
           tabIndex={isOpen ? 0 : -1}
           aria-label="Close photo viewer"
         >
-          <svg className={styles.closeIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+          <svg
+            className={styles.closeIcon}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            aria-hidden="true"
+          >
             <line x1="18" y1="6" x2="6" y2="18" />
             <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
@@ -246,8 +274,18 @@ const PhotoModal: FC<PhotoModalProps> = ({ photos, currentIndex, isOpen, onClose
             tabIndex={isOpen ? 0 : -1}
             aria-label={`Previous photo: ${prevPhoto.alt}`}
           >
-            <img src={prevPhoto.src} srcSet={prevPhoto.srcSet} sizes="56px" alt="" className={styles.previewImage} loading="eager" draggable={false} />
-            <span className={styles.navLabel} aria-hidden="true">Prev</span>
+            <img
+              src={prevPhoto.src}
+              srcSet={prevPhoto.srcSet}
+              sizes="56px"
+              alt=""
+              className={styles.previewImage}
+              loading="eager"
+              draggable={false}
+            />
+            <span className={styles.navLabel} aria-hidden="true">
+              Prev
+            </span>
           </button>
 
           <span className={styles.counter} aria-hidden="true">
@@ -261,8 +299,21 @@ const PhotoModal: FC<PhotoModalProps> = ({ photos, currentIndex, isOpen, onClose
             tabIndex={isOpen ? 0 : -1}
             aria-label={`Next photo: ${nextPhoto.alt}`}
           >
-            <img src={nextPhoto.src} srcSet={nextPhoto.srcSet} sizes="56px" alt="" className={styles.previewImage} loading="eager" draggable={false} />
-            <span className={`${styles.navLabel} ${styles.navLabelNext}`} aria-hidden="true">Next</span>
+            <img
+              src={nextPhoto.src}
+              srcSet={nextPhoto.srcSet}
+              sizes="56px"
+              alt=""
+              className={styles.previewImage}
+              loading="eager"
+              draggable={false}
+            />
+            <span
+              className={`${styles.navLabel} ${styles.navLabelNext}`}
+              aria-hidden="true"
+            >
+              Next
+            </span>
           </button>
         </nav>
       </div>

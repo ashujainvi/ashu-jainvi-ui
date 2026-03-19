@@ -12,19 +12,24 @@ type GridVariant = 'portrait' | 'portraitWide' | 'landscape';
 function getGridVariant(width: number, height: number): GridVariant {
   const ratio = width / height;
   if (ratio > 1) return 'landscape';
-  if (ratio <= 0.70) return 'portrait';
+  if (ratio <= 0.7) return 'portrait';
   return 'portraitWide';
 }
 
 const AlbumPage = () => {
   const { albumId } = useParams<{ albumId: string }>();
-  const album = albums.find(a => a.id === albumId);
+  const album = albums.find((a) => a.id === albumId);
 
   const [modalOpen, setModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const modalPhotos: PhotoItem[] = useMemo(
-    () => album?.photos.map(p => ({ src: p.src, alt: p.alt, srcSet: p.srcSet })) ?? [],
+    () =>
+      album?.photos.map((p) => ({
+        src: p.src,
+        alt: p.alt,
+        srcSet: p.srcSet,
+      })) ?? [],
     [album],
   );
 
@@ -42,26 +47,49 @@ const AlbumPage = () => {
     <div className={styles.albumPage}>
       <Seo
         title={`${album.title} — Photography`}
-        description={album.description ?? `Browse ${album.photos.length} photos from the ${album.title} collection by Ashu Jainvi.`}
+        description={
+          album.description ??
+          `Browse ${album.photos.length} photos from the ${album.title} collection by Ashu Jainvi.`
+        }
         path={`/photos/${album.id}`}
         image={album.photos[0]?.src}
       />
       <div className={styles.header}>
         <Link to="/photos" className={styles.backLink}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
             <polyline points="15 18 9 12 15 6" />
           </svg>
           All albums
         </Link>
         <div className={styles.meta}>
-          <span className="text-overline">{album.photos.length} photo{album.photos.length !== 1 ? 's' : ''}</span>
+          <span className="text-overline">
+            {album.photos.length} photo{album.photos.length !== 1 ? 's' : ''}
+          </span>
           <h1
             className={`display ${album.gradient ? styles.gradientTitle : ''}`}
-            style={album.gradient ? { backgroundImage: `linear-gradient(135deg, ${album.gradient[0]}, ${album.gradient[1]}, ${album.gradient[2]})` } : undefined}
+            style={
+              album.gradient
+                ? {
+                    backgroundImage: `linear-gradient(135deg, ${album.gradient[0]}, ${album.gradient[1]}, ${album.gradient[2]})`,
+                  }
+                : undefined
+            }
           >
             {album.title}
           </h1>
-          {album.description && <p className={styles.description}>{album.description}</p>}
+          {album.description && (
+            <p className={styles.description}>{album.description}</p>
+          )}
         </div>
       </div>
       <div className={styles.photoGrid}>
@@ -96,7 +124,9 @@ const AlbumPage = () => {
             <span className={styles.nextAlbumLabel}>Next Album</span>
             <span className={styles.nextAlbumTitle}>
               {nextAlbum.title}
-              <span className={styles.nextAlbumArrow} aria-hidden="true">&rarr;</span>
+              <span className={styles.nextAlbumArrow} aria-hidden="true">
+                &rarr;
+              </span>
             </span>
           </div>
         </PhotoCard>

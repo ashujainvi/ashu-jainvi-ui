@@ -19,8 +19,16 @@
   pointer-events: none;
   z-index: 0;
   opacity: 0.25;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 20%, transparent 70%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 20%, transparent 70%);
+  mask-image: radial-gradient(
+    ellipse 80% 60% at 50% 50%,
+    black 20%,
+    transparent 70%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 80% 60% at 50% 50%,
+    black 20%,
+    transparent 70%
+  );
 }
 
 .heroSection {
@@ -68,7 +76,9 @@
   z-index: 1;
   margin: -90px auto 0;
   padding: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
 }
 
 .sunriseButton:hover {
@@ -179,6 +189,10 @@
   padding-top: 6rem;
   padding-bottom: 6rem;
   background-color: var(--color-bg-primary);
-  background-image: 
-    radial-gradient(ellipse 30% 28% at 50% 55%, var(--color-primary-dark), var(--color-primary-darker) 35%, var(--color-bg-primary) 80%);
+  background-image: radial-gradient(
+    ellipse 30% 28% at 50% 55%,
+    var(--color-primary-dark),
+    var(--color-primary-darker) 35%,
+    var(--color-bg-primary) 80%
+  );
 }

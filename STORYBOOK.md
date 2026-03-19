@@ -40,9 +40,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import MyComponent from './MyComponent';
 
 const meta: Meta<typeof MyComponent> = {
-  title: 'Atoms/MyComponent',    // or 'Molecules/MyComponent'
+  title: 'Atoms/MyComponent', // or 'Molecules/MyComponent'
   component: MyComponent,
-  tags: ['autodocs'],             // generates a Docs page automatically
+  tags: ['autodocs'], // generates a Docs page automatically
   argTypes: {
     // define controls for each prop
   },
@@ -71,9 +71,9 @@ export const Default: Story = {
 
 Use atomic design levels as folder prefixes in the `title` field:
 
-| Level | Title format | Example |
-|-------|-------------|---------|
-| Atom | `'Atoms/ComponentName'` | `'Atoms/Button'` |
+| Level    | Title format                | Example            |
+| -------- | --------------------------- | ------------------ |
+| Atom     | `'Atoms/ComponentName'`     | `'Atoms/Button'`   |
 | Molecule | `'Molecules/ComponentName'` | `'Molecules/Card'` |
 
 This groups components in Storybook's sidebar by their atomic design level.
@@ -84,12 +84,12 @@ This groups components in Storybook's sidebar by their atomic design level.
 
 Map each component prop to a control so users can interact with the story in the Storybook UI:
 
-| Prop type | Control | Example |
-|-----------|---------|---------|
-| Union / enum (`'primary' \| 'secondary'`) | `control: 'select'` | `options: ['primary', 'secondary']` |
-| `boolean` | `control: 'boolean'` | `showBorder` toggle |
-| `string` | `control: 'text'` | `children` text input |
-| `ReactNode` (complex) | `control: 'text'` | Renders as a string — fine for simple children |
+| Prop type                                 | Control              | Example                                        |
+| ----------------------------------------- | -------------------- | ---------------------------------------------- |
+| Union / enum (`'primary' \| 'secondary'`) | `control: 'select'`  | `options: ['primary', 'secondary']`            |
+| `boolean`                                 | `control: 'boolean'` | `showBorder` toggle                            |
+| `string`                                  | `control: 'text'`    | `children` text input                          |
+| `ReactNode` (complex)                     | `control: 'text'`    | Renders as a string — fine for simple children |
 
 ```tsx
 argTypes: {

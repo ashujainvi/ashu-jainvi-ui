@@ -15,7 +15,10 @@ const DESKTOP_MQ = '(pointer: fine)';
  */
 export default function useSpotlight<T extends HTMLElement>(
   ref: RefObject<T | null>,
-  { lerpFactor = 0.1, tiltMax = 12 }: { lerpFactor?: number; tiltMax?: number } = {},
+  {
+    lerpFactor = 0.1,
+    tiltMax = 12,
+  }: { lerpFactor?: number; tiltMax?: number } = {},
 ) {
   const targetX = useRef(0);
   const targetY = useRef(0);
@@ -32,7 +35,8 @@ export default function useSpotlight<T extends HTMLElement>(
 
     currentX.current += (targetX.current - currentX.current) * lerpFactor;
     currentY.current += (targetY.current - currentY.current) * lerpFactor;
-    tiltFactor.current += (targetTiltFactor.current - tiltFactor.current) * lerpFactor;
+    tiltFactor.current +=
+      (targetTiltFactor.current - tiltFactor.current) * lerpFactor;
 
     const w = el.offsetWidth || 1;
     const h = el.offsetHeight || 1;

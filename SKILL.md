@@ -47,12 +47,12 @@ scripts/
 
 ### 2.2 Image Storage Strategy
 
-| Tier | Location | Purpose |
-|------|----------|---------|
-| RAW / Full-res | External (S3, NAS, Lightroom catalog) | Archival, print fulfillment |
-| Web master | `src/assets/photos/{category}/` | Source-of-truth for Vite pipeline |
-| Responsive variants | Generated at build by `vite-imagetools` | Served to browser via srcSet |
-| Thumbnails | Generated at build (≤ 480 w) | Grid previews, LQIP |
+| Tier                | Location                                | Purpose                           |
+| ------------------- | --------------------------------------- | --------------------------------- |
+| RAW / Full-res      | External (S3, NAS, Lightroom catalog)   | Archival, print fulfillment       |
+| Web master          | `src/assets/photos/{category}/`         | Source-of-truth for Vite pipeline |
+| Responsive variants | Generated at build by `vite-imagetools` | Served to browser via srcSet      |
+| Thumbnails          | Generated at build (≤ 480 w)            | Grid previews, LQIP               |
 
 - Never commit RAW files or uncompressed TIFFs.
 - Watermarked copies protect against unauthorized use while allowing full-quality srcSet generation.
@@ -74,8 +74,8 @@ Metadata can live in one of two tiers depending on scale:
     "width": 2000,
     "height": 1333,
     "tags": ["action", "night", "midfield"],
-    "printAvailable": true
-  }
+    "printAvailable": true,
+  },
 ]
 ```
 
@@ -100,12 +100,12 @@ import img4725SrcSet from '../../assets/photos/bandits/IMG_4725-web-watermarked-
 ```ts
 const images = import.meta.glob<{ default: string }>(
   '../../assets/photos/**/*.jpg',
-  { eager: false }
+  { eager: false },
 );
 
 const srcSets = import.meta.glob<{ default: string }>(
   '../../assets/photos/**/*.jpg?w=480;768;1024;1500&format=jpg&as=srcset',
-  { eager: false }
+  { eager: false },
 );
 ```
 
@@ -143,12 +143,12 @@ Photos (page)
 
 ### 3.2 Resizing Strategy (Breakpoints)
 
-| Breakpoint | Width (px) | Use Case |
-|------------|-----------|----------|
-| xs | 480 | Mobile grid thumbnails |
-| sm | 768 | Tablet grid |
-| md | 1024 | Desktop grid |
-| lg | 1500–2000 | Lightbox / hero |
+| Breakpoint | Width (px) | Use Case               |
+| ---------- | ---------- | ---------------------- |
+| xs         | 480        | Mobile grid thumbnails |
+| sm         | 768        | Tablet grid            |
+| md         | 1024       | Desktop grid           |
+| lg         | 1500–2000  | Lightbox / hero        |
 
 These widths are passed to `vite-imagetools` via the `?w=480;768;1024;1500` query string.
 
@@ -194,13 +194,13 @@ await sharp(input)
 {CAMERA_ID}-web-watermarked-{version}.{ext}
 ```
 
-| Segment | Rule |
-|---------|------|
-| Camera ID | Preserve original (e.g. `IMG_4725`) |
-| `-web` | Indicates web-optimized export |
-| `-watermarked` | Indicates watermark applied |
-| `-{version}` | Increment on re-export |
-| `.jpg` | Source extension; Vite generates variants at build |
+| Segment        | Rule                                               |
+| -------------- | -------------------------------------------------- |
+| Camera ID      | Preserve original (e.g. `IMG_4725`)                |
+| `-web`         | Indicates web-optimized export                     |
+| `-watermarked` | Indicates watermark applied                        |
+| `-{version}`   | Increment on re-export                             |
+| `.jpg`         | Source extension; Vite generates variants at build |
 
 ### 3.6 Thumbnail / LQIP Generation
 
@@ -208,10 +208,7 @@ await sharp(input)
 - **LQIP (optional):** Generate a 20 px blurred placeholder inline as base64:
 
 ```ts
-const lqip = await sharp(input)
-  .resize(20)
-  .blur(5)
-  .toBuffer();
+const lqip = await sharp(input).resize(20).blur(5).toBuffer();
 const dataUri = `data:image/jpeg;base64,${lqip.toString('base64')}`;
 ```
 
@@ -225,6 +222,7 @@ Embed in `gallery.json` as `"lqip": "data:image/jpeg;base64,..."`.
 ```
 
 Script responsibilities:
+
 1. Walk `src/assets/photos/**/*.jpg`.
 2. Skip files already under size threshold (< 500 KB).
 3. Resize to max 2000 px longest edge.
@@ -275,12 +273,12 @@ PhotoCard (molecule)
 
 ### 4.6 Code Splitting Strategy
 
-| Chunk | Strategy |
-|-------|----------|
-| Photos page | `React.lazy()` via `.lazy.tsx` barrel |
-| PhotoModal | Dynamic `import()` triggered on first open |
-| Image assets | `vite-imagetools` generates per-image chunks |
-| Magnetic/Spotlight hooks | Bundled with PhotoCard; negligible size |
+| Chunk                    | Strategy                                     |
+| ------------------------ | -------------------------------------------- |
+| Photos page              | `React.lazy()` via `.lazy.tsx` barrel        |
+| PhotoModal               | Dynamic `import()` triggered on first open   |
+| Image assets             | `vite-imagetools` generates per-image chunks |
+| Magnetic/Spotlight hooks | Bundled with PhotoCard; negligible size      |
 
 ---
 
@@ -288,23 +286,23 @@ PhotoCard (molecule)
 
 ### Targets
 
-| Metric | Target | Measurement |
-|--------|--------|-------------|
-| LCP | < 2.5 s | Lighthouse mobile, 3G throttled |
-| FCP | < 1.5 s | Lighthouse mobile |
-| CLS | < 0.05 | Lighthouse mobile |
-| TBT | < 200 ms | Lighthouse mobile |
-| Performance score | ≥ 90 | Lighthouse |
-| Accessibility score | ≥ 95 | Lighthouse |
-| SEO score | ≥ 95 | Lighthouse |
+| Metric              | Target   | Measurement                     |
+| ------------------- | -------- | ------------------------------- |
+| LCP                 | < 2.5 s  | Lighthouse mobile, 3G throttled |
+| FCP                 | < 1.5 s  | Lighthouse mobile               |
+| CLS                 | < 0.05   | Lighthouse mobile               |
+| TBT                 | < 200 ms | Lighthouse mobile               |
+| Performance score   | ≥ 90     | Lighthouse                      |
+| Accessibility score | ≥ 95     | Lighthouse                      |
+| SEO score           | ≥ 95     | Lighthouse                      |
 
 ### Image Size Budget
 
-| Variant | Max File Size |
-|---------|--------------|
-| Thumbnail (480 w) | 40 KB |
-| Grid card (768–1024 w) | 120 KB |
-| Lightbox / hero (1500–2000 w) | 250 KB |
+| Variant                       | Max File Size |
+| ----------------------------- | ------------- |
+| Thumbnail (480 w)             | 40 KB         |
+| Grid card (768–1024 w)        | 120 KB        |
+| Lightbox / hero (1500–2000 w) | 250 KB        |
 
 ### CLS Prevention Checklist
 
@@ -322,12 +320,12 @@ PhotoCard (molecule)
 
 ### CDN Recommendations
 
-| Provider | Use Case |
-|----------|----------|
-| Firebase Hosting | Current deployment target; global CDN built-in |
-| Cloudflare | Edge caching, image resizing (paid plan) |
+| Provider           | Use Case                                                          |
+| ------------------ | ----------------------------------------------------------------- |
+| Firebase Hosting   | Current deployment target; global CDN built-in                    |
+| Cloudflare         | Edge caching, image resizing (paid plan)                          |
 | Imgix / Cloudinary | On-the-fly transforms, format negotiation, responsive breakpoints |
-| Vercel Edge | Alternative hosting with automatic image optimization |
+| Vercel Edge        | Alternative hosting with automatic image optimization             |
 
 ---
 
@@ -358,9 +356,9 @@ Inject `ImageObject` JSON-LD per gallery page:
       "contentUrl": "https://example.com/photos/IMG_4725.jpg",
       "description": "Midfielder controlling the ball during a Bandits FC night match",
       "width": 2000,
-      "height": 1333
-    }
-  ]
+      "height": 1333,
+    },
+  ],
 }
 ```
 
@@ -405,11 +403,11 @@ Submit via Google Search Console.
 
 ### 7.1 Hosting
 
-| Platform | Setup |
-|----------|-------|
-| **Firebase Hosting** (current) | `firebase.json` with rewrites; global CDN built-in |
-| Vercel | Zero-config Vite deployment; automatic image optimization available |
-| Netlify | Similar to Vercel; add `_headers` for cache policy |
+| Platform                       | Setup                                                               |
+| ------------------------------ | ------------------------------------------------------------------- |
+| **Firebase Hosting** (current) | `firebase.json` with rewrites; global CDN built-in                  |
+| Vercel                         | Zero-config Vite deployment; automatic image optimization available |
+| Netlify                        | Similar to Vercel; add `_headers` for cache policy                  |
 
 ### 7.2 Edge Caching
 
@@ -435,14 +433,14 @@ Submit via Google Search Console.
 
 ### Common Image-Heavy Site Mistakes
 
-| Anti-Pattern | Consequence | Fix |
-|-------------|-------------|-----|
-| Committing RAW / full-res files | Repo bloat (GB+), slow clones | External storage; commit web-optimized only |
-| Single image size for all viewports | Wasted bandwidth on mobile | `srcSet` + `sizes` via `vite-imagetools` |
-| Missing `width`/`height` on `<img>` | CLS spikes | Always set intrinsic dimensions |
-| Generic alt text (`"Photo 1"`) | SEO penalty, ADA non-compliance | Descriptive, keyword-rich alt per image |
-| Eager-loading all images | Slow FCP, high data transfer | `loading="lazy"` + `decoding="async"` |
-| Inlining base64 for large images | HTML bloat, non-cacheable | Use only for LQIP (≤ 1 KB) |
+| Anti-Pattern                        | Consequence                     | Fix                                         |
+| ----------------------------------- | ------------------------------- | ------------------------------------------- |
+| Committing RAW / full-res files     | Repo bloat (GB+), slow clones   | External storage; commit web-optimized only |
+| Single image size for all viewports | Wasted bandwidth on mobile      | `srcSet` + `sizes` via `vite-imagetools`    |
+| Missing `width`/`height` on `<img>` | CLS spikes                      | Always set intrinsic dimensions             |
+| Generic alt text (`"Photo 1"`)      | SEO penalty, ADA non-compliance | Descriptive, keyword-rich alt per image     |
+| Eager-loading all images            | Slow FCP, high data transfer    | `loading="lazy"` + `decoding="async"`       |
+| Inlining base64 for large images    | HTML bloat, non-cacheable       | Use only for LQIP (≤ 1 KB)                  |
 
 ### Performance Traps
 
@@ -479,12 +477,12 @@ Submit via Google Search Console.
 
 ### 9.4 E-Commerce Integration
 
-| Option | Complexity | Notes |
-|--------|-----------|-------|
-| Pixieset / ShootProof (external) | Low | Link out from CTA |
-| Stripe Checkout (embedded) | Medium | Custom product catalog, webhook fulfillment |
-| Shopify Storefront API | Medium–High | Full cart, product variants, fulfillment |
-| Custom checkout | High | Full control; requires PCI compliance consideration |
+| Option                           | Complexity  | Notes                                               |
+| -------------------------------- | ----------- | --------------------------------------------------- |
+| Pixieset / ShootProof (external) | Low         | Link out from CTA                                   |
+| Stripe Checkout (embedded)       | Medium      | Custom product catalog, webhook fulfillment         |
+| Shopify Storefront API           | Medium–High | Full cart, product variants, fulfillment            |
+| Custom checkout                  | High        | Full control; requires PCI compliance consideration |
 
 ### 9.5 CDN Image Transformations
 

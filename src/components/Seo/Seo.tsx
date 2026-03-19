@@ -2,7 +2,8 @@ import { useEffect } from 'react';
 
 const SITE_NAME = 'Ashu Jainvi';
 const BASE_URL = 'https://ashujainvi.com';
-const DEFAULT_DESCRIPTION = 'Ashu Jainvi is an Austin, Texas-based visual artist and senior UI developer specializing in photography, graphic design, and web development.';
+const DEFAULT_DESCRIPTION =
+  'Ashu Jainvi is an Austin, Texas-based visual artist and senior UI developer specializing in photography, graphic design, and web development.';
 const DEFAULT_IMAGE = `${BASE_URL}/og-image.png`;
 
 interface SeoProps {
@@ -33,11 +34,19 @@ function setCanonicalLink(href: string) {
   el.setAttribute('href', href);
 }
 
-const Seo = ({ title, description = DEFAULT_DESCRIPTION, path = '', image = DEFAULT_IMAGE, type = 'website' }: SeoProps) => {
+const Seo = ({
+  title,
+  description = DEFAULT_DESCRIPTION,
+  path = '',
+  image = DEFAULT_IMAGE,
+  type = 'website',
+}: SeoProps) => {
   useEffect(() => {
     const fullTitle = `${title} | ${SITE_NAME}`;
     const canonicalUrl = `${BASE_URL}${path}`;
-    const absoluteImage = image.startsWith('http') ? image : `${BASE_URL}${image.startsWith('/') ? '' : '/'}${image}`;
+    const absoluteImage = image.startsWith('http')
+      ? image
+      : `${BASE_URL}${image.startsWith('/') ? '' : '/'}${image}`;
 
     document.title = fullTitle;
 

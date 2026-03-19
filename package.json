@@ -14,7 +14,13 @@
     "gc": "npx generate-react-cli component",
     "gp": "npx generate-react-cli component --type=page",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,md,html}": "prettier --write"
   },
   "dependencies": {
     "@fiddle-digital/string-tune": "^1.1.50",
@@ -45,7 +51,10 @@
     "eslint-plugin-react-x": "^1.52.3",
     "eslint-plugin-storybook": "^10.2.13",
     "globals": "^16.3.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
     "playwright": "^1.58.2",
+    "prettier": "^3.8.1",
     "storybook": "^10.2.13",
     "tailwindcss": "^4",
     "typescript": "~5.8.3",

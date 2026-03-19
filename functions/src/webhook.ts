@@ -1,30 +1,30 @@
-import { onRequest } from "firebase-functions/v2/https";
-import Stripe from "stripe";
+import { onRequest } from 'firebase-functions/v2/https';
+import Stripe from 'stripe';
 import {
   getStripe,
   stripeSecretKey,
   stripeWebhookSecret,
   db,
-} from "./config.js";
+} from './config.js';
 
 export const stripeWebhook = onRequest(
   {
-    region: "us-central1",
+    region: 'us-central1',
     secrets: [stripeSecretKey, stripeWebhookSecret],
     // Disable body parsing — Stripe needs the raw body for signature verification
-    invoker: "public",
+    invoker: 'public',
   },
   async (req, res) => {
     // --- Only allow POST ---
-    if (req.method !== "POST") {
-      res.status(405).send("Method Not Allowed");
+    if (req.method !== 'POST') {
+      res.status(405).send('Method Not Allowed');
       return;
     }
 
     // --- Verify Stripe signature ---
-    const signature = req.headers["stripe-signature"];
+    const signature = req.headers['stripe-signature'];
     if (!signature) {
-      res.status(400).send("Missing stripe-signature header.");
+      res.status(400).send('Missing stripe-signature header.');
       return;
     }
 
@@ -35,19 +35,22 @@ export const stripeWebhook = onRequest(
       event = stripe.webhooks.constructEvent(
         req.rawBody,
         signature,
-        stripeWebhookSecret.value()
+        stripeWebhookSecret.value(),
       );
     } catch (err) {
-      const message = err instanceof Error ? err.message : "Unknown error";
-      console.error("Webhook signature verification failed:", message);
+      const message = err instanceof Error ? err.message : 'Unknown error';
+      console.error('Webhook signature verification failed:', message);
       res.status(400).send(`Webhook Error: ${message}`);
       return;
     }
 
     // --- Handle events ---
     switch (event.type) {
-      case "checkout.session.completed": {
-        await handleCheckoutCompleted(stripe, event.data.object as Stripe.Checkout.Session);
+      case 'checkout.session.completed': {
+        await handleCheckoutCompleted(
+          stripe,
+          event.data.object as Stripe.Checkout.Session,
+        );
         break;
       }
       default:
@@ -57,15 +60,15 @@ export const stripeWebhook = onRequest(
 
     // Always respond 200 to acknowledge receipt (prevents Stripe retries)
     res.status(200).json({ received: true });
-  }
+  },
 );
 
 async function handleCheckoutCompleted(
   stripe: Stripe,
-  session: Stripe.Checkout.Session
+  session: Stripe.Checkout.Session,
 ): Promise<void> {
   const orderId = session.id;
-  const orderRef = db.collection("orders").doc(orderId);
+  const orderRef = db.collection('orders').doc(orderId);
 
   // --- Idempotent: skip if order already exists ---
   const existing = await orderRef.get();
@@ -96,8 +99,8 @@ async function handleCheckoutCompleted(
       amountTotal: item.amount_total,
     })),
     metadata: session.metadata ?? {},
-    status: "paid",
-    fulfillmentStatus: "pending",
+    status: 'paid',
+    fulfillmentStatus: 'pending',
     createdAt: new Date().toISOString(),
   };
 

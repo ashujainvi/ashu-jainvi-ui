@@ -68,7 +68,16 @@ export const Default: Story = {
   },
   decorators: [
     (Story) => (
-      <div style={{ position: 'relative', width: 400, height: 300, background: '#111', borderRadius: '1rem', overflow: 'hidden' }}>
+      <div
+        style={{
+          position: 'relative',
+          width: 400,
+          height: 300,
+          background: '#111',
+          borderRadius: '1rem',
+          overflow: 'hidden',
+        }}
+      >
         <Story />
       </div>
     ),
@@ -104,7 +113,16 @@ export const ShootingStarPreview: Story = {
   },
   decorators: [
     (Story) => (
-      <div style={{ position: 'relative', width: 600, height: 400, background: '#0a0a0a', borderRadius: '1rem', overflow: 'hidden' }}>
+      <div
+        style={{
+          position: 'relative',
+          width: 600,
+          height: 400,
+          background: '#0a0a0a',
+          borderRadius: '1rem',
+          overflow: 'hidden',
+        }}
+      >
         <Story />
       </div>
     ),

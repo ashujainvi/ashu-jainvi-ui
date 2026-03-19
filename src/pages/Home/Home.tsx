@@ -17,114 +17,115 @@ const Home = () => {
   const craftSectionRef = useRef<HTMLElement>(null);
 
   const scrollToCraft = () => {
-    craftSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    craftSectionRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
   };
 
   return (
-  <div className={styles.home}>
-    <Seo
-      title="Visual Artist & Photographer"
-      description="Ashu Jainvi is an Austin, Texas based visual artist and engineer specializing in photography, graphic design, and web development."
-      path="/"
-    />
-    <div
-      className={styles.backgroundWrapper}
-      style={{ backgroundImage: `url(${glitchPng})` }}></div>
-    <section className={styles.heroSection}>
-      <div className={styles.heroContainer}>
-        <div className={`${styles.heroScene} text-center`}>
-          <span className={`text-overline ${styles.stroke}`}>
-            Meet
-          </span>
-          <h1 className="display">Ashu Jainvi</h1>
-        </div>
-      </div>
-    </section>
-    <button
-      className={styles.sunriseButton}
-      onClick={scrollToCraft}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          scrollToCraft();
-        }
-      }}
-      tabIndex={0}
-      aria-label="Scroll to craft section"
-    >
-      <img src={sunriseButtonSvg} alt="Sunrise Button" role="presentation" />
-    </button>
-    <section ref={craftSectionRef} className={styles.craftSection}>
+    <div className={styles.home}>
+      <Seo
+        title="Visual Artist & Photographer"
+        description="Ashu Jainvi is an Austin, Texas based visual artist and engineer specializing in photography, graphic design, and web development."
+        path="/"
+      />
       <div
-        className={`${containerStyles.container} ${styles.craftContainer}`}
-        style={{ '--craft-bg': `url(${texasCactusLandscapePng})` } as React.CSSProperties}
+        className={styles.backgroundWrapper}
+        style={{ backgroundImage: `url(${glitchPng})` }}
+      ></div>
+      <section className={styles.heroSection}>
+        <div className={styles.heroContainer}>
+          <div className={`${styles.heroScene} text-center`}>
+            <span className={`text-overline ${styles.stroke}`}>Meet</span>
+            <h1 className="display">Ashu Jainvi</h1>
+          </div>
+        </div>
+      </section>
+      <button
+        className={styles.sunriseButton}
+        onClick={scrollToCraft}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            scrollToCraft();
+          }
+        }}
+        tabIndex={0}
+        aria-label="Scroll to craft section"
       >
-        <span className="text-overline text-primary-darker">
-          Austin, Texas based
-        </span>
-        <h2 className="title1">
-          Visual Artist
-        </h2>
-        <div className={styles.profileRow}>
-          <div className={styles.profileCard}>
-            <PhotoCard image={profileImage} caption="profile.jpeg" alt="Ashu Jainvi" className="max-w-[7.875rem] aspect-[3/4]" redHue />
-          </div>
-          <div className={styles.profilePill}>
-            <Pill variant="primary" showBorder={false} overlapOn="left">
-              <p className="caption">
-                I build clean yet playful digital worlds through photography, graphics,
-                and web design.
-              </p>
-            </Pill>
-          </div>
-        </div>
-
-      </div>
-    </section>
-    <section className={styles.discoverSection}>
-      <div className={styles.discoverContainer}>
-        <span className={`text-overline ${styles.stroke}`}>
-          Discover
-        </span>
-        <h3 className="title2 text-secondary-light">My craft</h3>
-        <div className="@container w-full mt-22">
-          <div className="grid @md:grid-cols-1 @lg:grid-cols-2 @4xl:grid-cols-3 gap-4 justify-items-center">
-            <div className="w-full flex justify-center">
-              <FeatureCard
-                title={'Photography'}
-                caption={
-                  'Artistic portrait photos taken over the years'
-                }
-                linkText="View Portfolio"
-                linkHref="/photos"
-                imageUrl={cameraOutlinePng}
+        <img src={sunriseButtonSvg} alt="Sunrise Button" role="presentation" />
+      </button>
+      <section ref={craftSectionRef} className={styles.craftSection}>
+        <div
+          className={`${containerStyles.container} ${styles.craftContainer}`}
+          style={
+            {
+              '--craft-bg': `url(${texasCactusLandscapePng})`,
+            } as React.CSSProperties
+          }
+        >
+          <span className="text-overline text-primary-darker">
+            Austin, Texas based
+          </span>
+          <h2 className="title1">Visual Artist</h2>
+          <div className={styles.profileRow}>
+            <div className={styles.profileCard}>
+              <PhotoCard
+                image={profileImage}
+                caption="profile.jpeg"
+                alt="Ashu Jainvi"
+                className="max-w-[7.875rem] aspect-[3/4]"
+                redHue
               />
             </div>
-            <div className="w-full flex justify-center">
-              <FeatureCard
-                title={'Graphics'}
-                caption={
-                  'Curated branding for your needs'
-                }
-                imageUrl={penToolOutlinePng}
-                comingSoon
-              />
-            </div>
-            <div className="w-full flex justify-center">
-              <FeatureCard
-                title={'Web Design'}
-                caption={
-                  'Curated web design for your needs'
-                }
-                imageUrl={browserWindowOutlinePng}
-                comingSoon
-              />
+            <div className={styles.profilePill}>
+              <Pill variant="primary" showBorder={false} overlapOn="left">
+                <p className="caption">
+                  I build clean yet playful digital worlds through photography,
+                  graphics, and web design.
+                </p>
+              </Pill>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </div>
+      </section>
+      <section className={styles.discoverSection}>
+        <div className={styles.discoverContainer}>
+          <span className={`text-overline ${styles.stroke}`}>Discover</span>
+          <h3 className="title2 text-secondary-light">My craft</h3>
+          <div className="@container w-full mt-22">
+            <div className="grid @md:grid-cols-1 @lg:grid-cols-2 @4xl:grid-cols-3 gap-4 justify-items-center">
+              <div className="w-full flex justify-center">
+                <FeatureCard
+                  title={'Photography'}
+                  caption={'Artistic portrait photos taken over the years'}
+                  linkText="View Portfolio"
+                  linkHref="/photos"
+                  imageUrl={cameraOutlinePng}
+                />
+              </div>
+              <div className="w-full flex justify-center">
+                <FeatureCard
+                  title={'Graphics'}
+                  caption={'Curated branding for your needs'}
+                  imageUrl={penToolOutlinePng}
+                  comingSoon
+                />
+              </div>
+              <div className="w-full flex justify-center">
+                <FeatureCard
+                  title={'Web Design'}
+                  caption={'Curated web design for your needs'}
+                  imageUrl={browserWindowOutlinePng}
+                  comingSoon
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 

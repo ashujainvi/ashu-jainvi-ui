@@ -69,21 +69,26 @@ const TwinkleCanvas: FC<TwinkleCanvasProps> = ({
   const shootingStarRef = useRef<ShootingStar | null>(null);
   const nextShootingStarTime = useRef(0);
 
-  const initLights = useCallback((width: number, height: number) => {
-    lightsRef.current = Array.from({ length: count }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * (height * regionHeight),
-      radius: minRadius + Math.random() * (maxRadius - minRadius),
-      phase: Math.random() * Math.PI * 2,
-      speed: 0.3 + Math.random() * 0.7,
-    }));
-  }, [count, regionHeight, minRadius, maxRadius]);
+  const initLights = useCallback(
+    (width: number, height: number) => {
+      lightsRef.current = Array.from({ length: count }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * (height * regionHeight),
+        radius: minRadius + Math.random() * (maxRadius - minRadius),
+        phase: Math.random() * Math.PI * 2,
+        speed: 0.3 + Math.random() * 0.7,
+      }));
+    },
+    [count, regionHeight, minRadius, maxRadius],
+  );
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
     if (prefersReducedMotion) return;
 
     const ctx = canvas.getContext('2d');
@@ -137,7 +142,9 @@ const TwinkleCanvas: FC<TwinkleCanvasProps> = ({
     };
 
     const scheduleNext = (time: number) => {
-      nextShootingStarTime.current = time + shootingStarMinInterval +
+      nextShootingStarTime.current =
+        time +
+        shootingStarMinInterval +
         Math.random() * (shootingStarMaxInterval - shootingStarMinInterval);
     };
 
@@ -155,7 +162,10 @@ const TwinkleCanvas: FC<TwinkleCanvasProps> = ({
 
       // Twinkling lights
       for (const light of lightsRef.current) {
-        const opacity = minOpacity + opacityRange * ((Math.sin(time * 0.001 * light.speed + light.phase) + 1) / 2);
+        const opacity =
+          minOpacity +
+          opacityRange *
+            ((Math.sin(time * 0.001 * light.speed + light.phase) + 1) / 2);
         ctx.beginPath();
         ctx.arc(light.x, light.y, light.radius, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${opacity})`;
@@ -169,7 +179,10 @@ const TwinkleCanvas: FC<TwinkleCanvasProps> = ({
         }
 
         if (!shootingStarRef.current && time >= nextShootingStarTime.current) {
-          shootingStarRef.current = spawnShootingStar(canvas.width / dpr, canvas.height / dpr);
+          shootingStarRef.current = spawnShootingStar(
+            canvas.width / dpr,
+            canvas.height / dpr,
+          );
         }
 
         const star = shootingStarRef.current;
@@ -220,7 +233,16 @@ const TwinkleCanvas: FC<TwinkleCanvasProps> = ({
       cancelAnimationFrame(raf);
       window.removeEventListener('resize', resize);
     };
-  }, [initLights, minOpacity, maxOpacity, color, shootingStars, shootingStarMinInterval, shootingStarMaxInterval, regionHeight]);
+  }, [
+    initLights,
+    minOpacity,
+    maxOpacity,
+    color,
+    shootingStars,
+    shootingStarMinInterval,
+    shootingStarMaxInterval,
+    regionHeight,
+  ]);
 
   return (
     <canvas

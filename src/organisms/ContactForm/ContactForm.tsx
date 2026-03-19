@@ -15,14 +15,22 @@ const ContactForm: FC = () => {
 
   useEffect(() => {
     if (state.succeeded) {
-      successRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      successRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
     }
   }, [state.succeeded]);
 
-  const isFormValid = fields.name.trim() !== '' && fields.email.trim() !== '' && fields.message.trim() !== '';
+  const isFormValid =
+    fields.name.trim() !== '' &&
+    fields.email.trim() !== '' &&
+    fields.message.trim() !== '';
 
-  const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFields(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleFieldChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFields((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const formatPhoneNumber = (value: string): string => {
@@ -47,9 +55,24 @@ const ContactForm: FC = () => {
 
   if (state.succeeded) {
     return (
-      <div ref={successRef} className={`${styles.form} ${styles.successWrapper}`}>
-        <p className={styles.successMessage}>Thanks for reaching out! I'll get back to you soon.</p>
-        <Button type="button" variant="primary" onClick={() => { reset(); navigate('/photos'); }} style={{ maxWidth: '16.25rem' }}>View Portfolio</Button>
+      <div
+        ref={successRef}
+        className={`${styles.form} ${styles.successWrapper}`}
+      >
+        <p className={styles.successMessage}>
+          Thanks for reaching out! I'll get back to you soon.
+        </p>
+        <Button
+          type="button"
+          variant="primary"
+          onClick={() => {
+            reset();
+            navigate('/photos');
+          }}
+          style={{ maxWidth: '16.25rem' }}
+        >
+          View Portfolio
+        </Button>
       </div>
     );
   }
@@ -57,7 +80,9 @@ const ContactForm: FC = () => {
   return (
     <form className={styles.form} onSubmit={onSubmit} noValidate>
       <div className={styles.field}>
-        <label htmlFor="name" className={styles.label}>Name</label>
+        <label htmlFor="name" className={styles.label}>
+          Name
+        </label>
         <input
           id="name"
           type="text"
@@ -69,10 +94,17 @@ const ContactForm: FC = () => {
           value={fields.name}
           onChange={handleFieldChange}
         />
-        <ValidationError field="name" prefix="Name" errors={state.errors} className={styles.error} />
+        <ValidationError
+          field="name"
+          prefix="Name"
+          errors={state.errors}
+          className={styles.error}
+        />
       </div>
       <div className={styles.field}>
-        <label htmlFor="email" className={styles.label}>Email</label>
+        <label htmlFor="email" className={styles.label}>
+          Email
+        </label>
         <input
           id="email"
           type="email"
@@ -84,10 +116,17 @@ const ContactForm: FC = () => {
           value={fields.email}
           onChange={handleFieldChange}
         />
-        <ValidationError field="email" prefix="Email" errors={state.errors} className={styles.error} />
+        <ValidationError
+          field="email"
+          prefix="Email"
+          errors={state.errors}
+          className={styles.error}
+        />
       </div>
       <div className={styles.field}>
-        <label htmlFor="phone" className={styles.label}>Phone (Optional)</label>
+        <label htmlFor="phone" className={styles.label}>
+          Phone (Optional)
+        </label>
         <div className={styles.phoneWrapper}>
           <span className={styles.phonePrefix}>+1</span>
           <input
@@ -101,7 +140,20 @@ const ContactForm: FC = () => {
             title="Enter a 10-digit US phone number"
             autoComplete="tel"
             onKeyDown={(e) => {
-              if (!/[\d]/.test(e.key) && !['Backspace', 'Delete', 'Tab', 'ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key) && !e.ctrlKey && !e.metaKey) {
+              if (
+                !/[\d]/.test(e.key) &&
+                ![
+                  'Backspace',
+                  'Delete',
+                  'Tab',
+                  'ArrowLeft',
+                  'ArrowRight',
+                  'Home',
+                  'End',
+                ].includes(e.key) &&
+                !e.ctrlKey &&
+                !e.metaKey
+              ) {
                 e.preventDefault();
               }
             }}
@@ -115,7 +167,9 @@ const ContactForm: FC = () => {
         </div>
       </div>
       <div className={styles.field}>
-        <label htmlFor="message" className={styles.label}>Message</label>
+        <label htmlFor="message" className={styles.label}>
+          Message
+        </label>
         <textarea
           id="message"
           name="message"
@@ -125,10 +179,19 @@ const ContactForm: FC = () => {
           value={fields.message}
           onChange={handleFieldChange}
         />
-        <ValidationError field="message" prefix="Message" errors={state.errors} className={styles.error} />
+        <ValidationError
+          field="message"
+          prefix="Message"
+          errors={state.errors}
+          className={styles.error}
+        />
       </div>
       <div className="mt-4">
-        <Button type="submit" variant="primary" disabled={state.submitting || !isFormValid}>
+        <Button
+          type="submit"
+          variant="primary"
+          disabled={state.submitting || !isFormValid}
+        >
           {state.submitting ? 'Sending...' : 'Submit'}
         </Button>
       </div>
