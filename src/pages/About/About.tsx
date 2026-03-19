@@ -26,8 +26,8 @@ const About = () => (
         <p>
           At the end of 2022, I consulted at <strong>Apple</strong> as a{' '}
           <strong>Senior UI Developer</strong>, where I used my expertise in
-          redesigning, rewriting, architecting, and documenting an Apple-wide
-          enterprise API management web platform.
+          redesigning, rewriting, architecting, and documenting enterprise level
+          API management web platform.
         </p>
         <p>
           In February 2025, I took a pause to reflect on what brings me joy. I
