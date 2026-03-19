@@ -1,28 +1,5 @@
 @reference "../../index.css";
 
-.prose {
-  max-width: var(--width-prose);
-  margin: 0 auto;
-  padding: 0 1.5rem 6rem;
-  font-family: var(--font-family-secondary);
-  font-size: 1rem;
-  line-height: 1.75;
-  color: var(--color-text-secondary);
-}
-
-.prose p {
-  margin-bottom: 1.5rem;
-}
-
-.prose strong {
-  color: var(--color-text-primary);
-  font-weight: 700;
-}
-
-.prose em {
-  font-style: italic;
-}
-
 .note {
   margin-top: 2.5rem;
   font-size: 0.875rem;
