@@ -26,6 +26,18 @@
   "preview_urls": true,
   "routes": [
     {
+      "pattern": "ashujainvi.com",
+      "custom_domain": true,
+    },
+    {
+      "pattern": "www.ashujainvi.com",
+      "custom_domain": true,
+    },
+    {
+      "pattern": "photos.ashujainvi.com",
+      "custom_domain": true,
+    },
+    {
       "pattern": "api.ashujainvi.com",
       "custom_domain": true,
     },
