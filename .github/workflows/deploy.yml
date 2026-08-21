@@ -19,5 +19,4 @@ jobs:
         env:
           VITE_FORMSPREE_FORM_ID: ${{ secrets.VITE_FORMSPREE_FORM_ID }}
       - run: npm ci --prefix cloudflare
-      - run: npm run types --prefix cloudflare
       - run: npm run deploy:dry-run --prefix cloudflare
