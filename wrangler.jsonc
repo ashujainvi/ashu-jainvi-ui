@@ -1,0 +1,56 @@
+{
+  "$schema": "./cloudflare/node_modules/wrangler/config-schema.json",
+  "name": "ashu-jainvi-photo-portal",
+  "main": "cloudflare/src/worker.js",
+  "compatibility_date": "2026-08-21",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "head_sampling_rate": 1,
+    },
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 0.01,
+    },
+  },
+  "cache": {
+    "enabled": true,
+  },
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"],
+  },
+  "workers_dev": true,
+  "preview_urls": true,
+  "routes": [
+    {
+      "pattern": "api.ashujainvi.com",
+      "custom_domain": true,
+    },
+  ],
+  "vars": {
+    "ALLOWED_ORIGIN": "https://www.ashujainvi.com,https://ashujainvi.com",
+    "MAX_STORAGE_BYTES": "9000000000",
+    "MAX_UPLOAD_BYTES": "50000000",
+    "MAX_MONTHLY_TRANSFORMS": "4500",
+  },
+  "images": {
+    "binding": "IMAGES",
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "ashu-jainvi-photo-portal",
+      "database_id": "e7a4345a-975b-4f3d-b25c-b4a579cbfd27",
+      "migrations_dir": "cloudflare/migrations",
+    },
+  ],
+  "r2_buckets": [
+    {
+      "binding": "ORIGINALS",
+      "bucket_name": "ashu-jainvi-photo-originals",
+    },
+  ],
+}

@@ -22,6 +22,10 @@ npm run dev
 npm run build
 ```
 
+## Private photo delivery
+
+The portfolio and its private client delivery portal run as one Cloudflare Worker. Static Vite assets are served at the edge, while `/api/*` uses Images, private R2 originals, D1, password-protected albums, favorites, cost caps, and opt-in full-resolution downloads. See [docs/PHOTO_PORTAL.md](docs/PHOTO_PORTAL.md) for setup and workflow details.
+
 ## Component Generation
 
 This project uses `generate-react-cli` to quickly scaffold new components and pages with consistent structure.

@@ -14,6 +14,8 @@ import About from './pages/About/About.lazy';
 import Photos from './pages/Photos/Photos.lazy';
 import AlbumPage from './pages/Photos/AlbumPage.lazy';
 import Contact from './pages/Contact/Contact.lazy';
+import ClientPortal from './pages/ClientPortal/ClientPortal.lazy';
+import PortalStudio from './pages/PortalStudio/PortalStudio.lazy';
 import PageTransition from './components/PageTransition/PageTransition';
 import { captureUtmParams, getStoredUtmParams } from './utils/analytics';
 
@@ -58,12 +60,23 @@ function AppRoutes() {
         <Route path="/photos" element={<Photos />} />
         <Route path="/photos/:albumId" element={<AlbumPage />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/clients/:albumSlug" element={<ClientPortal />} />
+        <Route path="/studio" element={<PortalStudio />} />
         {/* Clean redirect for Instagram bio link — use https://ashujainvi.com/instagram */}
         <Route
           path="/instagram"
           element={
             <Navigate
               to="/?utm_source=instagram&utm_medium=social&utm_campaign=bio_link"
+              replace
+            />
+          }
+        />
+        <Route
+          path="/ig"
+          element={
+            <Navigate
+              to="/?utm_source=instagram&utm_medium=social&utm_campaign=spring_2026"
               replace
             />
           }
