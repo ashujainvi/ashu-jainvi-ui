@@ -1,0 +1,126 @@
+.background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  background: var(--color-bg-primary);
+}
+
+.background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 20%,
+    color-mix(in srgb, var(--color-bg-primary) 45%, transparent) 95%
+  );
+}
+
+.layers,
+.screen {
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.background[data-powered='false'] .screen {
+  opacity: 0;
+}
+
+.layers {
+  display: grid;
+  animation: phosphorFlicker 4s linear infinite paused;
+}
+
+.screen {
+  position: relative;
+  grid-area: 1 / 1;
+  overflow: hidden;
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    color-mix(in srgb, var(--color-secondary-light) 5%, transparent),
+    transparent 75%
+  );
+}
+
+.noise,
+.scanlines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.band {
+  position: absolute;
+  left: -1%;
+  width: 102%;
+  opacity: 0;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0 1px,
+      color-mix(in srgb, var(--color-secondary-light) 35%, transparent) 1px 2px
+    ),
+    linear-gradient(
+      to bottom,
+      transparent,
+      var(--color-secondary-light) 15%,
+      transparent 25%,
+      var(--color-bg-primary) 45% 75%,
+      transparent
+    );
+}
+
+.noise {
+  opacity: var(--crt-noise-opacity);
+  image-rendering: pixelated;
+}
+
+.scanlines {
+  opacity: var(--crt-scanline-opacity);
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0 2px,
+    var(--color-bg-primary) 2px 3px
+  );
+}
+
+.background[data-active='true'] .layers {
+  animation-play-state: running;
+}
+
+@keyframes phosphorFlicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  18%,
+  54%,
+  83% {
+    opacity: 0.96;
+  }
+  19%,
+  56%,
+  85% {
+    opacity: 0.99;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .layers {
+    animation: none;
+  }
+}

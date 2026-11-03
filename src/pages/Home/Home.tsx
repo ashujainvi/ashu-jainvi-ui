@@ -2,11 +2,11 @@ import { useRef } from 'react';
 import styles from './Home.module.css';
 import containerStyles from '../../styles/modules/container.module.css';
 import Seo from '../../components/Seo/Seo';
+import HeroTelevision from '../../components/HeroTelevision/HeroTelevision';
 import Pill from '../../atoms/Pill/Pill';
 import FeatureCard from '../../organisms/FeatureCard/FeatureCard';
 import PhotoCard from '../../molecules/PhotoCard/PhotoCard';
 import profileImage from '../../assets/photos/profile.jpg';
-import glitchPng from '../../assets/glitch.png';
 import cameraOutlinePng from '../../assets/camera-outline.png';
 import penToolOutlinePng from '../../assets/pen-tool-outline.png';
 import browserWindowOutlinePng from '../../assets/browser-window-outline.png';
@@ -30,17 +30,8 @@ const Home = () => {
         description="Ashu Jainvi is an Austin, Texas based visual artist and engineer specializing in photography, graphic design, and web development."
         path="/"
       />
-      <div
-        className={styles.backgroundWrapper}
-        style={{ backgroundImage: `url(${glitchPng})` }}
-      ></div>
-      <section className={styles.heroSection}>
-        <div className={styles.heroContainer}>
-          <div className={`${styles.heroScene} text-center`}>
-            <span className={`text-overline ${styles.stroke}`}>Meet</span>
-            <h1 className="display">Ashu Jainvi</h1>
-          </div>
-        </div>
+      <section className={styles.heroSection} aria-labelledby="hero-title">
+        <HeroTelevision />
       </section>
       <button
         className={styles.sunriseButton}

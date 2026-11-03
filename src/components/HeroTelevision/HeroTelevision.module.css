@@ -1,0 +1,392 @@
+.television {
+  --tv-edge: color-mix(in srgb, var(--color-secondary-light) 25%, transparent);
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 192px;
+  gap: 16px;
+  width: 100%;
+  max-width: var(--screen-max-width);
+  padding: 18px;
+  border: 1px solid var(--tv-edge);
+  border-radius: 12px;
+  background: linear-gradient(
+    160deg,
+    var(--color-border-primary),
+    var(--color-bg-secondary) 12%,
+    var(--color-bg-primary)
+  );
+  box-shadow:
+    inset 0 0 0 4px var(--color-bg-primary),
+    inset 0 0 0 5px var(--tv-edge),
+    inset 0 -8px 12px var(--color-bg-primary),
+    0 24px 60px color-mix(in srgb, var(--color-bg-primary) 75%, transparent);
+}
+
+.screenSurround {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--tv-edge);
+  border-radius: 32px / 24px;
+  background: linear-gradient(
+    165deg,
+    color-mix(
+      in srgb,
+      var(--color-secondary-light) 42%,
+      var(--color-bg-secondary)
+    ),
+    var(--color-border-primary) 8%,
+    var(--color-bg-primary) 30% 80%,
+    var(--color-border-primary)
+  );
+  box-shadow:
+    0 0 0 4px var(--color-bg-primary),
+    inset 0 2px 2px var(--tv-edge);
+}
+
+.screen {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border: 5px solid var(--color-bg-primary);
+  border-radius: 10% / 12%;
+  background: var(--color-bg-primary);
+  box-shadow: 0 0 0 1px var(--tv-edge);
+}
+
+.screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 32px 8px var(--color-bg-primary),
+    inset 0 3px 7px var(--tv-edge);
+  background: linear-gradient(
+    135deg,
+    var(--color-border-glass),
+    transparent 35%
+  );
+}
+
+.broadcast {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 28px 32px;
+  color: var(--color-secondary-light);
+}
+
+.screenHeader,
+.screenFooter {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.screenHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+}
+
+.identity {
+  text-align: center;
+}
+
+.meet {
+  display: inline-block;
+  margin-bottom: 12px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-size: clamp(3.5rem, 8.5vw, 6.5rem);
+  font-weight: 400;
+  line-height: 0.96;
+  letter-spacing: -0.045em;
+  color: var(--color-primary);
+  text-shadow: 0 0 18px var(--color-red-dark-alpha);
+}
+
+.title span {
+  display: block;
+}
+
+.screenFooter {
+  margin: 0;
+  text-align: center;
+}
+
+.controls {
+  display: grid;
+  grid-template-rows: auto minmax(120px, 1fr);
+  gap: 12px;
+  min-width: 0;
+  color: var(--color-secondary-light);
+}
+
+.controlPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 20px 14px 24px;
+  border: 1px solid var(--tv-edge);
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--color-border-glass) 0 1px,
+      transparent 1px 4px
+    ),
+    color-mix(
+      in srgb,
+      var(--color-secondary-light) 9%,
+      var(--color-bg-secondary)
+    );
+  box-shadow:
+    inset 0 0 0 3px var(--color-bg-secondary),
+    inset 0 5px 0 var(--tv-edge),
+    0 3px 6px var(--color-bg-primary);
+}
+
+.brand {
+  align-self: center;
+  font-family: var(--font-family-primary);
+  font-size: 1.5rem;
+  color: var(--color-secondary);
+}
+
+.control {
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr);
+  column-gap: 12px;
+  row-gap: 6px;
+  align-items: center;
+}
+
+.label,
+.powerStatus,
+.receptionValue {
+  grid-column: 2;
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.label {
+  align-self: end;
+}
+
+.powerStatus,
+.receptionValue {
+  align-self: start;
+}
+
+.powerButton,
+.dial {
+  position: relative;
+  display: grid;
+  grid-column: 1;
+  grid-row: 1 / 3;
+  justify-self: center;
+  place-items: center;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--tv-edge);
+  border-radius: 50%;
+  color: var(--color-secondary-light);
+  background: linear-gradient(
+    145deg,
+    var(--color-border-primary),
+    var(--color-bg-primary) 75%
+  );
+  box-shadow:
+    2px 5px 0 var(--color-bg-primary),
+    4px 8px 8px var(--color-bg-primary),
+    inset 0 2px 1px var(--tv-edge);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.powerButton:hover,
+.dial:hover:not(:disabled) {
+  border-color: var(--color-secondary);
+}
+
+.powerButton:focus-visible,
+.dial:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 5px;
+}
+
+.powerButton svg {
+  width: 22px;
+  height: 22px;
+}
+
+.powerStatus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.powerStatus::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-border-secondary);
+}
+
+.powerStatus[data-on='true']::before {
+  background: var(--color-primary);
+  box-shadow: 0 0 8px var(--color-red-light-alpha);
+}
+
+.dial {
+  width: 68px;
+  height: 68px;
+  background: repeating-conic-gradient(
+    var(--color-border-primary) 0deg 2deg,
+    var(--color-bg-primary) 2deg 12deg
+  );
+}
+
+.dial:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.dialPointer {
+  position: absolute;
+  inset: 6px;
+  border: 1px solid var(--tv-edge);
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--color-border-primary),
+    var(--color-bg-secondary) 65%
+  );
+  transform: rotate(var(--dial-angle));
+  transition: transform 180ms ease;
+}
+
+.dialPointer::before {
+  content: '';
+  position: absolute;
+  top: 7px;
+  bottom: 7px;
+  left: calc(50% - 4px);
+  width: 8px;
+  border-radius: 2px;
+  background: var(--color-secondary);
+  box-shadow: 2px 2px 0 var(--color-bg-primary);
+}
+
+.speaker {
+  min-height: 120px;
+  border: 1px solid var(--tv-edge);
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--color-bg-primary) 0 4px,
+    var(--color-border-primary) 4px 5px,
+    var(--color-bg-secondary) 5px 8px
+  );
+  box-shadow: inset 0 0 0 5px var(--color-bg-primary);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .television {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .screenSurround {
+    padding: 10px;
+    border-radius: 24px / 20px;
+  }
+
+  .broadcast {
+    padding: 16px 12px;
+  }
+
+  .title {
+    font-size: clamp(2rem, 12vw, 4.5rem);
+  }
+
+  .meet {
+    margin-bottom: 6px;
+    font-size: 0.625rem;
+  }
+
+  .screenHeader,
+  .screenFooter {
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+  }
+
+  .controls {
+    grid-template-rows: auto 40px;
+    gap: 8px;
+  }
+
+  .controlPanel {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .brand {
+    display: none;
+  }
+
+  .control {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .label,
+  .powerStatus,
+  .receptionValue {
+    align-self: center;
+  }
+
+  .powerButton,
+  .dial {
+    width: 48px;
+    height: 48px;
+  }
+
+  .speaker {
+    min-height: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialPointer {
+    transition: none;
+  }
+}

@@ -8,29 +8,6 @@
   overflow-x: hidden;
 }
 
-.backgroundWrapper {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  background-repeat: repeat;
-  background-position: center center;
-  background-size: auto 80vh;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.25;
-  mask-image: radial-gradient(
-    ellipse 80% 60% at 50% 50%,
-    black 20%,
-    transparent 70%
-  );
-  -webkit-mask-image: radial-gradient(
-    ellipse 80% 60% at 50% 50%,
-    black 20%,
-    transparent 70%
-  );
-}
-
 .heroSection {
   position: relative;
   display: flex;
@@ -38,21 +15,9 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 96vh;
+  min-height: 96svh;
+  padding: 104px 24px 120px;
   z-index: 1;
-}
-
-.heroContainer {
-  position: relative;
-  display: flex;
-  width: min(var(--screen-max-width), 100%);
-  min-width: var(--width-sm);
-  align-items: center;
-  flex-direction: column;
-}
-
-.heroScene {
-  width: min(var(--width-md), 80%);
 }
 
 .stroke {
